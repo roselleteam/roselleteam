@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🌸 Roselle Team</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --p1: #fce4ec;
+    --p2: #f8bbd0;
+    --p3: #f48fb1;
+    --p4: #e91e8c;
+    --p5: #880e4f;
+    --soft: #fff5f9;
+    --card: #fffffff5;
+    --text: #4a1030;
+    --sub: #9c3466;
+    --lite: #d4789b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--soft);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* PETALS */
+  .petals-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .petal {
+    position: absolute; top: -50px; font-size: 1rem;
+    animation: fallDown linear infinite; opacity: 0; user-select: none;
+  }
+  @keyframes fallDown {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+    8%   { opacity: 0.65; }
+    92%  { opacity: 0.65; }
+    100% { transform: translateY(110vh) rotate(560deg); opacity: 0; }
+  }
+
+  /* HERO */
+  .hero {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 54px 20px 52px;
+    background: linear-gradient(170deg, #fde8f2 0%, #f9b8d4 32%, #f072a8 65%, #e91e8c 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(circle, #ffffff28 1.5px, transparent 1.5px);
+    background-size: 20px 20px; pointer-events: none;
+  }
+  .hero-wave { position: absolute; bottom: -1px; left: 0; right: 0; z-index: 1; }
+  .hero-emoji {
+    font-size: 2.4rem; letter-spacing: 5px; display: block;
+    margin-bottom: 12px; animation: floatY 2.8s ease-in-out infinite;
+    position: relative; z-index: 2;
+  }
+  @keyframes floatY {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-7px) scale(1.06); }
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.1rem, 9vw, 3.4rem);
+    font-weight: 700; color: #fff;
+    text-shadow: 0 2px 0 #c2185b88, 0 8px 28px #88003688;
+    line-height: 1.15; margin-bottom: 6px;
+    position: relative; z-index: 2; letter-spacing: 1px;
+  }
+  .hero h1 em { font-style: italic; color: #ffe0ef; }
+  .hero-tagline {
+    font-size: 0.82rem; color: #ffe0ef; font-weight: 800;
+    letter-spacing: 3px; text-transform: uppercase;
+    position: relative; z-index: 2; margin-bottom: 8px; opacity: 0.92;
+  }
+  .hero-deco {
+    font-size: 1rem; letter-spacing: 8px; color: #ffd6eb;
+    position: relative; z-index: 2; opacity: 0.8; margin-top: 6px;
+  }
+
+  /* MAIN */
+  main {
+    position: relative; z-index: 2;
+    max-width: 480px; margin: 0 auto;
+    padding: 22px 13px 70px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--card); border-radius: 22px;
+    padding: 20px 16px 18px;
+    box-shadow: 0 6px 32px #f48fb122, 0 2px 8px #e91e8c0e;
+    border: 1.5px solid #f8bbd0;
+    position: relative; overflow: hidden;
+    animation: popIn 0.5s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  .card::after {
+    content: ''; position: absolute; top: -20px; right: -20px;
+    width: 72px; height: 72px;
+    background: radial-gradient(circle, #f48fb133 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
+  }
+  .card:nth-child(1){animation-delay:.05s} .card:nth-child(2){animation-delay:.13s}
+  .card:nth-child(3){animation-delay:.21s} .card:nth-child(4){animation-delay:.29s}
+  .card:nth-child(5){animation-delay:.37s} .card:nth-child(6){animation-delay:.45s}
+  .card:nth-child(7){animation-delay:.53s}
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.86) translateY(22px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .card-header {
+    display: flex; align-items: center; gap: 9px;
+    margin-bottom: 14px; padding-bottom: 10px;
+    border-bottom: 2px dashed #f8bbd0;
+  }
+  .card-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700; color: var(--p5); line-height: 1.2;
+  }
+  .card-title small {
+    display: block; font-family: 'Nunito', sans-serif;
+    font-size: 0.7rem; font-weight: 700; color: var(--lite);
+    letter-spacing: 1.5px; text-transform: uppercase; font-style: normal; margin-top: 1px;
+  }
+
+  /* WELCOME */
+  .welcome-card {
+    background: linear-gradient(135deg, #fde8f2, #f8bbd0, #fde8f2);
+    border: 2px solid #f48fb1; text-align: center;
+  }
+  .welcome-emoji { font-size: 1.7rem; letter-spacing: 4px; display: block; margin-bottom: 8px; }
+  .welcome-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.97rem; color: var(--p5); font-style: italic; line-height: 1.65;
+  }
+
+  /* RULES */
+  .sanction-badge {
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    color: #fff; font-size: 0.78rem; font-weight: 900;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 9px 14px; border-radius: 14px; margin-bottom: 10px;
+    box-shadow: 0 3px 14px #ff6b6b44;
+    animation: puls 2s ease-in-out infinite;
+  }
+  @keyframes puls {
+    0%,100% { box-shadow: 0 3px 14px #ff6b6b44; }
+    50%      { box-shadow: 0 3px 24px #ff6b6b88; }
+  }
+  .rule-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 8px 10px; margin-bottom: 5px; border-radius: 12px;
+    background: #fff5f9; border-left: 3px solid #f48fb1;
+    font-size: 0.85rem; font-weight: 700; color: var(--text); line-height: 1.35;
+  }
+  .rule-item:last-child { margin-bottom: 0; }
+  .ri { font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* POSITIONS */
+  .position-row {
+    display: flex; align-items: center; gap: 9px;
+    padding: 9px 12px; border-radius: 14px; margin-bottom: 6px;
+  }
+  .position-row:last-child { margin-bottom: 0; }
+  .pos-owner  { background: linear-gradient(135deg,#fff0f7,#fde8f2); border: 1.5px solid #f48fb1; }
+  .pos-co     { background: linear-gradient(135deg,#fff5f9,#fce4ec); border: 1.5px solid #f8bbd0; }
+  .pos-admin  { background: linear-gradient(135deg,#fff8fb,#fce4ec88); border: 1.5px solid #f8bbd0; }
+  .pos-secu   { background: linear-gradient(135deg,#f5f9ff,#e8f0fe88); border: 1.5px solid #c5cae9; }
+  .pos-editor { background: linear-gradient(135deg,#fffde7,#fff9c488); border: 1.5px solid #ffe082; }
+
+  .pos-badge {
+    font-size: 0.6rem; font-weight: 900; letter-spacing: 1px;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 20px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .badge-owner  { background: linear-gradient(135deg,#e91e8c,#c2185b); color: #fff; }
+  .badge-co     { background: linear-gradient(135deg,#f48fb1,#e91e8c); color: #fff; }
+  .badge-admin  { background: linear-gradient(135deg,#f8bbd0,#f48fb1); color: #7b1e45; }
+  .badge-secu   { background: linear-gradient(135deg,#9fa8da,#7986cb); color: #fff; }
+  .badge-editor { background: linear-gradient(135deg,#ffe082,#ffd54f); color: #5d4037; }
+
+  .pos-icon { font-size: 1rem; flex-shrink: 0; }
+  .pos-name { font-size: 0.93rem; font-weight: 900; color: var(--text); flex: 1; }
+
+  /* JAM */
+  .jam-box {
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(135deg,#fde8f2,#f48fb122);
+    border: 1.5px solid #f48fb1; border-radius: 16px; padding: 16px 16px; gap: 10px;
+  }
+  .jam-label { font-size: 0.68rem; font-weight: 800; color: var(--lite); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
+  .jam-time {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--p5); line-height: 1.1;
+  }
+  .jam-zone { font-size: 0.72rem; font-weight: 800; color: var(--lite); margin-top: 3px; }
+  .jam-icon { font-size: 2.4rem; }
+
+  /* LINK BUTTONS */
+  .link-btn {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 15px; border-radius: 16px;
+    text-decoration: none; margin-bottom: 9px;
+    transition: transform 0.15s; position: relative; overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .link-btn:last-child { margin-bottom: 0; }
+  .link-btn:active { transform: scale(0.97); }
+  .link-btn.tiktok    { background: linear-gradient(135deg,#1a1a2e,#16213e); border: 1.5px solid #444; }
+  .link-btn.wa-group  { background: linear-gradient(135deg,#1b5e20,#2e7d32); border: 1.5px solid #388e3c; }
+  .link-btn.wa-chan   { background: linear-gradient(135deg,#00695c,#00897b); border: 1.5px solid #26a69a; }
+  .lbi { font-size: 1.7rem; flex-shrink: 0; }
+  .lbinfo { flex: 1; }
+  .lbl { font-size: 0.62rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #ffffff88; margin-bottom: 2px; }
+  .lbn { font-size: 0.9rem; font-weight: 800; color: #fff; line-height: 1.2; }
+  .lbnt { font-size: 0.67rem; color: #ffffff88; font-weight: 600; margin-top: 3px; line-height: 1.35; }
+  .lbarr { font-size: 1.1rem; color: #ffffff55; flex-shrink: 0; }
+
+  /* ROBLOX */
+  .roblox-card {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 14px;
+    background: linear-gradient(135deg,#fff5f9,#fde8f2);
+    border-radius: 16px; border: 1.5px solid #f8bbd0;
+    text-decoration: none; margin-bottom: 8px;
+    transition: transform 0.15s; -webkit-tap-highlight-color: transparent;
+  }
+  .roblox-card:last-child { margin-bottom: 0; }
+  .roblox-card:active { transform: scale(0.97); }
+  .rba {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: linear-gradient(135deg,#f48fb1,#e91e8c);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+    box-shadow: 0 3px 12px #f48fb155;
+  }
+  .rbinfo { flex: 1; }
+  .rbrole { font-size: 0.62rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--lite); margin-bottom: 2px; }
+  .rbname { font-size: 0.95rem; font-weight: 900; color: var(--text); line-height: 1.2; }
+  .rbsub { font-size: 0.7rem; color: var(--lite); font-weight: 600; margin-top: 1px; }
+  .rbarr { font-size: 1rem; color: var(--lite); }
+
+  /* FOOTER */
+  .footer {
+    position: relative; z-index: 2; text-align: center;
+    padding: 20px 16px 40px;
+    background: linear-gradient(180deg, transparent, #fde8f2);
+  }
+  .footer-flowers { font-size: 1.5rem; letter-spacing: 6px; display: block; margin-bottom: 6px; animation: floatY 3s ease-in-out infinite; }
+  .footer p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.85rem; color: var(--lite); }
+  .footer small { display: block; font-size: 0.68rem; color: #d4789b88; margin-top: 5px; }
+</style>
+</head>
+<body>
+
+<!-- PETALS -->
+<div class="petals-wrap" id="pw"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="hero-emoji">🌸 🌷 🌸</span>
+  <h1>Roselle <em>Team</em></h1>
+  <p class="hero-tagline">✦ our feeroses ✦</p>
+  <p class="hero-deco">──୨ৎ── ⋆𐙚̊ ──୨ৎ──</p>
+  <svg class="hero-wave" viewBox="0 0 390 40" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:40px;width:100%;">
+    <path d="M0 40 C100 0, 290 0, 390 40 L390 40 L0 40 Z" fill="#fff5f9"/>
+  </svg>
+</header>
+
+<main>
+
+  <!-- WELCOME -->
+  <div class="card welcome-card">
+    <span class="welcome-emoji">🪷 💬 🪷</span>
+    <p class="welcome-text">
+      Welcome to <strong>Roselle Team</strong> —<br>
+      Selamat datang di keluarga kita yang hangat 🌸<br>
+      Semoga betah &amp; nyaman di sini!
+    </p>
+  </div>
+
+  <!-- LARANGAN KERAS -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">⚠️</span>
+      <div class="card-title">
+        Larangan Keras — Roses
+        <small>wajib baca sebelum aktif</small>
+      </div>
+    </div>
+    <div class="sanction-badge">‼️ SANKSI : KICK ‼️</div>
+    <div class="rule-item"><span class="ri">🔞</span> Dilarang mengirim media 18+ / 21+</div>
+    <div class="rule-item"><span class="ri">🚫</span> Dilarang rasis, SARA &amp; bullying</div>
+    <div class="rule-item"><span class="ri">💔</span> Dilarang mengirim hal yang merusak grup</div>
+    <div class="rule-item"><span class="ri">☠️</span> Dilarang konten toxic berat</div>
+    <div class="rule-item"><span class="ri">🔇</span> Dilarang kirim chat audio (voice note)</div>
+    <div class="rule-item"><span class="ri">🤖</span> Dilarang pakai / add bot tanpa izin admin</div>
+  </div>
+
+  <!-- ATURAN ROSES -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">📋</span>
+      <div class="card-title">
+        Aturan Roses
+        <small>harap dipatuhi semua anggota</small>
+      </div>
+    </div>
+    <div class="sanction-badge" style="background:linear-gradient(135deg,#ff9800,#f57c00);box-shadow:0 3px 14px #ff980044;">‼️ SANKSI : SURAT PERINGATAN ‼️</div>
+    <div class="rule-item"><span class="ri">🎬</span> Dilarang mengirim media gore &amp; horor</div>
+    <div class="rule-item"><span class="ri">🗣️</span> Hindari kata kasar / kata kasar ringan</div>
+    <div class="rule-item"><span class="ri">📵</span> Dilarang spam media lebih dari 10x</div>
+    <div class="rule-item"><span class="ri">📸</span> Kirim media wajib 1x saja (tidak boleh berulang)</div>
+    <div class="rule-item"><span class="ri">💬</span> Dilarang CDC (chat dalam chat)</div>
+    <div class="rule-item"><span class="ri">📌</span> Dilarang ngetag status yang berhubungan dengan Roselle Team</div>
+    <div class="rule-item"><span class="ri">🔗</span> Dilarang mempromosikan grup lain di sini</div>
+  </div>
+
+  <!-- STRUKTUR TIM -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">👑</span>
+      <div class="card-title">
+        Roselle Team — Struktur Tim
+        <small>posisi &amp; anggota resmi</small>
+      </div>
+    </div>
+
+    <div class="position-row pos-owner">
+      <span class="pos-badge badge-owner">Owner</span>
+      <span class="pos-icon">👑</span>
+      <span class="pos-name">Ciee</span>
+    </div>
+    <div class="position-row pos-co">
+      <span class="pos-badge badge-co">Co-Owner</span>
+      <span class="pos-icon">🌸</span>
+      <span class="pos-name">Aveline</span>
+    </div>
+    <div class="position-row pos-admin">
+      <span class="pos-badge badge-admin">Admin 01</span>
+      <span class="pos-icon">🌷</span>
+      <span class="pos-name">Charliee</span>
+    </div>
+    <div class="position-row pos-admin">
+      <span class="pos-badge badge-admin">Admin 02</span>
+      <span class="pos-icon">🌷</span>
+      <span class="pos-name">Miselle</span>
+    </div>
+    <div class="position-row pos-admin">
+      <span class="pos-badge badge-admin">Admin 03</span>
+      <span class="pos-icon">🌷</span>
+      <span class="pos-name">Reihan</span>
+    </div>
+    <div class="position-row pos-admin">
+      <span class="pos-badge badge-admin">Admin 04</span>
+      <span class="pos-icon">🌷</span>
+      <span class="pos-name">Gizelle</span>
+    </div>
+    <div class="position-row pos-secu">
+      <span class="pos-badge badge-secu">Security 01</span>
+      <span class="pos-icon">🛡️</span>
+      <span class="pos-name">Roma</span>
+    </div>
+    <div class="position-row pos-secu">
+      <span class="pos-badge badge-secu">Security 02</span>
+      <span class="pos-icon">🛡️</span>
+      <span class="pos-name">Nalea</span>
+    </div>
+    <div class="position-row pos-editor">
+      <span class="pos-badge badge-editor">Editor 01</span>
+      <span class="pos-icon">✏️</span>
+      <span class="pos-name">Aveline</span>
+    </div>
+    <div class="position-row pos-editor">
+      <span class="pos-badge badge-editor">Editor 02</span>
+      <span class="pos-icon">✏️</span>
+      <span class="pos-name">Ciee</span>
+    </div>
+  </div>
+
+  <!-- JAM AKTIF -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🕐</span>
+      <div class="card-title">
+        Jadwal Buka — Tutup Grup
+        <small>jam aktif every day</small>
+      </div>
+    </div>
+    <div class="jam-box">
+      <div>
+        <div class="jam-label">Setiap Hari / Every Day</div>
+        <div class="jam-time">06.00 – 21.30</div>
+        <div class="jam-zone">🌏 WIB (Waktu Indonesia Barat)</div>
+      </div>
+      <span class="jam-icon">🌸</span>
+    </div>
+  </div>
+
+  <!-- SOSMED & LINK -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🔗</span>
+      <div class="card-title">
+        Sosial Media &amp; Link Resmi
+        <small>roselle team official</small>
+      </div>
+    </div>
+
+    <a href="https://tiktok.com/@roses.inyourhearts" target="_blank" class="link-btn tiktok">
+      <span class="lbi">🎵</span>
+      <div class="lbinfo">
+        <div class="lbl">TikTok Official</div>
+        <div class="lbn">@roses.inyourhearts</div>
+        <div class="lbnt">Tap untuk buka TikTok kami 🎶</div>
+      </div>
+      <span class="lbarr">›</span>
+    </a>
+
+    <a href="https://chat.whatsapp.com/IJZuD9FsIWq3RZmjKBkbYU" target="_blank" class="link-btn wa-group">
+      <span class="lbi">💬</span>
+      <div class="lbinfo">
+        <div class="lbl">WhatsApp — Grup Chat</div>
+        <div class="lbn">Roselle Team Group</div>
+        <div class="lbnt">⚠️ Jika tidak bisa masuk / error, link kemungkinan sudah expired dan akan segera diganti. Pantau terus saluran kami!</div>
+      </div>
+      <span class="lbarr">›</span>
+    </a>
+
+    <a href="https://whatsapp.com/channel/0029Vb7rGK2GehEInYydx63Z" target="_blank" class="link-btn wa-chan">
+      <span class="lbi">📢</span>
+      <div class="lbinfo">
+        <div class="lbl">WhatsApp — Saluran RST</div>
+        <div class="lbn">Saluran Roselle Team</div>
+        <div class="lbnt">Info &amp; update terbaru dari tim kami ✨</div>
+      </div>
+      <span class="lbarr">›</span>
+    </a>
+  </div>
+
+  <!-- ROBLOX -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-icon">🎮</span>
+      <div class="card-title">
+        Roblox Profile — Tim
+        <small>akun roblox anggota resmi</small>
+      </div>
+    </div>
+
+    <a href="https://www.roblox.com/share?code=dec37f616a152c46b6240fe2d3790b58&type=Profile&source=ProfileShare&stamp=1778417292244" target="_blank" class="roblox-card">
+      <div class="rba">🌷</div>
+      <div class="rbinfo">
+        <div class="rbrole">Co-Owner</div>
+        <div class="rbname">Breline</div>
+        <div class="rbsub">Tap untuk lihat profil Roblox 🎮</div>
+      </div>
+      <span class="rbarr">›</span>
+    </a>
+
+    <a href="https://www.roblox.com/users/5730454440/profile" target="_blank" class="roblox-card">
+      <div class="rba" style="background:linear-gradient(135deg,#9fa8da,#7986cb);">🛡️</div>
+      <div class="rbinfo">
+        <div class="rbrole">Security 01</div>
+        <div class="rbname">Roma</div>
+        <div class="rbsub">Tap untuk lihat profil Roblox 🎮</div>
+      </div>
+      <span class="rbarr">›</span>
+    </a>
+
+    <a href="https://www.roblox.com/share?code=1fb7059239cf3d4ca19a4929b1fa48f2&type=Profile&source=ProfileShare&stamp=1778417743549" target="_blank" class="roblox-card">
+      <div class="rba" style="background:linear-gradient(135deg,#e91e8c,#880e4f);">👑</div>
+      <div class="rbinfo">
+        <div class="rbrole">Owner</div>
+        <div class="rbname">Cievva</div>
+        <div class="rbsub">Tap untuk lihat profil Roblox 🎮</div>
+      </div>
+      <span class="rbarr">›</span>
+    </a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-flowers">🌸 🌷 🌸</span>
+  <p>Thank you for joining Roselle Team 🌷</p>
+  <small>──୨ৎ────⋆ 𐙚̊ ────୨ৎ──</small>
+</footer>
+
+<script>
+  const wrap = document.getElementById('pw');
+  const emojis = ['🌸','🌷','🌺','💗','🌹','🪷','✿'];
+  for (let i = 0; i < 24; i++) {
+    const el = document.createElement('div');
+    el.className = 'petal';
+    el.textContent = emojis[i % emojis.length];
+    el.style.left = (Math.random() * 100) + '%';
+    el.style.animationDuration = (7 + Math.random() * 10) + 's';
+    el.style.animationDelay = (Math.random() * 14) + 's';
+    el.style.fontSize = (0.75 + Math.random() * 0.9) + 'rem';
+    wrap.appendChild(el);
+  }
+</script>
+</body>
+</html>
