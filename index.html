@@ -1023,6 +1023,81 @@ main {
 .sticker:nth-child(6){ animation-delay:1.75s; background:linear-gradient(135deg,#f3e8ff,#d9b8ff44); border-color:var(--lav2); color:var(--lav3); }
 .sticker:nth-child(7){ animation-delay:0.75s; }
 
+
+/* ══════ MEMORIES OPEN BUTTON ══════ */
+.mem-open-btn {
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  width:100%; padding:15px 20px;
+  background:linear-gradient(135deg,#ff3d9a,#e8006e,#a8005a);
+  border:none; border-radius:20px;
+  color:#fff; font-family:'Nunito',sans-serif;
+  font-size:0.95rem; font-weight:900;
+  cursor:pointer; box-shadow:0 8px 28px #e8006e44;
+  position:relative; overflow:hidden;
+  transition:transform 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.mem-open-btn::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,#ffffff22,transparent); pointer-events:none; }
+.mem-open-btn:active { transform:scale(0.96); }
+
+/* ══════ GALLERY OVERLAY ══════ */
+.gal-overlay {
+  position:fixed; inset:0; z-index:9998;
+  background:var(--bg);
+  display:none; flex-direction:column;
+}
+.gal-overlay.active { display:flex; }
+.gal-header {
+  display:flex; align-items:center; gap:12px;
+  padding:14px 16px 10px;
+  background:linear-gradient(135deg,#ff3d9a,#e8006e);
+  flex-shrink:0;
+}
+.gal-back {
+  background:#ffffff22; border:none; border-radius:50%;
+  width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; cursor:pointer; color:#fff; flex-shrink:0;
+  -webkit-tap-highlight-color:transparent;
+}
+.gal-back:active { background:#ffffff44; }
+.gal-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#fff; flex:1; }
+.gal-count { font-size:0.72rem; font-weight:800; color:#ffe0f3; background:#ffffff22; padding:4px 10px; border-radius:50px; }
+.gal-body { flex:1; overflow-y:auto; padding:14px; }
+.gal-grid {
+  display:grid; grid-template-columns:repeat(2,1fr); gap:10px;
+}
+.gal-item {
+  border-radius:18px; overflow:hidden;
+  aspect-ratio:1; background:#ffd6ed33;
+  position:relative; cursor:pointer;
+  border:2px solid #ffd6ed;
+  animation:cardEntry 0.4s cubic-bezier(.34,1.5,.64,1) both;
+}
+.gal-item img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform 0.22s;
+}
+.gal-item:active img { transform:scale(1.06); }
+.gal-item-date {
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(transparent,#00000077);
+  color:#fff; font-size:0.6rem; font-weight:800;
+  padding:16px 8px 6px; letter-spacing:0.5px;
+}
+.gal-item-overlay {
+  position:absolute; inset:0; background:#ff6db822;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; transition:opacity 0.18s; font-size:1.5rem;
+}
+.gal-item:active .gal-item-overlay { opacity:1; }
+.gal-loading {
+  text-align:center; padding:40px 20px; color:var(--muted);
+  font-size:0.85rem; font-weight:700;
+}
+.gal-loading-dots { display:flex; justify-content:center; gap:6px; margin-bottom:10px; }
+.gal-loading-dots span { width:9px; height:9px; border-radius:50%; background:var(--pk2); animation:boing 1.3s ease-in-out infinite; }
+.gal-loading-dots span:nth-child(2){ animation-delay:.2s; background:var(--pk3); }
+.gal-loading-dots span:nth-child(3){ animation-delay:.4s; background:var(--pk4); }
 </style>
 </head>
 <body>
@@ -1391,14 +1466,17 @@ main {
       </div>
     </div>
     <div class="card-body">
-      <div class="mem-grid" id="memGrid">
-        <div class="mem-loading" id="memLoading">
-          <div class="mem-loading-dots"><span></span><span></span><span></span></div>
-          <div>Memuat kenangan~</div>
-        </div>
-      </div>
-      <div class="mem-empty" id="memEmpty" style="display:none;">
-        🌸 Belum ada kenangan tersimpan~
+      <div style="text-align:center;padding:8px 0 4px;">
+        <div style="font-size:2.2rem;margin-bottom:10px;animation:wiggleBig 2s ease-in-out infinite;filter:drop-shadow(0 4px 12px #ff6db844);">📸</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--sub);margin-bottom:14px;line-height:1.6;">Koleksi foto kenangan bersama Roselle Team~<br>Tap tombol di bawah untuk melihat semua foto! 🌸</div>
+        <button class="mem-open-btn" onclick="openGalleryOverlay()">
+          <span style="font-size:1.3rem;">🌷</span>
+          <div>
+            <div>Lihat Kenangan RST</div>
+            <div style="font-size:0.62rem;opacity:0.8;letter-spacing:1.5px;margin-top:2px;">TAP UNTUK BUKA GALERI</div>
+          </div>
+          <span style="font-size:1.1rem;opacity:0.7;">›</span>
+        </button>
       </div>
     </div>
   </div>
@@ -1406,6 +1484,24 @@ main {
 
 
 </main>
+
+<!-- ══════ GALLERY OVERLAY ══════ -->
+<div class="gal-overlay" id="galOverlay">
+  <div class="gal-header">
+    <button class="gal-back" onclick="closeGalleryOverlay()">←</button>
+    <div class="gal-title">📸 Kenangan RST</div>
+    <span class="gal-count" id="galCount">0 foto</span>
+  </div>
+  <div class="gal-body">
+    <div class="gal-grid" id="galGrid">
+      <div class="gal-loading">
+        <div class="gal-loading-dots"><span></span><span></span><span></span></div>
+        <div>Memuat kenangan~</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="game-overlay" id="gameOverlay">
 
   <!-- SELECT SCREEN -->
@@ -1809,28 +1905,41 @@ function kqNextQ(){kqI++;kqRender();}
 /* === KENANGAN RST === */
 let allMemories = [];
 let lbCurrentIdx = 0;
+let galLoaded = false;
+
+async function openGalleryOverlay() {
+  document.getElementById('galOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  if (galLoaded) return;
+  const grid = document.getElementById('galGrid');
+  grid.innerHTML = '<div class="gal-loading"><div class="gal-loading-dots"><span></span><span></span><span></span></div><div>Memuat kenangan~</div></div>';
+  try {
+    const res = await fetch('./rst-memories.json');
+    if (!res.ok) throw new Error('Gagal');
+    const data = await res.json();
+    allMemories = data;
+    galLoaded = true;
+    document.getElementById('galCount').textContent = data.length + ' foto';
+    if (!data.length) { grid.innerHTML = '<div class="gal-loading">🌸 Belum ada kenangan~</div>'; return; }
+    grid.innerHTML = data.map((m, i) => `
+      <div class="gal-item" style="animation-delay:${i*0.05}s" onclick="openLightbox(${i})">
+        <img src="${m.link}" alt="Kenangan RST" loading="lazy" onerror="this.parentElement.style.display='none'">
+        ${m.tgl ? `<div class="gal-item-date">📅 ${m.tgl}</div>` : ''}
+        <div class="gal-item-overlay"><span>🔍</span></div>
+      </div>
+    `).join('');
+  } catch(e) {
+    grid.innerHTML = '<div class="gal-loading">⚠️ File rst-memories.json tidak ditemukan.<br><small>Pastikan file ada di folder yang sama.</small></div>';
+  }
+}
+
+function closeGalleryOverlay() {
+  document.getElementById('galOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
 
 async function loadKenangan() {
-  const grid = document.getElementById('memGrid')
-  const empty = document.getElementById('memEmpty')
-  try {
-    const res = await fetch('./rst-memories.json')
-    if (!res.ok) throw new Error('Gagal fetch')
-    const data = await res.json()
-    allMemories = data;
-    document.getElementById('memLoading').style.display = 'none'
-    if (!data.length) { empty.style.display = 'block'; grid.innerHTML = ''; return }
-    empty.style.display = 'none'
-    grid.innerHTML = data.map((m, i) => `
-      <div class="mem-item" style="animation-delay:${i*0.07}s" onclick="openLightbox(${i})">
-        <img src="${m.link}" alt="Kenangan RST" loading="lazy" onerror="this.parentElement.style.display='none'">
-        <div class="mem-item-date">📅 ${m.tgl || ''}</div>
-        <div class="mem-item-overlay"><span>🔍</span></div>
-      </div>
-    `).join('')
-  } catch(e) {
-    document.getElementById('memLoading').innerHTML = '⚠️ File rst-memories.json tidak ditemukan.<br><small>Pastikan file ada di folder yang sama.</small>'
-  }
+  // tidak lagi auto-load di halaman utama
 }
 
 function openLightbox(idx) {
