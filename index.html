@@ -1024,153 +1024,55 @@ main {
 .sticker:nth-child(7){ animation-delay:0.75s; }
 
 
-/* ══════ MEMORIES OPEN BUTTON ══════ */
-.mem-open-btn {
-  display:flex; align-items:center; justify-content:center; gap:12px;
-  width:100%; padding:15px 20px;
-  background:linear-gradient(135deg,#ff3d9a,#e8006e,#a8005a);
-  border:none; border-radius:20px;
-  color:#fff; font-family:'Nunito',sans-serif;
-  font-size:0.95rem; font-weight:900;
-  cursor:pointer; box-shadow:0 8px 28px #e8006e44;
-  position:relative; overflow:hidden;
-  transition:transform 0.15s;
-  -webkit-tap-highlight-color:transparent;
-}
-.mem-open-btn::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,#ffffff22,transparent); pointer-events:none; }
-.mem-open-btn:active { transform:scale(0.96); }
+/* ══ GALLERY OVERLAY ══ */
+.gal-overlay{position:fixed;inset:0;z-index:9997;background:var(--bg);display:none;flex-direction:column;overflow:hidden;}
+.gal-overlay.active{display:flex;}
+.gal-header{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;background:linear-gradient(135deg,#ff3d9a,#e8006e);flex-shrink:0;}
+.gal-back{background:#ffffff22;border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;color:#fff;-webkit-tap-highlight-color:transparent;}
+.gal-back:active{background:#ffffff44;}
+.gal-htitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;flex:1;}
+.gal-hcount{font-size:0.72rem;font-weight:800;color:#ffe0f3;background:#ffffff22;padding:4px 10px;border-radius:50px;}
+.gal-body{flex:1;overflow-y:auto;padding:14px;}
+.gal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.gal-item{border-radius:16px;overflow:hidden;aspect-ratio:1;background:#ffd6ed33;position:relative;cursor:pointer;border:2px solid #ffd6ed;}
+.gal-item img{width:100%;height:100%;object-fit:cover;}
+.gal-item-date{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#00000077);color:#fff;font-size:0.6rem;font-weight:800;padding:16px 8px 6px;}
+.gal-item-overlay{position:absolute;inset:0;background:#ff6db822;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.18s;font-size:1.5rem;}
+.gal-item:active .gal-item-overlay{opacity:1;}
+.gal-loading{text-align:center;padding:40px 20px;color:var(--muted);font-size:0.85rem;font-weight:700;}
+/* open btn */
+.feat-open-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:15px 20px;background:linear-gradient(135deg,#ff3d9a,#e8006e,#a8005a);border:none;border-radius:20px;color:#fff;font-family:'Nunito',sans-serif;font-size:0.95rem;font-weight:900;cursor:pointer;box-shadow:0 8px 28px #e8006e44;position:relative;overflow:hidden;transition:transform 0.15s;-webkit-tap-highlight-color:transparent;}
+.feat-open-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#ffffff22,transparent);pointer-events:none;}
+.feat-open-btn:active{transform:scale(0.96);}
 
-/* ══════ GALLERY OVERLAY ══════ */
-.gal-overlay {
-  position:fixed; inset:0; z-index:9998;
-  background:var(--bg);
-  display:none; flex-direction:column;
-}
-.gal-overlay.active { display:flex; }
-.gal-header {
-  display:flex; align-items:center; gap:12px;
-  padding:14px 16px 10px;
-  background:linear-gradient(135deg,#ff3d9a,#e8006e);
-  flex-shrink:0;
-}
-.gal-back {
-  background:#ffffff22; border:none; border-radius:50%;
-  width:36px; height:36px; display:flex; align-items:center; justify-content:center;
-  font-size:1.1rem; cursor:pointer; color:#fff; flex-shrink:0;
-  -webkit-tap-highlight-color:transparent;
-}
-.gal-back:active { background:#ffffff44; }
-.gal-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#fff; flex:1; }
-.gal-count { font-size:0.72rem; font-weight:800; color:#ffe0f3; background:#ffffff22; padding:4px 10px; border-radius:50px; }
-.gal-body { flex:1; overflow-y:auto; padding:14px; }
-.gal-grid {
-  display:grid; grid-template-columns:repeat(2,1fr); gap:10px;
-}
-.gal-item {
-  border-radius:18px; overflow:hidden;
-  aspect-ratio:1; background:#ffd6ed33;
-  position:relative; cursor:pointer;
-  border:2px solid #ffd6ed;
-  animation:cardEntry 0.4s cubic-bezier(.34,1.5,.64,1) both;
-}
-.gal-item img {
-  width:100%; height:100%; object-fit:cover;
-  transition:transform 0.22s;
-}
-.gal-item:active img { transform:scale(1.06); }
-.gal-item-date {
-  position:absolute; bottom:0; left:0; right:0;
-  background:linear-gradient(transparent,#00000077);
-  color:#fff; font-size:0.6rem; font-weight:800;
-  padding:16px 8px 6px; letter-spacing:0.5px;
-}
-.gal-item-overlay {
-  position:absolute; inset:0; background:#ff6db822;
-  display:flex; align-items:center; justify-content:center;
-  opacity:0; transition:opacity 0.18s; font-size:1.5rem;
-}
-.gal-item:active .gal-item-overlay { opacity:1; }
-.gal-loading {
-  text-align:center; padding:40px 20px; color:var(--muted);
-  font-size:0.85rem; font-weight:700;
-}
-.gal-loading-dots { display:flex; justify-content:center; gap:6px; margin-bottom:10px; }
-.gal-loading-dots span { width:9px; height:9px; border-radius:50%; background:var(--pk2); animation:boing 1.3s ease-in-out infinite; }
-.gal-loading-dots span:nth-child(2){ animation-delay:.2s; background:var(--pk3); }
-.gal-loading-dots span:nth-child(3){ animation-delay:.4s; background:var(--pk4); }
-
-/* ══════ PAPAN PESAN ══════ */
-.pb-open-btn {
-  display:flex; align-items:center; justify-content:center; gap:12px;
-  width:100%; padding:15px 20px;
-  background:linear-gradient(135deg,#ff3d9a,#e8006e,#a8005a);
-  border:none; border-radius:20px; color:#fff;
-  font-family:'Nunito',sans-serif; font-size:0.95rem; font-weight:900;
-  cursor:pointer; box-shadow:0 8px 28px #e8006e44;
-  position:relative; overflow:hidden; transition:transform 0.15s;
-  -webkit-tap-highlight-color:transparent;
-}
-.pb-open-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#ffffff22,transparent);pointer-events:none;}
-.pb-open-btn:active{transform:scale(0.96);}
-
-/* papan overlay */
-.pb-overlay{position:fixed;inset:0;z-index:9997;background:var(--bg);display:none;flex-direction:column;}
+/* ══ PAPAN PESAN OVERLAY ══ */
+.pb-overlay{position:fixed;inset:0;z-index:9998;background:var(--bg);display:none;flex-direction:column;overflow:hidden;}
 .pb-overlay.active{display:flex;}
 .pb-header{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;background:linear-gradient(135deg,#ff3d9a,#e8006e);flex-shrink:0;}
-.pb-back{background:#ffffff22;border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;color:#fff;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
+.pb-back{background:#ffffff22;border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;color:#fff;-webkit-tap-highlight-color:transparent;}
 .pb-back:active{background:#ffffff44;}
 .pb-htitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;flex:1;}
 .pb-hcount{font-size:0.72rem;font-weight:800;color:#ffe0f3;background:#ffffff22;padding:4px 10px;border-radius:50px;}
-
 .pb-body{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px;}
-
-/* form kirim */
-.pb-form{background:#fff;border:2px solid #ffd6ed;border-radius:24px;padding:16px;box-shadow:0 4px 18px #ff6db812;}
-.pb-form-title{font-size:0.78rem;font-weight:900;color:var(--sub);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
-.pb-input, .pb-textarea{
-  width:100%;padding:11px 14px;border-radius:14px;
-  border:2px solid #ffd6ed;background:#fff8fc;
-  font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;
-  color:var(--txt);outline:none;transition:border-color 0.18s;margin-bottom:8px;
-  box-sizing:border-box;
-}
+.pb-form{background:#fff;border:2px solid #ffd6ed;border-radius:22px;padding:16px;box-shadow:0 4px 18px #ff6db812;}
+.pb-form-title{font-size:0.75rem;font-weight:900;color:var(--sub);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.pb-input,.pb-textarea{width:100%;padding:11px 14px;border-radius:14px;border:2px solid #ffd6ed;background:#fff8fc;font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;color:var(--txt);outline:none;transition:border-color 0.18s;margin-bottom:8px;box-sizing:border-box;}
 .pb-input:focus,.pb-textarea:focus{border-color:var(--pk3);}
 .pb-textarea{resize:none;height:75px;}
 .pb-char{font-size:0.65rem;color:var(--muted);font-weight:700;text-align:right;margin-top:-4px;margin-bottom:8px;}
-.pb-submit{
-  width:100%;padding:12px;border-radius:14px;
-  background:linear-gradient(135deg,#ff6db8,#e8006e);border:none;
-  color:#fff;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:900;
-  cursor:pointer;box-shadow:0 5px 18px #e8006e33;
-  -webkit-tap-highlight-color:transparent;transition:transform 0.15s;
-}
+.pb-submit{width:100%;padding:12px;border-radius:14px;background:linear-gradient(135deg,#ff6db8,#e8006e);border:none;color:#fff;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:900;cursor:pointer;box-shadow:0 5px 18px #e8006e33;-webkit-tap-highlight-color:transparent;transition:transform 0.15s;}
 .pb-submit:active{transform:scale(0.97);}
 .pb-submit:disabled{opacity:0.6;cursor:not-allowed;}
-
-/* toast notif */
-.pb-toast{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
-  z-index:9999;background:linear-gradient(135deg,#e8006e,#a8005a);
-  color:#fff;padding:10px 22px;border-radius:50px;
-  font-size:0.78rem;font-weight:800;box-shadow:0 6px 24px #e8006e55;
-  transition:transform 0.35s cubic-bezier(.34,1.6,.64,1);white-space:nowrap;pointer-events:none;
-}
-.pb-toast.show{transform:translateX(-50%) translateY(0);}
-
-/* list pesan */
-.pb-list{display:flex;flex-direction:column;gap:10px;}
-.pb-list-title{font-size:0.78rem;font-weight:900;color:var(--sub);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px;}
-.pb-card{
-  background:#fff;border:2px solid #ffd6ed;border-radius:20px;
-  padding:13px 15px;position:relative;overflow:hidden;
-  animation:cardEntry 0.4s cubic-bezier(.34,1.5,.64,1) both;
-}
-.pb-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#ff6db8,#ffaad9);border-radius:20px 0 0 20px;}
-.pb-card-name{font-size:0.65rem;font-weight:900;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.pb-list-title{font-size:0.75rem;font-weight:900;color:var(--sub);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.pb-card{background:#fff;border:2px solid #ffd6ed;border-radius:18px;padding:13px 15px;position:relative;overflow:hidden;margin-bottom:8px;}
+.pb-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#ff6db8,#ffaad9);border-radius:18px 0 0 18px;}
+.pb-card-name{font-size:0.63rem;font-weight:900;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
 .pb-card-text{font-size:0.88rem;font-weight:700;color:var(--txt);line-height:1.55;}
 .pb-card-time{font-size:0.6rem;color:var(--muted);font-weight:700;margin-top:5px;}
-.pb-loading{text-align:center;padding:30px 20px;color:var(--muted);font-size:0.85rem;font-weight:700;}
-.pb-empty{text-align:center;padding:24px;color:var(--muted);font-size:0.85rem;font-weight:700;}
+.pb-loading{text-align:center;padding:30px;color:var(--muted);font-size:0.85rem;font-weight:700;}
+.pb-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);z-index:10000;background:linear-gradient(135deg,#e8006e,#a8005a);color:#fff;padding:10px 22px;border-radius:50px;font-size:0.78rem;font-weight:800;box-shadow:0 6px 24px #e8006e55;transition:transform 0.35s cubic-bezier(.34,1.6,.64,1);white-space:nowrap;pointer-events:none;}
+.pb-toast.show{transform:translateX(-50%) translateY(0);}
+
 </style>
 </head>
 <body>
@@ -1540,11 +1442,11 @@ main {
     </div>
     <div class="card-body">
       <div style="text-align:center;padding:8px 0 4px;">
-        <div style="font-size:2.2rem;margin-bottom:10px;animation:wiggleBig 2s ease-in-out infinite;filter:drop-shadow(0 4px 12px #ff6db844);">📸</div>
+        <div style="font-size:2.2rem;margin-bottom:10px;">📸</div>
         <div style="font-size:0.85rem;font-weight:700;color:var(--sub);margin-bottom:14px;line-height:1.6;">Koleksi foto kenangan bersama Roselle Team~<br>Tap tombol di bawah untuk melihat semua foto! 🌸</div>
-        <button class="mem-open-btn" onclick="openGalleryOverlay()">
-          <span style="font-size:1.3rem;">🌷</span>
-          <div>
+        <button class="feat-open-btn" onclick="openGalleryOverlay()">
+          <span style="font-size:1.3rem;">📸</span>
+          <div style="text-align:left;">
             <div>Lihat Kenangan RST</div>
             <div style="font-size:0.62rem;opacity:0.8;letter-spacing:1.5px;margin-top:2px;">TAP UNTUK BUKA GALERI</div>
           </div>
@@ -1553,6 +1455,7 @@ main {
       </div>
     </div>
   </div>
+
 
 
 
@@ -1569,11 +1472,11 @@ main {
     </div>
     <div class="card-body">
       <div style="text-align:center;padding:8px 0 4px;">
-        <div style="font-size:2.2rem;margin-bottom:10px;animation:wiggleBig 2s ease-in-out infinite;filter:drop-shadow(0 4px 12px #ff6db844);">💌</div>
+        <div style="font-size:2.2rem;margin-bottom:10px;">💌</div>
         <div style="font-size:0.85rem;font-weight:700;color:var(--sub);margin-bottom:14px;line-height:1.6;">Tulis pesan, kesan, atau ucapan buat Roselle Team~<br>Semua orang bisa baca! 🌸</div>
-        <button class="pb-open-btn" onclick="openPesanOverlay()">
+        <button class="feat-open-btn" onclick="openPesanOverlay()">
           <span style="font-size:1.3rem;">💌</span>
-          <div>
+          <div style="text-align:left;">
             <div>Buka Papan Pesan</div>
             <div style="font-size:0.62rem;opacity:0.8;letter-spacing:1.5px;margin-top:2px;">TULIS & BACA PESAN</div>
           </div>
@@ -1582,12 +1485,23 @@ main {
       </div>
     </div>
   </div>
-
-
 </main>
 
+<!-- ══ GALLERY OVERLAY ══ -->
+<div class="gal-overlay" id="galOverlay">
+  <div class="gal-header">
+    <button class="gal-back" onclick="closeGalleryOverlay()">←</button>
+    <div class="gal-htitle">📸 Kenangan RST</div>
+    <span class="gal-hcount" id="galCount">0 foto</span>
+  </div>
+  <div class="gal-body">
+    <div class="gal-grid" id="galGrid">
+      <div class="gal-loading">🌸 Memuat kenangan~</div>
+    </div>
+  </div>
+</div>
 
-<!-- ══════ PAPAN PESAN OVERLAY ══════ -->
+<!-- ══ PAPAN PESAN OVERLAY ══ -->
 <div class="pb-overlay" id="pbOverlay">
   <div class="pb-header">
     <button class="pb-back" onclick="closePesanOverlay()">←</button>
@@ -1595,39 +1509,20 @@ main {
     <span class="pb-hcount" id="pbCount">0 pesan</span>
   </div>
   <div class="pb-body" id="pbBody">
-    <!-- form -->
     <div class="pb-form">
       <div class="pb-form-title">✍️ Tulis Pesanmu</div>
       <input class="pb-input" id="pbNama" placeholder="Nama kamu (contoh: Bunga 🌷)" maxlength="30">
-      <textarea class="pb-textarea" id="pbTeks" placeholder="Tulis pesan, kesan, atau ucapan buat Roselle Team~ (maks 150 karakter)" maxlength="150" oninput="pbCharCount()"></textarea>
+      <textarea class="pb-textarea" id="pbTeks" placeholder="Tulis pesan buat Roselle Team~ (maks 150 karakter)" maxlength="150" oninput="pbCharCount()"></textarea>
       <div class="pb-char"><span id="pbChar">0</span>/150</div>
-      <button class="pb-submit" id="pbSubmit" onclick="kirimPesanJSONBin()">💌 Kirim Pesan</button>
+      <button class="pb-submit" id="pbSubmit" onclick="kirimPesan()">💌 Kirim Pesan</button>
     </div>
-    <!-- list -->
-    <div class="pb-list">
+    <div>
       <div class="pb-list-title">💬 Pesan dari Feeroses</div>
       <div id="pbList"><div class="pb-loading">Memuat pesan~</div></div>
     </div>
   </div>
 </div>
 <div class="pb-toast" id="pbToast"></div>
-
-<!-- ══════ GALLERY OVERLAY ══════ -->
-<div class="gal-overlay" id="galOverlay">
-  <div class="gal-header">
-    <button class="gal-back" onclick="closeGalleryOverlay()">←</button>
-    <div class="gal-title">📸 Kenangan RST</div>
-    <span class="gal-count" id="galCount">0 foto</span>
-  </div>
-  <div class="gal-body">
-    <div class="gal-grid" id="galGrid">
-      <div class="gal-loading">
-        <div class="gal-loading-dots"><span></span><span></span><span></span></div>
-        <div>Memuat kenangan~</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="game-overlay" id="gameOverlay">
 
@@ -2029,27 +1924,63 @@ function kqAns(btn,chosen,correct){
 }
 function kqNextQ(){kqI++;kqRender();}
 
+/* === KENANGAN RST === */
+let allMemories = [];
+let lbCurrentIdx = 0;
 
-/* === PAPAN PESAN JSONBIN === */
-const JBIN_ID  = '6a015714adc21f119a810e9b';
+/* === GALLERY OVERLAY === */
+let galLoaded = false;
+
+async function openGalleryOverlay() {
+  document.getElementById('galOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  if (galLoaded) return;
+  try {
+    const res = await fetch('./rst-memories.json');
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    allMemories = data;
+    galLoaded = true;
+    document.getElementById('galCount').textContent = data.length + ' foto';
+    if (!data.length) { document.getElementById('galGrid').innerHTML = '<div class="gal-loading">🌸 Belum ada kenangan~</div>'; return; }
+    document.getElementById('galGrid').innerHTML = data.map((m,i) =>
+      `<div class="gal-item" onclick="openLightbox(${i})">
+        <img src="${m.link}" alt="Kenangan" loading="lazy" onerror="this.parentElement.style.display='none'">
+        ${m.tgl ? `<div class="gal-item-date">📅 ${m.tgl}</div>` : ''}
+        <div class="gal-item-overlay">🔍</div>
+      </div>`
+    ).join('');
+  } catch(e) {
+    document.getElementById('galGrid').innerHTML = '<div class="gal-loading">⚠️ rst-memories.json tidak ditemukan</div>';
+  }
+}
+
+function closeGalleryOverlay() {
+  document.getElementById('galOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* === PAPAN PESAN (JSONBin) === */
+const JBIN_URL = 'https://api.jsonbin.io/v3/b/6a015714adc21f119a810e9b';
 const JBIN_KEY = '$2a$10$IqVAIgIXBrtY5BKvPgRSz.j5LEzZ.Ha86HazHXLnUWM/JjGABFkwG';
-const JBIN_URL = 'https://api.jsonbin.io/v3/b/' + JBIN_ID;
-
 let pbMessages = [];
+let pbLoaded = false;
 
 async function openPesanOverlay() {
   document.getElementById('pbOverlay').classList.add('active');
   document.body.style.overflow = 'hidden';
-  await loadPesan();
+  if (!pbLoaded) await loadPesan();
 }
+
 function closePesanOverlay() {
   document.getElementById('pbOverlay').classList.remove('active');
   document.body.style.overflow = '';
 }
+
 function pbCharCount() {
-  const v = document.getElementById('pbTeks').value.length;
-  document.getElementById('pbChar').textContent = v;
+  document.getElementById('pbChar').textContent = document.getElementById('pbTeks').value.length;
 }
+
 function showPbToast(msg) {
   const t = document.getElementById('pbToast');
   t.textContent = msg; t.classList.add('show');
@@ -2060,69 +1991,57 @@ async function loadPesan() {
   document.getElementById('pbList').innerHTML = '<div class="pb-loading">🌸 Memuat pesan~</div>';
   try {
     const res = await fetch(JBIN_URL + '/latest', {
-      headers: { 'X-Master-Key': JBIN_KEY, 'X-Bin-Meta': 'false' }
+      headers: {'X-Master-Key': JBIN_KEY, 'X-Bin-Meta': 'false'}
     });
-    if (!res.ok) throw new Error('Gagal');
+    if (!res.ok) throw new Error();
     const data = await res.json();
     pbMessages = Array.isArray(data) ? data : [];
+    pbLoaded = true;
     renderPesan();
   } catch(e) {
-    document.getElementById('pbList').innerHTML = '<div class="pb-empty">⚠️ Gagal memuat pesan. Coba lagi nanti.</div>';
+    document.getElementById('pbList').innerHTML = '<div class="pb-loading">⚠️ Gagal memuat pesan.</div>';
   }
 }
 
 function renderPesan() {
-  const count = pbMessages.length;
-  document.getElementById('pbCount').textContent = count + ' pesan';
-  if (count === 0) {
-    document.getElementById('pbList').innerHTML = '<div class="pb-empty">🌸 Belum ada pesan~ Jadilah yang pertama!</div>';
+  document.getElementById('pbCount').textContent = pbMessages.length + ' pesan';
+  if (!pbMessages.length) {
+    document.getElementById('pbList').innerHTML = '<div class="pb-loading">🌸 Belum ada pesan~ Jadilah yang pertama!</div>';
     return;
   }
-  document.getElementById('pbList').innerHTML = [...pbMessages].reverse().map((p, i) => `
-    <div class="pb-card" style="animation-delay:${i*0.05}s">
+  document.getElementById('pbList').innerHTML = [...pbMessages].reverse().map(p =>
+    `<div class="pb-card">
       <div class="pb-card-name">${p.nama || 'Anonim'}</div>
-      <div class="pb-card-text">${escHtml(p.teks)}</div>
-      <div class="pb-card-time">🕐 ${p.waktu || ''}</div>
-    </div>
-  `).join('');
+      <div class="pb-card-text">${String(p.teks||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+      <div class="pb-card-time">🕐 ${p.waktu||''}</div>
+    </div>`
+  ).join('');
 }
 
-function escHtml(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-async function kirimPesanJSONBin() {
+async function kirimPesan() {
   const nama = document.getElementById('pbNama').value.trim() || 'Anonim 🌸';
   const teks = document.getElementById('pbTeks').value.trim();
-  if (!teks) { showPbToast('⚠️ Pesan tidak boleh kosong!'); return; }
-
+  if (!teks) { showPbToast('⚠️ Tulis pesan dulu ya!'); return; }
   const btn = document.getElementById('pbSubmit');
   btn.disabled = true; btn.textContent = '⏳ Mengirim...';
-
   const now = new Date();
   const waktu = now.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}) + ' ' +
                 now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
-
-  const newMsg = { nama, teks, waktu };
-  const updated = [...pbMessages, newMsg];
-
+  const updated = [...pbMessages, {nama, teks, waktu}];
   try {
     const res = await fetch(JBIN_URL, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Master-Key': JBIN_KEY
-      },
+      method:'PUT',
+      headers: {'Content-Type':'application/json','X-Master-Key':JBIN_KEY},
       body: JSON.stringify(updated)
     });
-    if (!res.ok) throw new Error('Gagal');
+    if (!res.ok) throw new Error();
     pbMessages = updated;
     document.getElementById('pbNama').value = '';
     document.getElementById('pbTeks').value = '';
     document.getElementById('pbChar').textContent = '0';
     renderPesan();
     showPbToast('🌸 Pesan terkirim! Makasih ya~');
-    document.getElementById('pbBody').scrollTo({top:0, behavior:'smooth'});
+    document.getElementById('pbBody').scrollTo({top:0,behavior:'smooth'});
   } catch(e) {
     showPbToast('❌ Gagal kirim, coba lagi!');
   } finally {
@@ -2130,44 +2049,8 @@ async function kirimPesanJSONBin() {
   }
 }
 
-/* === KENANGAN RST === */
-let allMemories = [];
-let lbCurrentIdx = 0;
-let galLoaded = false;
-
-async function openGalleryOverlay() {
-  document.getElementById('galOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  if (galLoaded) return;
-  const grid = document.getElementById('galGrid');
-  grid.innerHTML = '<div class="gal-loading"><div class="gal-loading-dots"><span></span><span></span><span></span></div><div>Memuat kenangan~</div></div>';
-  try {
-    const res = await fetch('./rst-memories.json');
-    if (!res.ok) throw new Error('Gagal');
-    const data = await res.json();
-    allMemories = data;
-    galLoaded = true;
-    document.getElementById('galCount').textContent = data.length + ' foto';
-    if (!data.length) { grid.innerHTML = '<div class="gal-loading">🌸 Belum ada kenangan~</div>'; return; }
-    grid.innerHTML = data.map((m, i) => `
-      <div class="gal-item" style="animation-delay:${i*0.05}s" onclick="openLightbox(${i})">
-        <img src="${m.link}" alt="Kenangan RST" loading="lazy" onerror="this.parentElement.style.display='none'">
-        ${m.tgl ? `<div class="gal-item-date">📅 ${m.tgl}</div>` : ''}
-        <div class="gal-item-overlay"><span>🔍</span></div>
-      </div>
-    `).join('');
-  } catch(e) {
-    grid.innerHTML = '<div class="gal-loading">⚠️ File rst-memories.json tidak ditemukan.<br><small>Pastikan file ada di folder yang sama.</small></div>';
-  }
-}
-
-function closeGalleryOverlay() {
-  document.getElementById('galOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
 async function loadKenangan() {
-  // tidak lagi auto-load di halaman utama
+  // tidak auto-load, pakai gallery overlay
 }
 
 function openLightbox(idx) {
@@ -2274,4 +2157,60 @@ function initLightboxZoom(img, lb) {
       pinching = true; panning = false;
       startDist = Math.hypot(e.touches[1].clientX-e.touches[0].clientX, e.touches[1].clientY-e.touches[0].clientY);
       startScale = scale;
-    } 
+    } else if (e.touches.length === 1) {
+      swipeStartX = e.touches[0].clientX;
+      if (scale > 1.05) {
+        panning = true; pinching = false;
+        startTX = e.touches[0].clientX; startTY = e.touches[0].clientY;
+        startPanX = panX; startPanY = panY;
+        applyT(false);
+      }
+    }
+  }, {passive:false});
+
+  img.addEventListener('touchmove', e => {
+    if (pinching && e.touches.length >= 2) {
+      e.preventDefault();
+      const d = Math.hypot(e.touches[1].clientX-e.touches[0].clientX, e.touches[1].clientY-e.touches[0].clientY);
+      scale = startScale * (d / startDist);
+      clamp(); applyT(false);
+    } else if (panning && e.touches.length === 1) {
+      e.preventDefault();
+      panX = startPanX + (e.touches[0].clientX - startTX);
+      panY = startPanY + (e.touches[0].clientY - startTY);
+      clamp(); applyT(false);
+    }
+  }, {passive:false});
+
+  img.addEventListener('touchend', e => {
+    const wasPinching = pinching;
+    pinching = false; panning = false;
+    if (!wasPinching && scale <= 1.05 && e.changedTouches.length === 1 && allMemories.length > 1) {
+      const dx = e.changedTouches[0].clientX - swipeStartX;
+      if (Math.abs(dx) > 65) { lbNav(dx < 0 ? 1 : -1); return; }
+    }
+    if (scale < 1.1) { scale = 1; panX = 0; panY = 0; }
+    clamp(); applyT(true);
+  });
+
+  // Mouse wheel zoom (desktop)
+  lb.addEventListener('wheel', e => {
+    e.preventDefault();
+    scale = Math.max(1, Math.min(4.5, scale * (e.deltaY > 0 ? 0.88 : 1.13)));
+    clamp(); applyT(false);
+  }, {passive:false});
+
+  // Keyboard navigation
+  const onKey = e => {
+    if (e.key === 'Escape') { document.getElementById('lbEl')?.remove(); document.removeEventListener('keydown',onKey); }
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft')  lbNav(-1);
+  };
+  document.addEventListener('keydown', onKey);
+}
+
+loadKenangan()
+
+</script>
+</body>
+</html>
