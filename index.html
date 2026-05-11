@@ -1961,8 +1961,8 @@ function closeGalleryOverlay() {
 }
 
 /* === PAPAN PESAN (JSONBin) === */
-const JBIN_URL = 'https://api.jsonbin.io/v3/b/6a015714adc21f119a810e9b';
-const JBIN_KEY = '$2a$10$IqVAIgIXBrtY5BKvPgRSz.j5LEzZ.Ha86HazHXLnUWM/JjGABFkwG';
+const JBIN_URL = 'https://api.npoint.io/f2f64e97705ab18078e9';
+const JBIN_KEY = '';
 let pbMessages = [];
 let pbLoaded = false;
 
@@ -1990,9 +1990,7 @@ function showPbToast(msg) {
 async function loadPesan() {
   document.getElementById('pbList').innerHTML = '<div class="pb-loading">🌸 Memuat pesan~</div>';
   try {
-    const res = await fetch(JBIN_URL + '/latest', {
-      headers: {'X-Master-Key': JBIN_KEY, 'X-Bin-Meta': 'false'}
-    });
+    const res = await fetch(JBIN_URL);
     if (!res.ok) throw new Error();
     const data = await res.json();
     pbMessages = Array.isArray(data) ? data : [];
@@ -2030,8 +2028,8 @@ async function kirimPesan() {
   const updated = [...pbMessages, {nama, teks, waktu}];
   try {
     const res = await fetch(JBIN_URL, {
-      method:'PUT',
-      headers: {'Content-Type':'application/json','X-Master-Key':JBIN_KEY},
+      method:'POST',
+      headers: {'Content-Type':'application/json'},
       body: JSON.stringify(updated)
     });
     if (!res.ok) throw new Error();
