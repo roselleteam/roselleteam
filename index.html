@@ -1961,7 +1961,7 @@ function closeGalleryOverlay() {
 }
 
 /* === PAPAN PESAN (JSONBin) === */
-const JBIN_URL = 'https://api.npoint.io/f2f64e97705ab18078e9';
+const JBIN_URL = 'https://script.google.com/macros/s/AKfycbyq596zYSlZetn_2torLvZg1dRf10Edwc-SQxXyjrVRl1K7CpvOXjULqetiI5erdYwQGQ/exec';
 const JBIN_KEY = '';
 let pbMessages = [];
 let pbLoaded = false;
@@ -2027,12 +2027,14 @@ async function kirimPesan() {
                 now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
   const updated = [...pbMessages, {nama, teks, waktu}];
   try {
-    const res = await fetch(JBIN_URL, {
+    // GAS perlu no-cors, jadi kita kirim dan anggap berhasil
+    await fetch(JBIN_URL, {
       method:'POST',
+      mode:'no-cors',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(updated)
+      body: JSON.stringify({nama, teks, waktu})
     });
-    if (!res.ok) throw new Error();
+    const res = {ok: true};
     pbMessages = updated;
     document.getElementById('pbNama').value = '';
     document.getElementById('pbTeks').value = '';
