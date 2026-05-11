@@ -1098,6 +1098,79 @@ main {
 .gal-loading-dots span { width:9px; height:9px; border-radius:50%; background:var(--pk2); animation:boing 1.3s ease-in-out infinite; }
 .gal-loading-dots span:nth-child(2){ animation-delay:.2s; background:var(--pk3); }
 .gal-loading-dots span:nth-child(3){ animation-delay:.4s; background:var(--pk4); }
+
+/* ══════ PAPAN PESAN ══════ */
+.pb-open-btn {
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  width:100%; padding:15px 20px;
+  background:linear-gradient(135deg,#ff3d9a,#e8006e,#a8005a);
+  border:none; border-radius:20px; color:#fff;
+  font-family:'Nunito',sans-serif; font-size:0.95rem; font-weight:900;
+  cursor:pointer; box-shadow:0 8px 28px #e8006e44;
+  position:relative; overflow:hidden; transition:transform 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.pb-open-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#ffffff22,transparent);pointer-events:none;}
+.pb-open-btn:active{transform:scale(0.96);}
+
+/* papan overlay */
+.pb-overlay{position:fixed;inset:0;z-index:9997;background:var(--bg);display:none;flex-direction:column;}
+.pb-overlay.active{display:flex;}
+.pb-header{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;background:linear-gradient(135deg,#ff3d9a,#e8006e);flex-shrink:0;}
+.pb-back{background:#ffffff22;border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;color:#fff;flex-shrink:0;-webkit-tap-highlight-color:transparent;}
+.pb-back:active{background:#ffffff44;}
+.pb-htitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;flex:1;}
+.pb-hcount{font-size:0.72rem;font-weight:800;color:#ffe0f3;background:#ffffff22;padding:4px 10px;border-radius:50px;}
+
+.pb-body{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px;}
+
+/* form kirim */
+.pb-form{background:#fff;border:2px solid #ffd6ed;border-radius:24px;padding:16px;box-shadow:0 4px 18px #ff6db812;}
+.pb-form-title{font-size:0.78rem;font-weight:900;color:var(--sub);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.pb-input, .pb-textarea{
+  width:100%;padding:11px 14px;border-radius:14px;
+  border:2px solid #ffd6ed;background:#fff8fc;
+  font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;
+  color:var(--txt);outline:none;transition:border-color 0.18s;margin-bottom:8px;
+  box-sizing:border-box;
+}
+.pb-input:focus,.pb-textarea:focus{border-color:var(--pk3);}
+.pb-textarea{resize:none;height:75px;}
+.pb-char{font-size:0.65rem;color:var(--muted);font-weight:700;text-align:right;margin-top:-4px;margin-bottom:8px;}
+.pb-submit{
+  width:100%;padding:12px;border-radius:14px;
+  background:linear-gradient(135deg,#ff6db8,#e8006e);border:none;
+  color:#fff;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:900;
+  cursor:pointer;box-shadow:0 5px 18px #e8006e33;
+  -webkit-tap-highlight-color:transparent;transition:transform 0.15s;
+}
+.pb-submit:active{transform:scale(0.97);}
+.pb-submit:disabled{opacity:0.6;cursor:not-allowed;}
+
+/* toast notif */
+.pb-toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  z-index:9999;background:linear-gradient(135deg,#e8006e,#a8005a);
+  color:#fff;padding:10px 22px;border-radius:50px;
+  font-size:0.78rem;font-weight:800;box-shadow:0 6px 24px #e8006e55;
+  transition:transform 0.35s cubic-bezier(.34,1.6,.64,1);white-space:nowrap;pointer-events:none;
+}
+.pb-toast.show{transform:translateX(-50%) translateY(0);}
+
+/* list pesan */
+.pb-list{display:flex;flex-direction:column;gap:10px;}
+.pb-list-title{font-size:0.78rem;font-weight:900;color:var(--sub);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px;}
+.pb-card{
+  background:#fff;border:2px solid #ffd6ed;border-radius:20px;
+  padding:13px 15px;position:relative;overflow:hidden;
+  animation:cardEntry 0.4s cubic-bezier(.34,1.5,.64,1) both;
+}
+.pb-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#ff6db8,#ffaad9);border-radius:20px 0 0 20px;}
+.pb-card-name{font-size:0.65rem;font-weight:900;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.pb-card-text{font-size:0.88rem;font-weight:700;color:var(--txt);line-height:1.55;}
+.pb-card-time{font-size:0.6rem;color:var(--muted);font-weight:700;margin-top:5px;}
+.pb-loading{text-align:center;padding:30px 20px;color:var(--muted);font-size:0.85rem;font-weight:700;}
+.pb-empty{text-align:center;padding:24px;color:var(--muted);font-size:0.85rem;font-weight:700;}
 </style>
 </head>
 <body>
@@ -1483,7 +1556,61 @@ main {
 
 
 
+  <div class="floral-div"><div class="fd-line"></div><span>🌸</span><span>💌</span><span>💗</span><span>💌</span><span>🌸</span><div class="fd-line"></div></div>
+
+  <!-- PAPAN PESAN -->
+  <div class="card">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-rose">💌</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Papan Pesan Roses</div>
+        <div class="card-banner-sub">tinggalkan pesanmu~ semua bisa lihat! ✨</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div style="text-align:center;padding:8px 0 4px;">
+        <div style="font-size:2.2rem;margin-bottom:10px;animation:wiggleBig 2s ease-in-out infinite;filter:drop-shadow(0 4px 12px #ff6db844);">💌</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--sub);margin-bottom:14px;line-height:1.6;">Tulis pesan, kesan, atau ucapan buat Roselle Team~<br>Semua orang bisa baca! 🌸</div>
+        <button class="pb-open-btn" onclick="openPesanOverlay()">
+          <span style="font-size:1.3rem;">💌</span>
+          <div>
+            <div>Buka Papan Pesan</div>
+            <div style="font-size:0.62rem;opacity:0.8;letter-spacing:1.5px;margin-top:2px;">TULIS & BACA PESAN</div>
+          </div>
+          <span style="font-size:1.1rem;opacity:0.7;">›</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
 </main>
+
+
+<!-- ══════ PAPAN PESAN OVERLAY ══════ -->
+<div class="pb-overlay" id="pbOverlay">
+  <div class="pb-header">
+    <button class="pb-back" onclick="closePesanOverlay()">←</button>
+    <div class="pb-htitle">💌 Papan Pesan</div>
+    <span class="pb-hcount" id="pbCount">0 pesan</span>
+  </div>
+  <div class="pb-body" id="pbBody">
+    <!-- form -->
+    <div class="pb-form">
+      <div class="pb-form-title">✍️ Tulis Pesanmu</div>
+      <input class="pb-input" id="pbNama" placeholder="Nama kamu (contoh: Bunga 🌷)" maxlength="30">
+      <textarea class="pb-textarea" id="pbTeks" placeholder="Tulis pesan, kesan, atau ucapan buat Roselle Team~ (maks 150 karakter)" maxlength="150" oninput="pbCharCount()"></textarea>
+      <div class="pb-char"><span id="pbChar">0</span>/150</div>
+      <button class="pb-submit" id="pbSubmit" onclick="kirimPesanJSONBin()">💌 Kirim Pesan</button>
+    </div>
+    <!-- list -->
+    <div class="pb-list">
+      <div class="pb-list-title">💬 Pesan dari Feeroses</div>
+      <div id="pbList"><div class="pb-loading">Memuat pesan~</div></div>
+    </div>
+  </div>
+</div>
+<div class="pb-toast" id="pbToast"></div>
 
 <!-- ══════ GALLERY OVERLAY ══════ -->
 <div class="gal-overlay" id="galOverlay">
@@ -1902,6 +2029,107 @@ function kqAns(btn,chosen,correct){
 }
 function kqNextQ(){kqI++;kqRender();}
 
+
+/* === PAPAN PESAN JSONBIN === */
+const JBIN_ID  = '6a015714adc21f119a810e9b';
+const JBIN_KEY = '$2a$10$IqVAIgIXBrtY5BKvPgRSz.j5LEzZ.Ha86HazHXLnUWM/JjGABFkwG';
+const JBIN_URL = 'https://api.jsonbin.io/v3/b/' + JBIN_ID;
+
+let pbMessages = [];
+
+async function openPesanOverlay() {
+  document.getElementById('pbOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  await loadPesan();
+}
+function closePesanOverlay() {
+  document.getElementById('pbOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function pbCharCount() {
+  const v = document.getElementById('pbTeks').value.length;
+  document.getElementById('pbChar').textContent = v;
+}
+function showPbToast(msg) {
+  const t = document.getElementById('pbToast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+async function loadPesan() {
+  document.getElementById('pbList').innerHTML = '<div class="pb-loading">🌸 Memuat pesan~</div>';
+  try {
+    const res = await fetch(JBIN_URL + '/latest', {
+      headers: { 'X-Master-Key': JBIN_KEY, 'X-Bin-Meta': 'false' }
+    });
+    if (!res.ok) throw new Error('Gagal');
+    const data = await res.json();
+    pbMessages = Array.isArray(data) ? data : [];
+    renderPesan();
+  } catch(e) {
+    document.getElementById('pbList').innerHTML = '<div class="pb-empty">⚠️ Gagal memuat pesan. Coba lagi nanti.</div>';
+  }
+}
+
+function renderPesan() {
+  const count = pbMessages.length;
+  document.getElementById('pbCount').textContent = count + ' pesan';
+  if (count === 0) {
+    document.getElementById('pbList').innerHTML = '<div class="pb-empty">🌸 Belum ada pesan~ Jadilah yang pertama!</div>';
+    return;
+  }
+  document.getElementById('pbList').innerHTML = [...pbMessages].reverse().map((p, i) => `
+    <div class="pb-card" style="animation-delay:${i*0.05}s">
+      <div class="pb-card-name">${p.nama || 'Anonim'}</div>
+      <div class="pb-card-text">${escHtml(p.teks)}</div>
+      <div class="pb-card-time">🕐 ${p.waktu || ''}</div>
+    </div>
+  `).join('');
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function kirimPesanJSONBin() {
+  const nama = document.getElementById('pbNama').value.trim() || 'Anonim 🌸';
+  const teks = document.getElementById('pbTeks').value.trim();
+  if (!teks) { showPbToast('⚠️ Pesan tidak boleh kosong!'); return; }
+
+  const btn = document.getElementById('pbSubmit');
+  btn.disabled = true; btn.textContent = '⏳ Mengirim...';
+
+  const now = new Date();
+  const waktu = now.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}) + ' ' +
+                now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+
+  const newMsg = { nama, teks, waktu };
+  const updated = [...pbMessages, newMsg];
+
+  try {
+    const res = await fetch(JBIN_URL, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': JBIN_KEY
+      },
+      body: JSON.stringify(updated)
+    });
+    if (!res.ok) throw new Error('Gagal');
+    pbMessages = updated;
+    document.getElementById('pbNama').value = '';
+    document.getElementById('pbTeks').value = '';
+    document.getElementById('pbChar').textContent = '0';
+    renderPesan();
+    showPbToast('🌸 Pesan terkirim! Makasih ya~');
+    document.getElementById('pbBody').scrollTo({top:0, behavior:'smooth'});
+  } catch(e) {
+    showPbToast('❌ Gagal kirim, coba lagi!');
+  } finally {
+    btn.disabled = false; btn.textContent = '💌 Kirim Pesan';
+  }
+}
+
 /* === KENANGAN RST === */
 let allMemories = [];
 let lbCurrentIdx = 0;
@@ -2046,60 +2274,4 @@ function initLightboxZoom(img, lb) {
       pinching = true; panning = false;
       startDist = Math.hypot(e.touches[1].clientX-e.touches[0].clientX, e.touches[1].clientY-e.touches[0].clientY);
       startScale = scale;
-    } else if (e.touches.length === 1) {
-      swipeStartX = e.touches[0].clientX;
-      if (scale > 1.05) {
-        panning = true; pinching = false;
-        startTX = e.touches[0].clientX; startTY = e.touches[0].clientY;
-        startPanX = panX; startPanY = panY;
-        applyT(false);
-      }
-    }
-  }, {passive:false});
-
-  img.addEventListener('touchmove', e => {
-    if (pinching && e.touches.length >= 2) {
-      e.preventDefault();
-      const d = Math.hypot(e.touches[1].clientX-e.touches[0].clientX, e.touches[1].clientY-e.touches[0].clientY);
-      scale = startScale * (d / startDist);
-      clamp(); applyT(false);
-    } else if (panning && e.touches.length === 1) {
-      e.preventDefault();
-      panX = startPanX + (e.touches[0].clientX - startTX);
-      panY = startPanY + (e.touches[0].clientY - startTY);
-      clamp(); applyT(false);
-    }
-  }, {passive:false});
-
-  img.addEventListener('touchend', e => {
-    const wasPinching = pinching;
-    pinching = false; panning = false;
-    if (!wasPinching && scale <= 1.05 && e.changedTouches.length === 1 && allMemories.length > 1) {
-      const dx = e.changedTouches[0].clientX - swipeStartX;
-      if (Math.abs(dx) > 65) { lbNav(dx < 0 ? 1 : -1); return; }
-    }
-    if (scale < 1.1) { scale = 1; panX = 0; panY = 0; }
-    clamp(); applyT(true);
-  });
-
-  // Mouse wheel zoom (desktop)
-  lb.addEventListener('wheel', e => {
-    e.preventDefault();
-    scale = Math.max(1, Math.min(4.5, scale * (e.deltaY > 0 ? 0.88 : 1.13)));
-    clamp(); applyT(false);
-  }, {passive:false});
-
-  // Keyboard navigation
-  const onKey = e => {
-    if (e.key === 'Escape') { document.getElementById('lbEl')?.remove(); document.removeEventListener('keydown',onKey); }
-    if (e.key === 'ArrowRight') lbNav(1);
-    if (e.key === 'ArrowLeft')  lbNav(-1);
-  };
-  document.addEventListener('keydown', onKey);
-}
-
-loadKenangan()
-
-</script>
-</body>
-</html>
+    } 
