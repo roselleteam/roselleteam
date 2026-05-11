@@ -1,0 +1,2769 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🌸 Roselle Team 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════
+   🌸 ROSELLE TEAM — HYPER KAWAII DELUXE
+══════════════════════════════════════ */
+:root {
+  --bg:    #fff4fb;
+  --pk0:   #fff0f9;
+  --pk1:   #ffd6ed;
+  --pk2:   #ffaad9;
+  --pk3:   #ff6db8;
+  --pk4:   #e8006e;
+  --pk5:   #a8005a;
+  --pk6:   #600037;
+  --lav:   #f3e8ff;
+  --lav2:  #d9b8ff;
+  --lav3:  #b07ee0;
+  --cream: #fffafd;
+  --peach: #ffe8f2;
+  --txt:   #4a0f2e;
+  --sub:   #923e6a;
+  --muted: #c889aa;
+  --glow:  #ff6db844;
+  --card-bg: #ffffff;
+  --shadow: 0 8px 36px #e8006e12, 0 2px 10px #ff6db80d;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ══════ ANIMATED MESH BACKGROUND ══════ */
+body::before {
+  content:'';
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 10% 15%,  #ffd6ed44 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 85% 5%,   #d9b8ff33 0%, transparent 70%),
+    radial-gradient(ellipse 80% 40% at 50% 95%,  #ffd6ed55 0%, transparent 70%),
+    radial-gradient(ellipse 50% 70% at 95% 55%,  #f3e8ff44 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 5% 70%,   #ffaad922 0%, transparent 70%);
+  animation: bgPulse 12s ease-in-out infinite alternate;
+}
+@keyframes bgPulse {
+  0%  { opacity:0.8; transform:scale(1); }
+  100%{ opacity:1;   transform:scale(1.04); }
+}
+
+/* ══════ FLOATING EMOJI RAIN ══════ */
+.rain-wrap {
+  position:fixed; inset:0; z-index:0;
+  pointer-events:none; overflow:hidden;
+}
+.drop {
+  position:absolute; top:-70px;
+  animation:rainFall linear infinite;
+  opacity:0; user-select:none; pointer-events:none;
+  filter: drop-shadow(0 2px 4px #ff6db833);
+}
+@keyframes rainFall {
+  0%  { transform:translateY(0) rotate(0deg)   scale(0.7); opacity:0; }
+  5%  { opacity:0.85; }
+  90% { opacity:0.85; }
+  100%{ transform:translateY(115vh) rotate(480deg) scale(1.15); opacity:0; }
+}
+
+/* ══════ HERO ══════ */
+.hero {
+  position:relative; z-index:2;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-top {
+  padding: 56px 24px 80px;
+  background:
+    radial-gradient(ellipse 100% 80% at 50% -10%, #ffaad9cc 0%, transparent 60%),
+    linear-gradient(160deg, #ff3d9a 0%, #e8006e 35%, #c2185b 65%, #ffaad9 100%);
+  position:relative; overflow:hidden;
+}
+/* animated shimmer circles on hero */
+.hero-top::before {
+  content:'';
+  position:absolute; top:-80px; left:-80px;
+  width:260px; height:260px; border-radius:50%;
+  background: radial-gradient(circle, #ffffff28, transparent 70%);
+  animation: floatCircle 8s ease-in-out infinite;
+  pointer-events:none;
+}
+.hero-top::after {
+  content:'';
+  position:absolute; bottom:-60px; right:-60px;
+  width:200px; height:200px; border-radius:50%;
+  background: radial-gradient(circle, #ffffff1a, transparent 70%);
+  animation: floatCircle 10s ease-in-out infinite reverse;
+  pointer-events:none;
+}
+@keyframes floatCircle {
+  0%,100%{ transform:translate(0,0) scale(1); }
+  50%    { transform:translate(20px,15px) scale(1.1); }
+}
+
+/* extra sparkle orbs */
+.hero-orb {
+  position:absolute; border-radius:50%; pointer-events:none;
+  background: radial-gradient(circle, #ffffff1a, transparent 70%);
+  animation: floatCircle 7s ease-in-out infinite;
+}
+.orb1{ width:120px;height:120px; top:20%; left:5%;  animation-delay:-2s; }
+.orb2{ width:80px; height:80px;  top:10%; right:8%; animation-delay:-5s; }
+.orb3{ width:60px; height:60px;  bottom:25%; left:15%; animation-delay:-1s; }
+
+/* heart strip */
+.hearts-strip {
+  display:flex; justify-content:center; gap:5px;
+  margin-bottom:14px; position:relative; z-index:3;
+}
+.hearts-strip span {
+  font-size:1.4rem;
+  animation:heartBeat 1.6s ease-in-out infinite;
+  filter: drop-shadow(0 2px 6px #ffffff66);
+}
+.hearts-strip span:nth-child(1){animation-delay:0s;}
+.hearts-strip span:nth-child(2){animation-delay:0.18s;}
+.hearts-strip span:nth-child(3){animation-delay:0.36s;}
+.hearts-strip span:nth-child(4){animation-delay:0.54s;}
+.hearts-strip span:nth-child(5){animation-delay:0.72s;}
+.hearts-strip span:nth-child(6){animation-delay:0.9s;}
+.hearts-strip span:nth-child(7){animation-delay:1.08s;}
+@keyframes heartBeat {
+  0%,100%{ transform:scale(1) rotate(0deg); }
+  30%    { transform:scale(1.35) rotate(-10deg); }
+  60%    { transform:scale(0.9) rotate(6deg); }
+}
+
+.hero-badge {
+  display:inline-block;
+  background:#ffffff22;
+  border:1.5px solid #ffffff44;
+  border-radius:50px;
+  padding:4px 16px;
+  font-size:0.62rem;
+  font-weight:800;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#ffe8f5;
+  margin-bottom:14px;
+  position:relative; z-index:3;
+  backdrop-filter:blur(4px);
+}
+
+.hero-title {
+  font-family:'Playfair Display', serif;
+  font-size:clamp(2.6rem, 11vw, 4.4rem);
+  font-weight:700;
+  font-style:italic;
+  color:#fff;
+  text-shadow:
+    0 2px 0 #a8005b,
+    0 6px 24px #88003666,
+    0 0 60px #ffffff33;
+  line-height:1.05;
+  position:relative; z-index:3;
+  letter-spacing:1px;
+}
+.hero-title strong {
+  font-style:normal;
+  font-size:0.52em;
+  letter-spacing:8px;
+  display:block;
+  color:#ffe0f3;
+  text-shadow:none;
+  text-transform:uppercase;
+  margin-bottom:6px;
+  font-weight:800;
+}
+
+.hero-sub {
+  margin-top:12px;
+  font-size:0.78rem;
+  color:#ffd6ed;
+  font-weight:700;
+  letter-spacing:3px;
+  position:relative; z-index:3;
+  text-shadow:0 1px 4px #88003633;
+}
+
+/* glitter dots row */
+.glitter-row {
+  display:flex; justify-content:center; gap:8px;
+  margin-top:16px; position:relative; z-index:3;
+}
+.glitter-row span {
+  width:6px; height:6px; border-radius:50%;
+  background:#fff;
+  opacity:0.6;
+  animation:glitterBlink 2s ease-in-out infinite;
+}
+.glitter-row span:nth-child(2){animation-delay:.3s; width:9px;height:9px; opacity:0.9;}
+.glitter-row span:nth-child(3){animation-delay:.6s;}
+.glitter-row span:nth-child(4){animation-delay:.9s; width:9px;height:9px; opacity:0.9;}
+.glitter-row span:nth-child(5){animation-delay:1.2s;}
+@keyframes glitterBlink {
+  0%,100%{ transform:scale(1); opacity:0.5; }
+  50%    { transform:scale(1.6); opacity:1; }
+}
+
+/* wave bottom */
+.hero-wave {
+  display:block; width:100%; height:60px;
+  margin-top:-2px; position:relative; z-index:2;
+}
+
+/* ══════ STICKER ROW ══════ */
+.sticker-row {
+  display:flex; justify-content:center; gap:7px;
+  padding:16px 12px 4px; position:relative; z-index:2; flex-wrap:wrap;
+}
+.sticker {
+  background: linear-gradient(135deg,#fff5fc,#ffd6ed);
+  border:2px solid var(--pk2);
+  border-radius:50px;
+  padding:6px 14px;
+  font-size:0.72rem; font-weight:800;
+  color:var(--pk4);
+  box-shadow:0 4px 14px #ff6db818, 0 1px 0 #fff inset;
+  white-space:nowrap;
+  animation:stickerWiggle 3.5s ease-in-out infinite;
+  cursor:default;
+}
+.sticker:nth-child(2){ animation-delay:.5s; background:linear-gradient(135deg,#f3e8ff,#d9b8ff44); border-color:var(--lav2); color:var(--lav3); }
+.sticker:nth-child(3){ animation-delay:1s; }
+@keyframes stickerWiggle {
+  0%,100%{ transform:rotate(-2.5deg) scale(1);   }
+  50%    { transform:rotate(2.5deg)  scale(1.05); }
+}
+
+/* ══════ MAIN ══════ */
+main {
+  position:relative; z-index:2;
+  max-width:500px; margin:0 auto;
+  padding:12px 14px 90px;
+  display:flex; flex-direction:column; gap:16px;
+}
+
+/* ══════ CARD ══════ */
+.card {
+  background:var(--card-bg);
+  border-radius:30px;
+  padding:0;
+  box-shadow:var(--shadow), 0 0 0 1px #ffd6ed;
+  overflow:hidden;
+  position:relative;
+  opacity:1;
+  transform:none;
+}
+/* subtle card shimmer overlay */
+.card::before {
+  content:'';
+  position:absolute; inset:0; border-radius:inherit; z-index:0; pointer-events:none;
+  background:linear-gradient(135deg, #ffffff60 0%, transparent 50%);
+}
+@keyframes cardEntry {
+  from{ opacity:0; transform:scale(0.85) translateY(30px) rotate(-1deg); }
+  to  { opacity:1; transform:scale(1)    translateY(0)    rotate(0deg);  }
+}
+
+/* card banner */
+.card-banner {
+  padding:14px 20px 12px;
+  display:flex; align-items:center; gap:12px;
+  position:relative; z-index:1;
+  border-bottom:1.5px solid #ffd6ed33;
+}
+.card-banner-icon {
+  width:46px; height:46px; border-radius:16px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; flex-shrink:0;
+  box-shadow:0 4px 14px #ff6db833;
+  position:relative;
+}
+/* icon shine */
+.card-banner-icon::after {
+  content:'';
+  position:absolute; top:3px; left:5px;
+  width:60%; height:35%; border-radius:50%;
+  background:#ffffff44;
+  pointer-events:none;
+}
+.cb-pink  { background:linear-gradient(145deg,#ff79b8,#e8006e); }
+.cb-rose  { background:linear-gradient(145deg,#ffaad9,#ff6db8); }
+.cb-peach { background:linear-gradient(145deg,#ffd6ed,#ffaad9); }
+.cb-gold  { background:linear-gradient(145deg,#ffe09a,#ffb300); }
+.cb-blue  { background:linear-gradient(145deg,#bbdefb,#42a5f5); }
+.cb-lav   { background:linear-gradient(145deg,#e1bee7,#ab47bc); }
+.cb-teal  { background:linear-gradient(145deg,#b2ebf2,#26c6da); }
+.cb-dark  { background:linear-gradient(145deg,#ce93d8,#8e24aa); }
+
+.card-banner-text{ flex:1; }
+.card-banner-title {
+  font-family:'Playfair Display', serif;
+  font-size:1.05rem; font-weight:700; color:var(--txt); line-height:1.2;
+}
+.card-banner-sub {
+  font-size:0.63rem; font-weight:700;
+  color:var(--muted); letter-spacing:1.5px;
+  text-transform:uppercase; margin-top:2px;
+}
+
+/* card body */
+.card-body { padding:6px 16px 16px; position:relative; z-index:1; }
+
+/* ══════ WELCOME CARD ══════ */
+.welcome-card {
+  background:linear-gradient(145deg,#fff5fc,#ffd6ed88,#f3e8ff55);
+  border:2px solid #ffaad9;
+  text-align:center;
+  padding:32px 22px;
+}
+.wc-big-emoji {
+  font-size:3.4rem; display:block; margin-bottom:12px;
+  animation:wiggleBig 2.5s ease-in-out infinite;
+  filter:drop-shadow(0 4px 12px #ff6db855);
+}
+@keyframes wiggleBig {
+  0%,100%{ transform:rotate(-7deg) scale(1); }
+  50%    { transform:rotate(7deg)  scale(1.12); }
+}
+.wc-title {
+  font-family:'Playfair Display', serif;
+  font-size:1.45rem; font-weight:700; font-style:italic;
+  color:var(--pk4); margin-bottom:10px;
+}
+.wc-desc {
+  font-size:0.9rem; color:var(--sub); line-height:1.8; font-weight:600;
+}
+.wc-deco {
+  font-size:0.72rem; color:var(--muted); margin-top:14px;
+  letter-spacing:5px;
+}
+
+/* ══════ RULE ITEMS ══════ */
+.sanction-pill {
+  display:flex; align-items:center; justify-content:center; gap:7px;
+  padding:10px 16px; border-radius:50px; margin-bottom:12px;
+  font-size:0.72rem; font-weight:900; letter-spacing:2px; text-transform:uppercase;
+  color:#fff; cursor:default;
+  animation:glowPulse 2.5s ease-in-out infinite;
+}
+.sp-red   { background:linear-gradient(135deg,#ff5252,#d50000); box-shadow:0 5px 20px #d5000044; }
+.sp-orange{ background:linear-gradient(135deg,#ffab40,#f57c00); box-shadow:0 5px 20px #f57c0044; }
+@keyframes glowPulse {
+  0%,100%{ transform:scale(1);    filter:brightness(1); }
+  50%    { transform:scale(1.03); filter:brightness(1.1); }
+}
+
+.rule-row {
+  display:flex; align-items:flex-start; gap:10px;
+  background:linear-gradient(135deg,#fff8fc,#fff0f9);
+  border:1.5px solid #ffd6ed;
+  border-radius:18px; padding:11px 14px; margin-bottom:8px;
+  transition:transform 0.18s, box-shadow 0.18s;
+  position:relative; overflow:hidden;
+}
+.rule-row::before {
+  content:'';
+  position:absolute; left:0; top:0; bottom:0; width:3px;
+  background:linear-gradient(180deg, #ff6db8, #ffaad9);
+  border-radius:18px 0 0 18px;
+}
+.rule-row:last-child{ margin-bottom:0; }
+.rule-row:active{ transform:scale(0.97); box-shadow:0 2px 8px #ff6db822; }
+.rule-emoji{ font-size:1.15rem; flex-shrink:0; margin-top:1px; }
+.rule-text { font-size:0.85rem; font-weight:700; color:var(--txt); line-height:1.5; }
+
+/* ══════ POSITION ROWS ══════ */
+.pos-row {
+  display:flex; align-items:center; gap:10px;
+  padding:11px 14px; border-radius:20px; margin-bottom:8px;
+  position:relative; overflow:hidden;
+  border:1.5px solid transparent;
+  transition:transform 0.15s;
+}
+.pos-row:last-child{ margin-bottom:0; }
+.pos-row:active{ transform:scale(0.97); }
+
+.pr-owner { background:linear-gradient(135deg,#fff0f9,#ffd6ed); border-color:#ff6db8; }
+.pr-co    { background:linear-gradient(135deg,#fff5fb,#ffe4f4); border-color:#ffaad9; }
+.pr-admin { background:linear-gradient(135deg,#fff8fc,#fff0f9); border-color:#ffd6ed; }
+.pr-secu  { background:linear-gradient(135deg,#f3f0ff,#e8e4ff); border-color:#c5bfff; }
+.pr-editor{ background:linear-gradient(135deg,#fffde7,#fff9c4); border-color:#ffe082; }
+
+.pos-badge {
+  font-size:0.57rem; font-weight:900; letter-spacing:1px;
+  text-transform:uppercase; padding:4px 10px; border-radius:50px;
+  white-space:nowrap; flex-shrink:0; line-height:1.3;
+}
+.pb-owner { background:linear-gradient(135deg,#e8006e,#a8005a); color:#fff; box-shadow:0 3px 10px #e8006e44; }
+.pb-co    { background:linear-gradient(135deg,#ff6db8,#e8006e); color:#fff; box-shadow:0 3px 10px #ff6db844; }
+.pb-admin { background:linear-gradient(135deg,#ffaad9,#ff6db8); color:#7b1e45; }
+.pb-secu  { background:linear-gradient(135deg,#b0a8ff,#7c6fff); color:#fff; }
+.pb-editor{ background:linear-gradient(135deg,#ffe082,#ffb300); color:#4e342e; }
+
+.pos-emo { font-size:1.15rem; flex-shrink:0; }
+.pos-name{ font-size:0.96rem; font-weight:900; color:var(--txt); flex:1; }
+
+.pos-row::after {
+  content:'✦';
+  position:absolute; right:12px; top:50%; transform:translateY(-50%);
+  font-size:0.7rem; color:#ffaad9; opacity:0.6; pointer-events:none;
+}
+
+/* ══════ JAM BOX ══════ */
+.jam-wrap {
+  background:linear-gradient(135deg,#fff5fc,#ffd6ed55);
+  border:2px solid #ffaad9;
+  border-radius:22px; padding:20px 18px;
+  display:flex; align-items:center; gap:16px;
+}
+.jam-clock {
+  width:70px; height:70px; border-radius:50%;
+  background:linear-gradient(135deg,#ff6db8,#e8006e);
+  display:flex; align-items:center; justify-content:center;
+  font-size:2.2rem; flex-shrink:0;
+  box-shadow:0 6px 22px #ff6db855;
+  animation:spinSlow 14s linear infinite;
+  position:relative;
+}
+.jam-clock::after {
+  content:'';
+  position:absolute; top:4px; left:8px;
+  width:55%; height:40%; border-radius:50%;
+  background:#ffffff33;
+}
+@keyframes spinSlow {
+  from{ transform:rotate(0deg); }
+  to  { transform:rotate(360deg); }
+}
+.jam-info{ flex:1; }
+.jam-everyday{
+  font-size:0.63rem; font-weight:900; letter-spacing:2px;
+  text-transform:uppercase; color:var(--muted); margin-bottom:5px;
+}
+.jam-time{
+  font-family:'Playfair Display', serif;
+  font-size:1.85rem; font-weight:700; color:var(--pk4); line-height:1;
+}
+.jam-zone{ font-size:0.73rem; font-weight:700; color:var(--sub); margin-top:5px; }
+
+/* ══════ LINK BUTTONS ══════ */
+.lbtn {
+  display:flex; align-items:center; gap:14px;
+  padding:15px 15px; border-radius:22px;
+  text-decoration:none; margin-bottom:10px;
+  transition:transform 0.15s, box-shadow 0.15s;
+  -webkit-tap-highlight-color:transparent;
+  position:relative; overflow:hidden;
+}
+.lbtn:last-child{ margin-bottom:0; }
+.lbtn:active{ transform:scale(0.96); }
+.lbtn::before {
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(135deg,#ffffff18,transparent);
+  pointer-events:none;
+}
+.lbtn.tiktok  { background:linear-gradient(135deg,#1a1a2e,#2a1a3e); box-shadow:0 6px 22px #1a1a2e55; border:1.5px solid #3a2a5e; }
+.lbtn.wagroup { background:linear-gradient(135deg,#1b5e20,#2e7d32); box-shadow:0 6px 22px #1b5e2055; border:1.5px solid #388e3c; }
+.lbtn.wachan  { background:linear-gradient(135deg,#006064,#00838f); box-shadow:0 6px 22px #00606455; border:1.5px solid #00acc1; }
+
+.lbtn-icon-wrap {
+  width:48px; height:48px; border-radius:15px;
+  background:#ffffff18; display:flex;
+  align-items:center; justify-content:center;
+  font-size:1.7rem; flex-shrink:0;
+  box-shadow:0 2px 8px #00000022;
+}
+.lbtn-info{ flex:1; }
+.lbtn-lbl { font-size:0.58rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#ffffff66; margin-bottom:3px; }
+.lbtn-name{ font-size:0.92rem; font-weight:900; color:#fff; line-height:1.2; }
+.lbtn-note{ font-size:0.64rem; color:#ffffff77; font-weight:600; margin-top:3px; line-height:1.5; }
+.lbtn-arr { font-size:1.5rem; color:#ffffff33; flex-shrink:0; font-weight:900; }
+
+/* ══════ ROBLOX CARDS ══════ */
+.rcard {
+  display:flex; align-items:center; gap:14px;
+  padding:13px 15px; border-radius:22px; margin-bottom:9px;
+  text-decoration:none; border:2px solid #ffd6ed;
+  background:linear-gradient(135deg,#fff8fc,#fff0f9);
+  transition:transform 0.15s, box-shadow 0.15s;
+  -webkit-tap-highlight-color:transparent;
+  position:relative; overflow:hidden;
+}
+.rcard:last-child{ margin-bottom:0; }
+.rcard:active{ transform:scale(0.97); }
+.rcard::after {
+  content:'🎮';
+  position:absolute; right:-14px; bottom:-14px;
+  font-size:3rem; opacity:0.06; pointer-events:none;
+}
+
+.rcard-ava {
+  width:54px; height:54px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.8rem; flex-shrink:0;
+  box-shadow:0 4px 16px #ff6db844;
+  position:relative;
+}
+.rcard-ava::after {
+  content:'';
+  position:absolute; inset:-4px; border-radius:50%;
+  border:2.5px dashed #ffaad9;
+  animation:spinSlow 8s linear infinite;
+}
+
+.rcard-info{ flex:1; }
+.rcard-role{ font-size:0.6rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:3px; }
+.rcard-name{ font-size:1rem; font-weight:900; color:var(--txt); line-height:1.2; }
+.rcard-tap { font-size:0.68rem; color:var(--muted); font-weight:600; margin-top:3px; }
+.rcard-arr { font-size:1.4rem; color:var(--pk2); flex-shrink:0; font-weight:900; }
+
+/* ══════ BOUNCY DOT DIVIDER ══════ */
+.dotdiv {
+  display:flex; justify-content:center; gap:7px; align-items:center; padding:3px 0;
+}
+.dotdiv span {
+  width:8px; height:8px; border-radius:50%;
+  display:block;
+  animation:boing 1.3s ease-in-out infinite;
+}
+.dotdiv span:nth-child(1){ background:var(--pk2); }
+.dotdiv span:nth-child(2){ animation-delay:.2s; background:var(--pk3); width:11px;height:11px; }
+.dotdiv span:nth-child(3){ animation-delay:.4s; background:var(--pk4); }
+.dotdiv span:nth-child(4){ animation-delay:.2s; background:var(--pk3); width:11px;height:11px; }
+.dotdiv span:nth-child(5){ animation-delay:0s;  background:var(--pk2); }
+@keyframes boing {
+  0%,100%{ transform:translateY(0);    }
+  50%    { transform:translateY(-7px); }
+}
+
+/* ══════ FOOTER ══════ */
+.footer {
+  position:relative; z-index:2;
+  text-align:center; padding:16px 20px 60px;
+}
+.footer-wrap {
+  background:linear-gradient(135deg,#ffd6ed,#ffaad9,#f3e8ff55);
+  border-radius:28px; padding:26px 22px;
+  box-shadow:0 8px 32px #ff6db822;
+  border:2px solid #ff6db8;
+  position:relative; overflow:hidden;
+}
+.footer-wrap::before {
+  content:'';
+  position:absolute; top:-30px; right:-30px;
+  width:120px; height:120px; border-radius:50%;
+  background:radial-gradient(circle,#ffffff22,transparent);
+  pointer-events:none;
+}
+.footer-emoji {
+  font-size:2.2rem; letter-spacing:6px; display:block;
+  margin-bottom:10px;
+  animation:wiggleBig 2.8s ease-in-out infinite;
+  filter:drop-shadow(0 2px 8px #ff6db844);
+}
+.footer-text {
+  font-family:'Playfair Display', serif;
+  font-style:italic; font-size:1rem; color:var(--pk5);
+  margin-bottom:8px; font-weight:700;
+}
+.footer-deco{ font-size:0.72rem; color:#ff6db8; letter-spacing:5px; }
+
+/* ══════ MINI GAMES HUB ══════ */
+.games-hub-btn {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  width:100%; padding:16px 20px;
+  background:linear-gradient(135deg,#ff3d9a,#e8006e,#a8005a);
+  border:none; border-radius:22px;
+  color:#fff; font-family:'Nunito',sans-serif;
+  font-size:1rem; font-weight:900; letter-spacing:1px;
+  cursor:pointer; box-shadow:0 8px 28px #e8006e44;
+  position:relative; overflow:hidden;
+  transition:transform 0.15s, box-shadow 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.games-hub-btn::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,#ffffff22,transparent); pointer-events:none;
+}
+.games-hub-btn:active { transform:scale(0.96); box-shadow:0 4px 14px #e8006e33; }
+.ghb-icon { font-size:1.6rem; animation:wiggleBig 2s ease-in-out infinite; }
+.ghb-text { line-height:1.2; text-align:left; }
+.ghb-sub  { font-size:0.65rem; font-weight:700; opacity:0.8; letter-spacing:1.5px; display:block; }
+
+/* ══════ GAME OVERLAY ══════ */
+.game-overlay {
+  position:fixed; inset:0; z-index:9999;
+  background:var(--bg);
+  display:none; flex-direction:column; overflow:hidden;
+}
+.game-overlay.active { display:flex; }
+
+.go-header {
+  display:flex; align-items:center; gap:12px;
+  padding:14px 16px 10px;
+  background:linear-gradient(135deg,#ff3d9a,#e8006e);
+  flex-shrink:0;
+}
+.go-back {
+  background:#ffffff22; border:none; border-radius:50%;
+  width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; cursor:pointer; color:#fff; flex-shrink:0;
+  -webkit-tap-highlight-color:transparent; transition:background 0.15s;
+}
+.go-back:active { background:#ffffff44; }
+.go-title { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:#fff; flex:1; }
+.go-emoji  { font-size:1.4rem; }
+
+.game-select {
+  flex:1; overflow-y:auto; padding:16px 14px 30px;
+  display:flex; flex-direction:column; gap:12px;
+}
+.game-select-title {
+  text-align:center; font-family:'Playfair Display',serif;
+  font-size:1.2rem; font-weight:700; font-style:italic; color:var(--pk4);
+  margin-bottom:2px;
+}
+.game-select-sub { text-align:center; font-size:0.72rem; color:var(--muted); font-weight:700; letter-spacing:1.5px; margin-bottom:6px; }
+
+.game-card {
+  display:flex; align-items:center; gap:14px;
+  padding:16px 16px; border-radius:22px;
+  background:#fff; border:2px solid #ffd6ed;
+  box-shadow:0 6px 22px #ff6db812;
+  cursor:pointer; position:relative; overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+  transition:transform 0.15s, box-shadow 0.15s;
+  animation:cardEntry 0.5s cubic-bezier(.34,1.5,.64,1) both;
+}
+.game-card:nth-child(3){ animation-delay:.05s }
+.game-card:nth-child(4){ animation-delay:.10s }
+.game-card:nth-child(5){ animation-delay:.15s }
+.game-card:nth-child(6){ animation-delay:.20s }
+.game-card:nth-child(7){ animation-delay:.25s }
+.game-card:active { transform:scale(0.97); }
+.game-card::before { content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(135deg,#ffffff55,transparent); pointer-events:none; }
+
+.gc-icon {
+  width:54px; height:54px; border-radius:18px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.8rem; box-shadow:0 4px 14px #ff6db822;
+}
+.gc-info { flex:1; }
+.gc-name { font-size:0.97rem; font-weight:900; color:var(--txt); margin-bottom:3px; }
+.gc-desc { font-size:0.72rem; color:var(--muted); font-weight:700; line-height:1.4; }
+.gc-arr  { font-size:1.4rem; color:var(--pk2); font-weight:900; flex-shrink:0; }
+
+.game-screen {
+  flex:1; overflow-y:auto; padding:16px 14px 30px;
+  display:flex; flex-direction:column; align-items:center;
+}
+
+/* Game 1 - Tebak Emoji */
+.te-question { font-size:3.8rem; text-align:center; margin:18px 0 6px; animation:wiggleBig 2.2s ease-in-out infinite; filter:drop-shadow(0 4px 12px #ff6db844); }
+.te-hint { font-size:0.78rem; color:var(--muted); font-weight:700; letter-spacing:1px; margin-bottom:18px; text-align:center; }
+.te-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; width:100%; max-width:360px; }
+.te-opt {
+  padding:14px 10px; border-radius:18px; border:2.5px solid #ffd6ed;
+  background:#fff; font-size:0.86rem; font-weight:800; color:var(--txt);
+  cursor:pointer; text-align:center; transition:all 0.15s; -webkit-tap-highlight-color:transparent;
+}
+.te-opt:active { transform:scale(0.95); }
+.te-opt.correct { border-color:#4caf50; background:#e8f5e9; color:#2e7d32; }
+.te-opt.wrong   { border-color:#f44336; background:#ffeaea; color:#c62828; }
+.te-opt.reveal  { border-color:#4caf50; background:#e8f5e9; color:#2e7d32; }
+.te-score { font-size:0.85rem; font-weight:900; color:var(--sub); margin-bottom:10px; }
+.te-feedback { font-size:1.6rem; min-height:2rem; text-align:center; margin:6px 0; }
+.te-next {
+  margin-top:14px; padding:13px 32px; border-radius:50px;
+  background:linear-gradient(135deg,#ff6db8,#e8006e); border:none;
+  color:#fff; font-family:'Nunito',sans-serif; font-size:0.9rem; font-weight:900;
+  cursor:pointer; box-shadow:0 6px 20px #e8006e33; display:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.te-next.show { display:block; animation:cardEntry 0.3s ease; }
+
+/* Game 2 - Would You Rather */
+.pp-q { font-size:0.97rem; font-weight:800; color:var(--txt); text-align:center; margin:14px 0 18px; line-height:1.6; }
+.pp-or { text-align:center; font-size:0.7rem; font-weight:900; color:var(--muted); letter-spacing:3px; margin:4px 0; }
+.pp-opts { display:flex; flex-direction:column; gap:10px; width:100%; max-width:360px; }
+.pp-opt {
+  padding:15px 18px; border-radius:18px; border:2px solid #ffd6ed;
+  background:#fff; font-size:0.88rem; font-weight:800; color:var(--txt);
+  cursor:pointer; text-align:left; transition:all 0.15s;
+  -webkit-tap-highlight-color:transparent; display:flex; align-items:center; gap:10px;
+}
+.pp-opt:active { transform:scale(0.97); }
+.pp-opt.selected { border-color:var(--pk3); background:linear-gradient(135deg,#fff0f9,#ffd6ed55); }
+.pp-emoji { font-size:1.4rem; flex-shrink:0; }
+.pp-result {
+  margin-top:16px; padding:16px; border-radius:20px; width:100%; max-width:360px;
+  background:linear-gradient(135deg,#fff5fc,#ffd6ed44); border:2px solid #ffaad9;
+  font-size:0.85rem; font-weight:700; color:var(--sub); text-align:center; line-height:1.7;
+  display:none;
+}
+.pp-result.show { display:block; animation:cardEntry 0.4s cubic-bezier(.34,1.5,.64,1); }
+.pp-result-big { font-size:2.2rem; margin-bottom:8px; }
+.pp-next-btn {
+  margin-top:14px; padding:13px 32px; border-radius:50px;
+  background:linear-gradient(135deg,#ff6db8,#e8006e); border:none;
+  color:#fff; font-family:'Nunito',sans-serif; font-size:0.9rem; font-weight:900;
+  cursor:pointer; box-shadow:0 6px 20px #e8006e33; -webkit-tap-highlight-color:transparent;
+}
+
+/* Game 3 - Lucky Spin */
+.spin-wheel-wrap { position:relative; width:270px; height:270px; margin:20px auto; }
+.spin-canvas { border-radius:50%; box-shadow:0 8px 32px #ff6db855; }
+.spin-pointer { position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:2rem; z-index:2; filter:drop-shadow(0 2px 6px #00000044); }
+.spin-btn {
+  padding:14px 44px; border-radius:50px;
+  background:linear-gradient(135deg,#ff6db8,#e8006e); border:none;
+  color:#fff; font-family:'Nunito',sans-serif; font-size:1rem; font-weight:900;
+  cursor:pointer; box-shadow:0 6px 22px #e8006e44; margin-top:12px;
+  -webkit-tap-highlight-color:transparent; transition:transform 0.15s;
+}
+.spin-btn:active { transform:scale(0.96); }
+.spin-btn:disabled { opacity:0.6; cursor:not-allowed; }
+.spin-result { margin-top:14px; font-size:1.1rem; font-weight:900; color:var(--pk4); text-align:center; min-height:2.5rem; }
+
+/* Game 4 - Tebak Angka */
+.ta-display { font-family:'Playfair Display',serif; font-size:3.2rem; font-weight:700; color:var(--pk4); margin:14px 0 4px; text-align:center; letter-spacing:6px; }
+.ta-hint-text { font-size:0.8rem; color:var(--muted); font-weight:700; margin-bottom:14px; text-align:center; min-height:1.2em; }
+.ta-keypad { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; max-width:280px; width:100%; }
+.ta-key {
+  padding:16px 8px; border-radius:16px; border:2px solid #ffd6ed;
+  background:#fff; font-size:1.1rem; font-weight:900; color:var(--txt);
+  cursor:pointer; text-align:center; transition:transform 0.12s; -webkit-tap-highlight-color:transparent;
+}
+.ta-key:active { transform:scale(0.93); background:#fff0f9; }
+.ta-key.del { font-size:0.9rem; }
+.ta-key.ok  { background:linear-gradient(135deg,#ff6db8,#e8006e); color:#fff; border-color:transparent; box-shadow:0 4px 14px #e8006e33; }
+.ta-attempts { font-size:0.8rem; color:var(--muted); font-weight:700; margin-top:10px; }
+.ta-won   { font-size:1.3rem; font-weight:900; color:#2e7d32; text-align:center; margin-top:10px; display:none; }
+.ta-lost  { font-size:0.95rem; font-weight:800; color:#c62828; text-align:center; margin-top:10px; display:none; }
+.ta-restart {
+  margin-top:14px; padding:13px 32px; border-radius:50px;
+  background:linear-gradient(135deg,#ff6db8,#e8006e); border:none;
+  color:#fff; font-family:'Nunito',sans-serif; font-size:0.9rem; font-weight:900;
+  cursor:pointer; box-shadow:0 6px 20px #e8006e33; display:none; -webkit-tap-highlight-color:transparent;
+}
+
+/* Game 5 - Kuis Roselle */
+.kq-progress { width:100%; max-width:360px; height:9px; border-radius:50px; background:#ffd6ed; overflow:hidden; margin-bottom:12px; }
+.kq-bar { height:100%; border-radius:50px; background:linear-gradient(90deg,#ff6db8,#e8006e); transition:width 0.5s ease; }
+.kq-score { font-size:0.85rem; font-weight:900; color:var(--sub); margin-bottom:6px; text-align:center; }
+.kq-q { font-size:0.95rem; font-weight:800; color:var(--txt); text-align:center; margin:8px 0 18px; line-height:1.6; }
+.kq-opts { display:flex; flex-direction:column; gap:8px; width:100%; max-width:360px; }
+.kq-opt {
+  padding:13px 16px; border-radius:16px; border:2px solid #ffd6ed;
+  background:#fff; font-size:0.86rem; font-weight:800; color:var(--txt);
+  cursor:pointer; transition:all 0.15s; -webkit-tap-highlight-color:transparent;
+}
+.kq-opt:active { transform:scale(0.97); }
+.kq-opt.correct { border-color:#4caf50; background:#e8f5e9; color:#2e7d32; }
+.kq-opt.wrong   { border-color:#f44336; background:#ffeaea; color:#c62828; }
+.kq-opt.reveal  { border-color:#4caf50; background:#e8f5e9; color:#2e7d32; }
+.kq-feedback { font-size:1.4rem; min-height:1.8rem; text-align:center; margin:8px 0; }
+.kq-next {
+  margin-top:16px; padding:13px 32px; border-radius:50px;
+  background:linear-gradient(135deg,#ff6db8,#e8006e); border:none;
+  color:#fff; font-family:'Nunito',sans-serif; font-size:0.9rem; font-weight:900;
+  cursor:pointer; box-shadow:0 6px 20px #e8006e33; display:none; -webkit-tap-highlight-color:transparent;
+}
+.kq-next.show { display:block; animation:cardEntry 0.3s ease; }
+.kq-final { text-align:center; font-family:'Playfair Display',serif; font-size:1.25rem; font-weight:700; color:var(--pk4); margin-top:10px; display:none; }
+.kq-final.show { display:block; animation:cardEntry 0.5s cubic-bezier(.34,1.5,.64,1); }
+
+.game-divider { width:100%; max-width:360px; height:2px; background:linear-gradient(90deg,transparent,#ffd6ed,transparent); margin:14px 0; }
+
+
+/* ══════ MOOD CHECK ══════ */
+.mood-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.mood-btn {
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  padding:12px 6px; border-radius:18px; border:2px solid #ffd6ed;
+  background:#fff; cursor:pointer; transition:all 0.18s;
+  -webkit-tap-highlight-color:transparent; font-family:'Nunito',sans-serif;
+}
+.mood-btn:active { transform:scale(0.94); }
+.mood-btn.active { border-color:var(--pk3); background:linear-gradient(135deg,#fff0f9,#ffd6ed55); box-shadow:0 4px 14px #ff6db822; }
+.mood-btn .mb-emoji { font-size:1.8rem; }
+.mood-btn .mb-label { font-size:0.6rem; font-weight:800; color:var(--muted); letter-spacing:0.5px; }
+.mood-result {
+  margin-top:12px; padding:12px 16px; border-radius:18px;
+  background:linear-gradient(135deg,#fff5fc,#ffd6ed44); border:2px solid #ffaad9;
+  font-size:0.85rem; font-weight:700; color:var(--sub); text-align:center;
+  display:none; animation:moodPop 0.4s cubic-bezier(.34,1.6,.64,1);
+}
+.mood-result.show { display:block; }
+@keyframes moodPop {
+  from { transform:scale(0.8); opacity:0; }
+  to   { transform:scale(1);   opacity:1; }
+}
+.mood-result-big { font-size:2rem; margin-bottom:4px; }
+
+
+/* ══════ KENANGAN RST ══════ */
+.mem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.mem-item {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #fff0f9, #ffd6ed55);
+  border: 2px solid #ffd6ed;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s;
+  animation: cardEntry 0.4s cubic-bezier(.34,1.5,.64,1) both;
+}
+.mem-item:active { transform: scale(0.96); }
+.mem-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+.mem-item:hover img { transform: scale(1.05); }
+.mem-item-date {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 18px 8px 7px;
+  background: linear-gradient(0deg, #e8006ecc, transparent);
+  font-size: 0.62rem; font-weight: 800;
+  color: #fff; text-align: center;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 4px #00000055;
+}
+.mem-loading {
+  grid-column: 1 / -1;
+  text-align: center; padding: 24px;
+  color: var(--muted); font-size: 0.82rem; font-weight: 700;
+}
+.mem-loading-dots {
+  display: flex; justify-content: center; gap: 6px; margin-bottom: 8px;
+}
+.mem-loading-dots span {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--pk3);
+  animation: boing 1s ease-in-out infinite;
+}
+.mem-loading-dots span:nth-child(2){ animation-delay:.2s; }
+.mem-loading-dots span:nth-child(3){ animation-delay:.4s; }
+.mem-empty {
+  text-align: center; padding: 20px;
+  color: var(--muted); font-size: 0.82rem; font-weight: 700;
+}
+/* ══════ SAKURA CSS PETALS ══════ */
+.sakura-wrap { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.spetal {
+  position:absolute; top:-22px;
+  border-radius:60% 40% 70% 30% / 45% 55% 45% 55%;
+  opacity:0;
+  animation:spetalFall linear infinite;
+}
+@keyframes spetalFall {
+  0%   { transform:translateY(0) rotate(0deg); opacity:0; }
+  8%   { opacity:0.65; }
+  88%  { opacity:0.4; }
+  100% { transform:translateY(112vh) rotate(560deg) translateX(25px); opacity:0; }
+}
+
+/* ══════ FLOWER MARQUEE ══════ */
+.flower-marquee {
+  overflow:hidden; position:relative; z-index:2;
+  padding:7px 0;
+  background:linear-gradient(90deg,#fff0f9,#ffd6ed88,#fff0f9);
+  border-top:1.5px solid #ffaad977;
+  border-bottom:1.5px solid #ffaad977;
+}
+.fm-inner { display:flex; gap:14px; width:max-content; animation:fmScroll 20s linear infinite; }
+.fm-inner span { font-size:1.05rem; flex-shrink:0; }
+@keyframes fmScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ══════ FLORAL DIVIDER (replaces dotdiv) ══════ */
+.floral-div {
+  display:flex; align-items:center; justify-content:center;
+  gap:5px; padding:2px 0; position:relative; z-index:2;
+}
+.floral-div .fd-line {
+  flex:1; height:1.5px; max-width:55px;
+  background:linear-gradient(90deg,transparent,#ffaad9aa,transparent);
+}
+.floral-div span { font-size:0.9rem; line-height:1; }
+
+/* ══════ CARD FLOWER WATERMARK ══════ */
+.card::after {
+  content:'🌸'; position:absolute; bottom:-4px; right:10px;
+  font-size:3rem; opacity:0.055; pointer-events:none; z-index:0;
+}
+
+/* ══════ MEM ITEM OVERLAY ══════ */
+.mem-item-overlay {
+  position:absolute; inset:0; border-radius:16px;
+  display:flex; align-items:center; justify-content:center;
+  background:transparent; transition:background 0.2s;
+}
+.mem-item-overlay span { font-size:1.8rem; opacity:0; transition:opacity 0.2s; filter:drop-shadow(0 2px 6px #00000066); }
+.mem-item:hover .mem-item-overlay { background:#e8006e22; }
+.mem-item:hover .mem-item-overlay span { opacity:1; }
+
+/* ══════ AUTH MODAL ══════ */
+.auth-modal-overlay {
+  position:fixed; inset:0; z-index:99998;
+  background:#000000bb; backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  padding:20px; opacity:0; pointer-events:none;
+  transition:opacity 0.25s;
+}
+.auth-modal-overlay.show { opacity:1; pointer-events:all; }
+.auth-modal {
+  background:#fff;
+  border-radius:28px;
+  padding:30px 26px 26px;
+  width:100%; max-width:360px;
+  box-shadow:0 20px 60px #e8006e22, 0 0 0 1.5px #ffd6ed;
+  position:relative;
+  animation:cardEntry 0.35s cubic-bezier(.34,1.5,.64,1);
+}
+.auth-modal-close {
+  position:absolute; top:14px; right:14px;
+  width:32px; height:32px; border-radius:50%;
+  background:#fff0f9; border:1.5px solid #ffd6ed;
+  color:var(--pk4); font-size:1rem; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+}
+.auth-modal-close:active { transform:scale(0.9); }
+.auth-modal-emoji { font-size:2.6rem; text-align:center; margin-bottom:8px; }
+.auth-modal-title {
+  font-family:'Playfair Display',serif; font-size:1.25rem;
+  font-weight:700; font-style:italic; color:var(--pk4);
+  text-align:center; margin-bottom:4px;
+}
+.auth-modal-sub {
+  font-size:0.72rem; color:var(--muted); font-weight:700;
+  letter-spacing:1px; text-align:center; margin-bottom:20px;
+}
+.auth-tabs {
+  display:flex; gap:8px; margin-bottom:18px;
+}
+.auth-tab {
+  flex:1; padding:9px; border-radius:50px;
+  font-family:'Nunito',sans-serif; font-size:0.82rem;
+  font-weight:900; cursor:pointer; border:2px solid #ffd6ed;
+  background:#fff; color:var(--muted);
+  transition:all 0.18s; -webkit-tap-highlight-color:transparent;
+}
+.auth-tab.active {
+  background:linear-gradient(135deg,#ff6db8,#e8006e);
+  border-color:transparent; color:#fff;
+  box-shadow:0 5px 18px #e8006e33;
+}
+.auth-input {
+  width:100%; padding:12px 16px; border-radius:16px;
+  border:2px solid #ffd6ed; font-family:'Nunito',sans-serif;
+  font-size:0.88rem; font-weight:700; color:var(--txt);
+  background:#fff8fd; outline:none; margin-bottom:10px;
+  transition:border-color 0.18s;
+}
+.auth-input:focus { border-color:var(--pk3); }
+.auth-btn {
+  width:100%; padding:13px; border-radius:50px;
+  background:linear-gradient(135deg,#ff6db8,#e8006e); border:none;
+  color:#fff; font-family:'Nunito',sans-serif; font-size:0.95rem;
+  font-weight:900; cursor:pointer; box-shadow:0 6px 20px #e8006e33;
+  margin-top:4px; -webkit-tap-highlight-color:transparent;
+  transition:transform 0.15s, opacity 0.15s;
+}
+.auth-btn:active { transform:scale(0.97); }
+.auth-btn:disabled { opacity:0.6; cursor:not-allowed; }
+.auth-err {
+  font-size:0.78rem; font-weight:800; color:#e8006e;
+  text-align:center; min-height:1.2em; margin-top:6px;
+}
+
+/* ══════ AUTH STATUS BAR (di papan pesan) ══════ */
+.pb-auth-bar {
+  display:flex; align-items:center; gap:10px;
+  background:linear-gradient(135deg,#fff5fc,#ffd6ed44);
+  border:1.5px solid #ffd6ed; border-radius:18px;
+  padding:10px 14px; margin-bottom:14px;
+}
+.pb-auth-avatar {
+  width:36px; height:36px; border-radius:50%;
+  background:linear-gradient(135deg,#ff6db8,#e8006e);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; flex-shrink:0; color:#fff; font-weight:900;
+}
+.pb-auth-info { flex:1; }
+.pb-auth-name { font-size:0.88rem; font-weight:900; color:var(--txt); }
+.pb-auth-status { font-size:0.65rem; font-weight:700; color:var(--muted); letter-spacing:0.5px; }
+.pb-auth-logout {
+  padding:6px 14px; border-radius:50px;
+  background:#fff; border:1.5px solid #ffd6ed;
+  color:var(--pk4); font-family:'Nunito',sans-serif;
+  font-size:0.72rem; font-weight:900; cursor:pointer;
+  -webkit-tap-highlight-color:transparent; transition:all 0.15s;
+}
+.pb-auth-logout:active { background:#fff0f9; }
+
+.pb-login-prompt {
+  display:flex; align-items:center; gap:10px;
+  background:linear-gradient(135deg,#fff5fc,#ffd6ed44);
+  border:1.5px solid #ffd6ed; border-radius:18px;
+  padding:11px 14px; margin-bottom:14px; cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:transform 0.15s;
+}
+.pb-login-prompt:active { transform:scale(0.98); }
+.pb-login-prompt-icon { font-size:1.6rem; }
+.pb-login-prompt-text { flex:1; }
+.pb-login-prompt-title { font-size:0.88rem; font-weight:900; color:var(--pk4); }
+.pb-login-prompt-sub { font-size:0.68rem; font-weight:700; color:var(--muted); }
+
+/* delete/edit button on message card */
+.pb-card-owner-actions {
+  display:flex; gap:6px; margin-top:6px;
+}
+.pb-edit-btn, .pb-delete-btn {
+  padding:5px 14px; border-radius:50px;
+  font-family:'Nunito',sans-serif; font-size:0.72rem;
+  font-weight:900; cursor:pointer; border:1.5px solid;
+  -webkit-tap-highlight-color:transparent; transition:all 0.15s;
+}
+.pb-edit-btn {
+  background:#fff; border-color:#ffaad9; color:var(--pk4);
+}
+.pb-edit-btn:active { background:#fff0f9; }
+.pb-delete-btn {
+  background:#fff; border-color:#ffb3b3; color:#e53935;
+}
+.pb-delete-btn:active { background:#ffeaea; }
+
+/* inline edit textarea */
+.pb-edit-area {
+  width:100%; margin-top:8px; padding:10px 12px;
+  border-radius:14px; border:2px solid var(--pk3);
+  font-family:'Nunito',sans-serif; font-size:0.86rem;
+  font-weight:700; color:var(--txt); resize:none; outline:none;
+  background:#fff8fd;
+}
+.pb-edit-actions { display:flex; gap:6px; margin-top:6px; }
+.pb-edit-save {
+  padding:7px 20px; border-radius:50px;
+  background:linear-gradient(135deg,#ff6db8,#e8006e); border:none;
+  color:#fff; font-family:'Nunito',sans-serif; font-size:0.78rem;
+  font-weight:900; cursor:pointer; -webkit-tap-highlight-color:transparent;
+}
+.pb-edit-cancel {
+  padding:7px 16px; border-radius:50px;
+  background:#fff; border:1.5px solid #ffd6ed;
+  color:var(--muted); font-family:'Nunito',sans-serif;
+  font-size:0.78rem; font-weight:900; cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ══════ LIGHTBOX ENHANCED ══════ */
+.mem-lightbox {
+  position:fixed; inset:0; z-index:99999;
+  background:#000000b8;
+  backdrop-filter:blur(5px);
+  display:flex; align-items:center; justify-content:center;
+  padding:20px;
+  animation:moodPop 0.2s ease;
+}
+.mem-lightbox-imgwrap {
+  display:flex; align-items:center; justify-content:center;
+  max-width:100%; max-height:85vh;
+  overflow:hidden; border-radius:18px;
+  position:relative;
+}
+.mem-lightbox img {
+  max-width:100%; max-height:85vh;
+  border-radius:18px;
+  box-shadow:0 8px 40px #00000099;
+  touch-action:none;
+  user-select:none;
+  -webkit-user-drag:none;
+  display:block;
+  transform-origin:center center;
+}
+.mem-lightbox-close {
+  position:absolute; top:13px; right:13px;
+  width:36px; height:36px; border-radius:50%;
+  background:#ffffff18; border:1.5px solid #ffffff44;
+  color:#fff; font-size:1.1rem; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+  backdrop-filter:blur(8px); z-index:5;
+  transition:background 0.15s, transform 0.15s;
+}
+.mem-lightbox-close:active { background:#ffffff44; transform:scale(0.88); }
+.mem-lightbox-download {
+  position:absolute; top:13px; left:13px;
+  width:36px; height:36px; border-radius:50%;
+  background:#ffffff18; border:1.5px solid #ffffff44;
+  color:#fff; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+  backdrop-filter:blur(8px); z-index:5;
+  transition:background 0.15s, transform 0.15s;
+}
+.mem-lightbox-download:active { background:#ffffff44; transform:scale(0.88); }
+.mem-lightbox-date {
+  position:absolute; bottom:18px;
+  left:50%; transform:translateX(-50%);
+  background:#000000aa; color:#fff;
+  padding:5px 16px; border-radius:50px;
+  font-size:0.75rem; font-weight:800;
+  white-space:nowrap; z-index:5;
+}
+.mem-lb-zoom-hint {
+  position:absolute; top:58px;
+  left:50%; transform:translateX(-50%);
+  background:#000000aa; color:#fff;
+  padding:4px 14px; border-radius:50px;
+  font-size:0.66rem; font-weight:700;
+  white-space:nowrap; z-index:5;
+  pointer-events:none;
+  animation:lbHintFade 2.4s ease forwards;
+}
+@keyframes lbHintFade {
+  0%,10%{opacity:0.9} 75%{opacity:0.9} 100%{opacity:0}
+}
+.mem-lb-counter {
+  position:absolute; top:13px;
+  left:50%; transform:translateX(-50%);
+  background:#000000aa; color:#fff;
+  padding:4px 14px; border-radius:50px;
+  font-size:0.68rem; font-weight:800;
+  white-space:nowrap; z-index:5;
+}
+.mem-lb-nav {
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:40px; height:40px; border-radius:50%;
+  background:#ffffff18; border:1.5px solid #ffffff33;
+  color:#fff; font-size:1.5rem; font-weight:900;
+  cursor:pointer; z-index:5;
+  display:flex; align-items:center; justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+  backdrop-filter:blur(4px); line-height:1;
+  transition:background 0.15s;
+}
+.mem-lb-nav:active { background:#ffffff44; }
+.mem-lb-prev { left:6px; }
+.mem-lb-next { right:6px; }
+
+/* ══════ EXTRA STICKERS ══════ */
+.sticker:nth-child(4){ animation-delay:1.5s; }
+.sticker:nth-child(5){ animation-delay:0.25s; background:linear-gradient(135deg,#fff5fb,#ffe4f4); border-color:#ffaad9; color:var(--pk4); }
+.sticker:nth-child(6){ animation-delay:1.75s; background:linear-gradient(135deg,#f3e8ff,#d9b8ff44); border-color:var(--lav2); color:var(--lav3); }
+.sticker:nth-child(7){ animation-delay:0.75s; }
+
+
+/* ══ GALLERY OVERLAY ══ */
+.gal-overlay{position:fixed;inset:0;z-index:9997;background:var(--bg);display:none;flex-direction:column;overflow:hidden;}
+.gal-overlay.active{display:flex;}
+.gal-header{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;background:linear-gradient(135deg,#ff3d9a,#e8006e);flex-shrink:0;}
+.gal-back{background:#ffffff22;border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;color:#fff;-webkit-tap-highlight-color:transparent;}
+.gal-back:active{background:#ffffff44;}
+.gal-htitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;flex:1;}
+.gal-hcount{font-size:0.72rem;font-weight:800;color:#ffe0f3;background:#ffffff22;padding:4px 10px;border-radius:50px;}
+.gal-body{flex:1;overflow-y:auto;padding:14px;}
+.gal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.gal-item{border-radius:16px;overflow:hidden;aspect-ratio:1;background:#ffd6ed33;position:relative;cursor:pointer;border:2px solid #ffd6ed;}
+.gal-item img{width:100%;height:100%;object-fit:cover;}
+.gal-item-date{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#00000077);color:#fff;font-size:0.6rem;font-weight:800;padding:16px 8px 6px;}
+.gal-item-overlay{position:absolute;inset:0;background:#ff6db822;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.18s;font-size:1.5rem;}
+.gal-item:active .gal-item-overlay{opacity:1;}
+.gal-loading{text-align:center;padding:40px 20px;color:var(--muted);font-size:0.85rem;font-weight:700;}
+/* open btn */
+.feat-open-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:15px 20px;background:linear-gradient(135deg,#ff3d9a,#e8006e,#a8005a);border:none;border-radius:20px;color:#fff;font-family:'Nunito',sans-serif;font-size:0.95rem;font-weight:900;cursor:pointer;box-shadow:0 8px 28px #e8006e44;position:relative;overflow:hidden;transition:transform 0.15s;-webkit-tap-highlight-color:transparent;}
+.feat-open-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#ffffff22,transparent);pointer-events:none;}
+.feat-open-btn:active{transform:scale(0.96);}
+
+/* ══ PAPAN PESAN OVERLAY ══ */
+.pb-overlay{position:fixed;inset:0;z-index:9998;background:var(--bg);display:none;flex-direction:column;overflow:hidden;}
+.pb-overlay.active{display:flex;}
+.pb-header{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;background:linear-gradient(135deg,#ff3d9a,#e8006e);flex-shrink:0;}
+.pb-back{background:#ffffff22;border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;color:#fff;-webkit-tap-highlight-color:transparent;}
+.pb-back:active{background:#ffffff44;}
+.pb-htitle{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;flex:1;}
+.pb-hcount{font-size:0.72rem;font-weight:800;color:#ffe0f3;background:#ffffff22;padding:4px 10px;border-radius:50px;}
+.pb-body{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px;}
+.pb-form{background:#fff;border:2px solid #ffd6ed;border-radius:22px;padding:16px;box-shadow:0 4px 18px #ff6db812;}
+.pb-form-title{font-size:0.75rem;font-weight:900;color:var(--sub);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.pb-input,.pb-textarea{width:100%;padding:11px 14px;border-radius:14px;border:2px solid #ffd6ed;background:#fff8fc;font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;color:var(--txt);outline:none;transition:border-color 0.18s;margin-bottom:8px;box-sizing:border-box;}
+.pb-input:focus,.pb-textarea:focus{border-color:var(--pk3);}
+.pb-textarea{resize:none;height:75px;}
+.pb-char{font-size:0.65rem;color:var(--muted);font-weight:700;text-align:right;margin-top:-4px;margin-bottom:8px;}
+.pb-submit{width:100%;padding:12px;border-radius:14px;background:linear-gradient(135deg,#ff6db8,#e8006e);border:none;color:#fff;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:900;cursor:pointer;box-shadow:0 5px 18px #e8006e33;-webkit-tap-highlight-color:transparent;transition:transform 0.15s;}
+.pb-submit:active{transform:scale(0.97);}
+.pb-submit:disabled{opacity:0.6;cursor:not-allowed;}
+.pb-list-title{font-size:0.75rem;font-weight:900;color:var(--sub);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+.pb-card{background:#fff;border:2px solid #ffd6ed;border-radius:18px;padding:13px 15px;position:relative;overflow:hidden;margin-bottom:8px;}
+.pb-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#ff6db8,#ffaad9);border-radius:18px 0 0 18px;}
+.pb-card-name{font-size:0.63rem;font-weight:900;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.pb-card-text{font-size:0.88rem;font-weight:700;color:var(--txt);line-height:1.55;}
+.pb-card-time{font-size:0.6rem;color:var(--muted);font-weight:700;margin-top:5px;}
+.pb-loading{text-align:center;padding:30px;color:var(--muted);font-size:0.85rem;font-weight:700;}
+.pb-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);z-index:10000;background:linear-gradient(135deg,#e8006e,#a8005a);color:#fff;padding:10px 22px;border-radius:50px;font-size:0.78rem;font-weight:800;box-shadow:0 6px 24px #e8006e55;transition:transform 0.35s cubic-bezier(.34,1.6,.64,1);white-space:nowrap;pointer-events:none;}
+.pb-toast.show{transform:translateX(-50%) translateY(0);}
+
+
+/* ══ LIKE DISLIKE ══ */
+.pb-card-actions { display:flex; align-items:center; gap:8px; margin-top:10px; }
+.pb-action-btn { display:flex; align-items:center; gap:5px; padding:6px 12px; border-radius:50px; border:2px solid #ffd6ed; background:#fff; font-size:0.78rem; font-weight:800; cursor:pointer; transition:all 0.18s; -webkit-tap-highlight-color:transparent; font-family:'Nunito',sans-serif; }
+.pb-action-btn:active { transform:scale(0.93); }
+.pb-like-btn:active, .pb-like-btn.pb-liked { border-color:#4caf50; background:#e8f5e9; color:#2e7d32; }
+.pb-dislike-btn:active, .pb-dislike-btn.pb-disliked { border-color:#f44336; background:#ffeaea; color:#c62828; }
+/* ══ SEARCH ══ */
+.pb-search-wrap { position:relative; margin-bottom:10px; }
+.pb-search { width:100%; padding:10px 14px 10px 36px; border-radius:14px; border:2px solid #ffd6ed; background:#fff8fc; font-family:'Nunito',sans-serif; font-size:0.83rem; font-weight:700; color:var(--txt); outline:none; box-sizing:border-box; transition:border-color 0.18s; }
+.pb-search:focus { border-color:var(--pk3); }
+.pb-search-icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); font-size:0.9rem; pointer-events:none; }
+/* ══ REACTIONS ══ */
+.pb-reactions { display:flex; align-items:center; gap:6px; margin-top:7px; }
+.pb-react-btn { display:flex; align-items:center; gap:4px; padding:5px 10px; border-radius:50px; border:1.5px solid #ffd6ed; background:#fff8fc; font-size:0.75rem; font-weight:800; cursor:pointer; transition:all 0.18s; -webkit-tap-highlight-color:transparent; font-family:'Nunito',sans-serif; }
+.pb-react-btn:active { transform:scale(0.88); }
+.pb-react-btn.pb-heart.pb-reacted { border-color:#e91e63; background:#fce4ec; color:#c2185b; }
+.pb-react-btn.pb-fire.pb-reacted  { border-color:#ff9800; background:#fff3e0; color:#e65100; }
+.pb-react-btn.pb-laugh.pb-reacted { border-color:#ffc107; background:#fffde7; color:#f57f17; }
+.pb-reply-btn { margin-left:auto; background:none; border:none; font-size:0.7rem; font-weight:800; color:var(--muted); cursor:pointer; padding:4px 8px; border-radius:8px; -webkit-tap-highlight-color:transparent; font-family:'Nunito',sans-serif; }
+.pb-reply-btn:active { background:#ffd6ed33; }
+/* ══ REPLY FORM ══ */
+.pb-reply-form { background:#fff8fc; border:1.5px solid #ffd6ed; border-radius:14px; padding:10px 12px; margin-top:9px; display:none; }
+.pb-reply-form.show { display:block; animation:cardEntry 0.25s ease; }
+.pb-reply-input { width:100%; padding:9px 12px; border-radius:10px; border:1.5px solid #ffd6ed; background:#fff; font-family:'Nunito',sans-serif; font-size:0.82rem; font-weight:700; color:var(--txt); outline:none; box-sizing:border-box; margin-bottom:6px; }
+.pb-reply-input:focus,.pb-reply-textarea:focus { border-color:var(--pk3); }
+.pb-reply-textarea { width:100%; padding:9px 12px; border-radius:10px; border:1.5px solid #ffd6ed; background:#fff; font-family:'Nunito',sans-serif; font-size:0.82rem; font-weight:700; color:var(--txt); outline:none; box-sizing:border-box; resize:none; height:60px; margin-bottom:6px; }
+.pb-reply-actions { display:flex; gap:6px; }
+.pb-reply-submit { padding:8px 16px; border-radius:50px; background:linear-gradient(135deg,#ff6db8,#e8006e); border:none; color:#fff; font-family:'Nunito',sans-serif; font-size:0.78rem; font-weight:900; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.pb-reply-cancel  { padding:8px 14px; border-radius:50px; background:#fff; border:1.5px solid #ffd6ed; color:var(--muted); font-family:'Nunito',sans-serif; font-size:0.78rem; font-weight:800; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+/* ══ REPLY CARDS ══ */
+.pb-replies-wrap { margin-top:9px; padding-left:12px; border-left:2.5px solid #ffd6ed; display:flex; flex-direction:column; gap:7px; }
+.pb-reply-card { background:#fff8fc; border-radius:12px; padding:9px 11px; }
+.pb-reply-name { font-size:0.6rem; font-weight:900; color:var(--pk3); letter-spacing:1px; text-transform:uppercase; margin-bottom:3px; }
+.pb-reply-text { font-size:0.83rem; font-weight:700; color:var(--txt); line-height:1.5; }
+.pb-reply-time { font-size:0.58rem; color:var(--muted); font-weight:700; margin-top:3px; }
+</style>
+</head>
+<body>
+
+<!-- Rain wrap -->
+<div class="rain-wrap" id="rainWrap"></div>
+<!-- Sakura petal layer -->
+<div class="sakura-wrap" id="sakuraWrap"></div>
+
+<!-- ══════ HERO ══════ -->
+<header class="hero">
+  <div class="hero-top">
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-orb orb3"></div>
+
+    <div class="hearts-strip">
+      <span>💗</span><span>🌸</span><span>💕</span><span>🌷</span><span>💗</span><span>🌸</span><span>💕</span>
+    </div>
+
+    <div class="hero-badge">✦ our feeroses ✦</div>
+
+    <div class="hero-title">
+      <strong>Roselle</strong>
+      Team
+    </div>
+    <p class="hero-sub">🌸 welcome to our world 🌸</p>
+
+    <div class="glitter-row">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <svg class="hero-wave" viewBox="0 0 500 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C50,60 100,0 160,28 C220,56 280,0 340,25 C400,50 460,5 500,22 L500,60 L0,60 Z" fill="#fff4fb"/>
+  </svg>
+</header>
+
+<!-- 🌸 FLOWER MARQUEE STRIP 🌸 -->
+<div class="flower-marquee">
+  <div class="fm-inner">
+    <span>🌸</span><span>🌷</span><span>🪷</span><span>🌺</span><span>💐</span><span>🌹</span><span>💗</span><span>🌸</span><span>🌷</span><span>🪷</span><span>🌺</span><span>💕</span><span>🌹</span><span>🌸</span><span>🌷</span><span>🌸</span><span>💮</span><span>🌷</span><span>🪷</span><span>🌺</span>
+    <span>🌸</span><span>🌷</span><span>🪷</span><span>🌺</span><span>💐</span><span>🌹</span><span>💗</span><span>🌸</span><span>🌷</span><span>🪷</span><span>🌺</span><span>💕</span><span>🌹</span><span>🌸</span><span>🌷</span><span>🌸</span><span>💮</span><span>🌷</span><span>🪷</span><span>🌺</span>
+  </div>
+</div>
+
+<!-- sticker row -->
+<div class="sticker-row">
+  <span class="sticker">🌸 Kawaii</span>
+  <span class="sticker">🪷 Roselle</span>
+  <span class="sticker">💗 Team</span>
+  <span class="sticker">🌷 Feeroses</span>
+  <span class="sticker">✨ Manis</span>
+  <span class="sticker">🌺 Cantik</span>
+  <span class="sticker">💐 Bunga</span>
+</div>
+
+<!-- ══════ MAIN ══════ -->
+<main>
+
+  <!-- WELCOME -->
+  <div class="card welcome-card">
+    <span class="wc-big-emoji">🪷</span>
+    <div class="wc-title">Welcome, Feeroses~! ♡</div>
+    <p class="wc-desc">
+      Selamat datang di <strong>Roselle Team</strong>! 🌸<br>
+      Kita adalah keluarga kecil yang hangat &amp; menyenangkan.<br>
+      Semoga betah, nyaman, dan happy di sini ya! 💕
+    </p>
+    <div class="wc-deco">──୨ৎ── ⋆𐙚̊ ──୨ৎ──</div>
+  </div>
+
+  <div class="floral-div"><div class="fd-line"></div><span>🌸</span><span>🌷</span><span>💗</span><span>🌷</span><span>🌸</span><div class="fd-line"></div></div>
+
+  <!-- LARANGAN KERAS -->
+  <div class="card">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-pink">⚠️</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Larangan Keras — Roses</div>
+        <div class="card-banner-sub">wajib baca sebelum aktif!</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="sanction-pill sp-red">‼️ SANKSI : KICK ‼️</div>
+      <div class="rule-row"><span class="rule-emoji">🔞</span><span class="rule-text">Dilarang mengirim media 18+ / 21+</span></div>
+      <div class="rule-row"><span class="rule-emoji">🚫</span><span class="rule-text">Dilarang rasis, SARA &amp; bullying dalam bentuk apapun</span></div>
+      <div class="rule-row"><span class="rule-emoji">💔</span><span class="rule-text">Dilarang mengirim hal yang bisa merusak grup</span></div>
+      <div class="rule-row"><span class="rule-emoji">☠️</span><span class="rule-text">Dilarang konten toxic berat</span></div>
+      <div class="rule-row"><span class="rule-emoji">🔇</span><span class="rule-text">Dilarang kirim chat audio / voice note</span></div>
+      <div class="rule-row"><span class="rule-emoji">🤖</span><span class="rule-text">Dilarang pakai / add bot tanpa izin admin</span></div>
+    </div>
+  </div>
+
+  <!-- ATURAN ROSES -->
+  <div class="card">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-rose">📋</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Aturan Roses</div>
+        <div class="card-banner-sub">harap dipatuhi semua anggota ✨</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="sanction-pill sp-orange">‼️ SANKSI : SURAT PERINGATAN ‼️</div>
+      <div class="rule-row"><span class="rule-emoji">🎬</span><span class="rule-text">Dilarang kirim media gore &amp; horor</span></div>
+      <div class="rule-row"><span class="rule-emoji">🗣️</span><span class="rule-text">Hindari kata kasar / kata kasar ringan</span></div>
+      <div class="rule-row"><span class="rule-emoji">📵</span><span class="rule-text">Dilarang spam media lebih dari 10x</span></div>
+      <div class="rule-row"><span class="rule-emoji">📸</span><span class="rule-text">Kirim media wajib 1x saja — tidak boleh diulang</span></div>
+      <div class="rule-row"><span class="rule-emoji">💬</span><span class="rule-text">Dilarang CDC (chat dalam chat)</span></div>
+      <div class="rule-row"><span class="rule-emoji">📌</span><span class="rule-text">Dilarang tag status yang tidak berhubungan dengan Roselle Team</span></div>
+      <div class="rule-row"><span class="rule-emoji">🔗</span><span class="rule-text">Dilarang mempromosikan grup lain</span></div>
+    </div>
+  </div>
+
+  <div class="floral-div"><div class="fd-line"></div><span>🌸</span><span>🌷</span><span>💗</span><span>🌷</span><span>🌸</span><div class="fd-line"></div></div>
+
+  <!-- STRUKTUR TIM -->
+  <div class="card">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-pink">👑</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Struktur Tim Roselle</div>
+        <div class="card-banner-sub">posisi &amp; anggota resmi 🌸</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="pos-row pr-owner">
+        <span class="pos-badge pb-owner">Owner</span>
+        <span class="pos-emo">👑</span>
+        <span class="pos-name">Ciee</span>
+      </div>
+      <div class="pos-row pr-co">
+        <span class="pos-badge pb-co">Co-Owner</span>
+        <span class="pos-emo">🌸</span>
+        <span class="pos-name">Aveline</span>
+      </div>
+      <div class="pos-row pr-admin">
+        <span class="pos-badge pb-admin">Admin 01</span>
+        <span class="pos-emo">🌷</span>
+        <span class="pos-name">Charliee</span>
+      </div>
+      <div class="pos-row pr-admin">
+        <span class="pos-badge pb-admin">Admin 02</span>
+        <span class="pos-emo">🌷</span>
+        <span class="pos-name">Miselle</span>
+      </div>
+      <div class="pos-row pr-admin">
+        <span class="pos-badge pb-admin">Admin 03</span>
+        <span class="pos-emo">🌷</span>
+        <span class="pos-name">Reihan</span>
+      </div>
+      <div class="pos-row pr-admin">
+        <span class="pos-badge pb-admin">Admin 04</span>
+        <span class="pos-emo">🌷</span>
+        <span class="pos-name">Gizelle</span>
+      </div>
+      <div class="pos-row pr-secu">
+        <span class="pos-badge pb-secu">Security 01</span>
+        <span class="pos-emo">🛡️</span>
+        <span class="pos-name">Roma</span>
+      </div>
+      <div class="pos-row pr-secu">
+        <span class="pos-badge pb-secu">Security 02</span>
+        <span class="pos-emo">🛡️</span>
+        <span class="pos-name">Nalea</span>
+      </div>
+      <div class="pos-row pr-editor">
+        <span class="pos-badge pb-editor">Editor 01</span>
+        <span class="pos-emo">✏️</span>
+        <span class="pos-name">Aveline</span>
+      </div>
+      <div class="pos-row pr-editor">
+        <span class="pos-badge pb-editor">Editor 02</span>
+        <span class="pos-emo">✏️</span>
+        <span class="pos-name">Ciee</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="floral-div"><div class="fd-line"></div><span>🌸</span><span>🌷</span><span>💗</span><span>🌷</span><span>🌸</span><div class="fd-line"></div></div>
+
+  <!-- JAM AKTIF -->
+  <div class="card">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-peach">🕐</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Jadwal Buka — Tutup</div>
+        <div class="card-banner-sub">jam aktif grup setiap hari</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="jam-wrap">
+        <div class="jam-clock">🌸</div>
+        <div class="jam-info">
+          <div class="jam-everyday">⏰ every day / setiap hari</div>
+          <div class="jam-time">06.00 – 21.30</div>
+          <div class="jam-zone">🌏 WIB — Waktu Indonesia Barat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="floral-div"><div class="fd-line"></div><span>🌸</span><span>🌷</span><span>💗</span><span>🌷</span><span>🌸</span><div class="fd-line"></div></div>
+
+  <!-- SOSMED & LINK -->
+  <div class="card">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-dark">🔗</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Link &amp; Sosial Media</div>
+        <div class="card-banner-sub">semua link resmi RST di sini! ✨</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <a href="https://tiktok.com/@roses.inyourhearts" target="_blank" class="lbtn tiktok">
+        <div class="lbtn-icon-wrap">🎵</div>
+        <div class="lbtn-info">
+          <div class="lbtn-lbl">TikTok Official</div>
+          <div class="lbtn-name">@roses.inyourhearts</div>
+          <div class="lbtn-note">Tap untuk buka TikTok RST 🎶</div>
+        </div>
+        <span class="lbtn-arr">›</span>
+      </a>
+      <a href="https://chat.whatsapp.com/IJZuD9FsIWq3RZmjKBkbYU" target="_blank" class="lbtn wagroup">
+        <div class="lbtn-icon-wrap">💬</div>
+        <div class="lbtn-info">
+          <div class="lbtn-lbl">WhatsApp — Grup Chat</div>
+          <div class="lbtn-name">Roselle Team Group</div>
+          <div class="lbtn-note">⚠️ Jika tidak bisa masuk / error → link mungkin sudah expired &amp; akan segera diganti. Pantau saluran kami!</div>
+        </div>
+        <span class="lbtn-arr">›</span>
+      </a>
+      <a href="https://whatsapp.com/channel/0029Vb7rGK2GehEInYydx63Z" target="_blank" class="lbtn wachan">
+        <div class="lbtn-icon-wrap">📢</div>
+        <div class="lbtn-info">
+          <div class="lbtn-lbl">WhatsApp — Saluran RST</div>
+          <div class="lbtn-name">Saluran Roselle Team</div>
+          <div class="lbtn-note">Info &amp; update terbaru dari tim kami ✨</div>
+        </div>
+        <span class="lbtn-arr">›</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="floral-div"><div class="fd-line"></div><span>🌸</span><span>🌷</span><span>💗</span><span>🌷</span><span>🌸</span><div class="fd-line"></div></div>
+
+  <!-- ROBLOX PROFILES -->
+  <div class="card">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-lav">🎮</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Profil Roblox — Tim</div>
+        <div class="card-banner-sub">akun roblox anggota resmi 🕹️</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <a href="https://www.roblox.com/share?code=dec37f616a152c46b6240fe2d3790b58&type=Profile&source=ProfileShare&stamp=1778417292244" target="_blank" class="rcard">
+        <div class="rcard-ava" style="background:linear-gradient(135deg,#ffaad9,#ff6db8);">🌷</div>
+        <div class="rcard-info">
+          <div class="rcard-role">Co-Owner</div>
+          <div class="rcard-name">Aveline</div>
+          <div class="rcard-tap">Tap untuk lihat profil Roblox 🎮</div>
+        </div>
+        <span class="rcard-arr">›</span>
+      </a>
+      <a href="https://www.roblox.com/users/5730454440/profile" target="_blank" class="rcard">
+        <div class="rcard-ava" style="background:linear-gradient(135deg,#b0a8ff,#7c6fff);">🛡️</div>
+        <div class="rcard-info">
+          <div class="rcard-role">Security 01</div>
+          <div class="rcard-name">Roma</div>
+          <div class="rcard-tap">Tap untuk lihat profil Roblox 🎮</div>
+        </div>
+        <span class="rcard-arr">›</span>
+      </a>
+      <a href="https://www.roblox.com/share?code=1fb7059239cf3d4ca19a4929b1fa48f2&type=Profile&source=ProfileShare&stamp=1778417743549" target="_blank" class="rcard">
+        <div class="rcard-ava" style="background:linear-gradient(135deg,#ff6db8,#e8006e);">👑</div>
+        <div class="rcard-info">
+          <div class="rcard-role">Owner</div>
+          <div class="rcard-name">Cievva</div>
+          <div class="rcard-tap">Tap untuk lihat profil Roblox 🎮</div>
+        </div>
+        <span class="rcard-arr">›</span>
+      </a>
+    </div>
+  </div>
+
+
+  <div class="floral-div"><div class="fd-line"></div><span>🌸</span><span>🌷</span><span>💗</span><span>🌷</span><span>🌸</span><div class="fd-line"></div></div>
+
+  <!-- MINI GAMES CARD -->
+  <div class="card" style="opacity:1;animation-delay:.68s;">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-gold">🎮</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Mini Games Roselle</div>
+        <div class="card-banner-sub">5 game seru buat kamu! 🎉</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <button class="games-hub-btn" onclick="openGameHub()">
+        <span class="ghb-icon">🕹️</span>
+        <div class="ghb-text">
+          Main Sekarang!
+          <span class="ghb-sub">5 GAME • TAP UNTUK MASUK</span>
+        </div>
+        <span style="font-size:1.2rem;opacity:0.8;">›</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="floral-div"><div class="fd-line"></div><span>🌸</span><span>🌷</span><span>💗</span><span>🌷</span><span>🌸</span><div class="fd-line"></div></div>
+
+  <!-- MOOD CHECK -->
+  <div class="card">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-peach">💭</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Mood Kamu Hari Ini?</div>
+        <div class="card-banner-sub">ceritain ke kami~ 🌸</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="mood-grid">
+        <button class="mood-btn" onclick="pickMood(this,'😊','Senang','Wah senang banget denger kamu baik-baik aja! Semoga harimu makin menyenangkan ya~ 🌸')">
+          <span class="mb-emoji">😊</span><span class="mb-label">Senang</span>
+        </button>
+        <button class="mood-btn" onclick="pickMood(this,'😴','Ngantuk','Hehe ngantuk ya? Boleh istirahat dulu, yang penting semangat! ☕💕')">
+          <span class="mb-emoji">😴</span><span class="mb-label">Ngantuk</span>
+        </button>
+        <button class="mood-btn" onclick="pickMood(this,'😢','Sedih','Ehh jangan sedih dong~ Roselle Team selalu ada buat kamu! 🌷💗')">
+          <span class="mb-emoji">😢</span><span class="mb-label">Sedih</span>
+        </button>
+        <button class="mood-btn" onclick="pickMood(this,'😡','Kesal','Tarik napas dulu ya bestie~ Deep breath, semua akan baik-baik aja! 🧘‍♀️✨')">
+          <span class="mb-emoji">😡</span><span class="mb-label">Kesal</span>
+        </button>
+        <button class="mood-btn" onclick="pickMood(this,'🥰','Baper','Aww lagi baper ya? Cerita dong ke kita! 💌🌸')">
+          <span class="mb-emoji">🥰</span><span class="mb-label">Baper</span>
+        </button>
+        <button class="mood-btn" onclick="pickMood(this,'😰','Anxious','Tenang ya, kamu kuat kok! Roselle Team dukung kamu~ 💪🌷')">
+          <span class="mb-emoji">😰</span><span class="mb-label">Anxious</span>
+        </button>
+        <button class="mood-btn" onclick="pickMood(this,'🤩','Excited','Yayyy excited! Semangat itu menular, sebarkan ke semua! 🎉✨')">
+          <span class="mb-emoji">🤩</span><span class="mb-label">Excited</span>
+        </button>
+        <button class="mood-btn" onclick="pickMood(this,'😐','Biasa','Hari biasa pun tetap berharga kok~ Nikmati aja! 🌿💕')">
+          <span class="mb-emoji">😐</span><span class="mb-label">Biasa Aja</span>
+        </button>
+      </div>
+      <div class="mood-result" id="moodResult">
+        <div class="mood-result-big" id="moodEmoji"></div>
+        <div id="moodText"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="floral-div"><div class="fd-line"></div><span>🌸</span><span>🌷</span><span>💗</span><span>🌷</span><span>🌸</span><div class="fd-line"></div></div>
+
+  <!-- KENANGAN RST -->
+  <div class="card">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-lav">📸</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Kenangan RST ✨</div>
+        <div class="card-banner-sub">memories bersama feeroses~ 🌸</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div style="text-align:center;padding:8px 0 4px;">
+        <div style="font-size:2.2rem;margin-bottom:10px;">📸</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--sub);margin-bottom:14px;line-height:1.6;">Koleksi foto kenangan bersama Roselle Team~<br>Tap tombol di bawah untuk melihat semua foto! 🌸</div>
+        <button class="feat-open-btn" onclick="openGalleryOverlay()">
+          <span style="font-size:1.3rem;">📸</span>
+          <div style="text-align:left;">
+            <div>Lihat Kenangan RST</div>
+            <div style="font-size:0.62rem;opacity:0.8;letter-spacing:1.5px;margin-top:2px;">TAP UNTUK BUKA GALERI</div>
+          </div>
+          <span style="font-size:1.1rem;opacity:0.7;">›</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="floral-div"><div class="fd-line"></div><span>🌸</span><span>💌</span><span>💗</span><span>💌</span><span>🌸</span><div class="fd-line"></div></div>
+
+  <!-- PAPAN PESAN -->
+  <div class="card">
+    <div class="card-banner">
+      <div class="card-banner-icon cb-rose">💌</div>
+      <div class="card-banner-text">
+        <div class="card-banner-title">Papan Pesan Roses</div>
+        <div class="card-banner-sub">tinggalkan pesanmu~ semua bisa lihat! ✨</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div style="text-align:center;padding:8px 0 4px;">
+        <div style="font-size:2.2rem;margin-bottom:10px;">💌</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--sub);margin-bottom:14px;line-height:1.6;">Tulis pesan, kesan, atau ucapan buat Roselle Team~<br>Semua orang bisa baca! 🌸</div>
+        <button class="feat-open-btn" onclick="openPesanOverlay()">
+          <span style="font-size:1.3rem;">💌</span>
+          <div style="text-align:left;">
+            <div>Buka Papan Pesan</div>
+            <div style="font-size:0.62rem;opacity:0.8;letter-spacing:1.5px;margin-top:2px;">TULIS & BACA PESAN</div>
+          </div>
+          <span style="font-size:1.1rem;opacity:0.7;">›</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ══ GALLERY OVERLAY ══ -->
+<div class="gal-overlay" id="galOverlay">
+  <div class="gal-header">
+    <button class="gal-back" onclick="closeGalleryOverlay()">←</button>
+    <div class="gal-htitle">📸 Kenangan RST</div>
+    <span class="gal-hcount" id="galCount">0 foto</span>
+  </div>
+  <div class="gal-body">
+    <div class="gal-grid" id="galGrid">
+      <div class="gal-loading">🌸 Memuat kenangan~</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ AUTH MODAL ══ -->
+<div class="auth-modal-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-modal-close" onclick="closeAuthModal()">✕</button>
+    <div class="auth-modal-emoji">🌸</div>
+    <div class="auth-modal-title">Masuk ke Roselle</div>
+    <div class="auth-modal-sub">Login atau daftar akun baru~</div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">🔑 Login</button>
+      <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">✨ Daftar</button>
+    </div>
+    <div id="authFormLogin">
+      <input class="auth-input" id="loginUser" placeholder="Username kamu 🌷" maxlength="30" autocomplete="username">
+      <input class="auth-input" id="loginPass" placeholder="Password 🔒" type="password" maxlength="50" autocomplete="current-password">
+      <button class="auth-btn" id="loginBtn" onclick="doLogin()">🌸 Masuk</button>
+    </div>
+    <div id="authFormRegister" style="display:none;">
+      <input class="auth-input" id="regUser" placeholder="Buat username kamu 🌷" maxlength="30" autocomplete="username">
+      <input class="auth-input" id="regPass" placeholder="Buat password 🔒" type="password" maxlength="50" autocomplete="new-password">
+      <input class="auth-input" id="regPass2" placeholder="Ulangi password 🔒" type="password" maxlength="50" autocomplete="new-password">
+      <button class="auth-btn" id="registerBtn" onclick="doRegister()">✨ Daftar Sekarang</button>
+    </div>
+    <div class="auth-err" id="authErr"></div>
+  </div>
+</div>
+
+<!-- ══ PAPAN PESAN OVERLAY ══ -->
+<div class="pb-overlay" id="pbOverlay">
+  <div class="pb-header">
+    <button class="pb-back" onclick="closePesanOverlay()">←</button>
+    <div class="pb-htitle">💌 Papan Pesan</div>
+    <span class="pb-hcount" id="pbCount">0 pesan</span>
+  </div>
+  <div class="pb-body" id="pbBody">
+    <!-- Auth bar / login prompt -->
+    <div id="pbAuthSection"></div>
+    <div class="pb-form" id="pbFormWrap">
+      <div class="pb-form-title">✍️ Tulis Pesanmu</div>
+      <input class="pb-input" id="pbNama" placeholder="Nama kamu (contoh: Bunga 🌷)" maxlength="30">
+      <textarea class="pb-textarea" id="pbTeks" placeholder="Tulis pesan buat Roselle Team~ (maks 150 karakter)" maxlength="150" oninput="pbCharCount()"></textarea>
+      <div class="pb-char"><span id="pbChar">0</span>/150</div>
+      <button class="pb-submit" id="pbSubmit" onclick="kirimPesan()">💌 Kirim Pesan</button>
+    </div>
+    <div>
+      <div class="pb-list-title">💬 Pesan dari Feeroses</div>
+      <div class="pb-search-wrap">
+        <span class="pb-search-icon">🔍</span>
+        <input class="pb-search" id="pbSearch" placeholder="Cari pesan..." oninput="pbFilterSearch()">
+      </div>
+      <div id="pbList"><div class="pb-loading">Memuat pesan~</div></div>
+    </div>
+  </div>
+</div>
+<div class="pb-toast" id="pbToast"></div>
+
+<div class="game-overlay" id="gameOverlay">
+
+  <!-- SELECT SCREEN -->
+  <div id="screenSelect" style="display:flex;flex-direction:column;height:100%;">
+    <div class="go-header">
+      <button class="go-back" onclick="closeGameHub()">←</button>
+      <div class="go-title">Mini Games 🌸</div>
+      <span class="go-emoji">🎮</span>
+    </div>
+    <div class="game-select">
+      <div class="game-select-title">Pilih Game~! ♡</div>
+      <div class="game-select-sub">✦ 5 game tersedia ✦</div>
+      <div class="game-card" onclick="openGame(1)" style="border-color:#ffe082;">
+        <div class="gc-icon" style="background:linear-gradient(135deg,#ffe082,#ffb300);">🤔</div>
+        <div class="gc-info">
+          <div class="gc-name">Tebak Emoji</div>
+          <div class="gc-desc">Tebak arti dari kombinasi emoji yang lucu! Ada 8 soal menanti~</div>
+        </div><span class="gc-arr">›</span>
+      </div>
+      <div class="game-card" onclick="openGame(2)" style="border-color:#ffaad9;">
+        <div class="gc-icon" style="background:linear-gradient(135deg,#ffaad9,#ff6db8);">💭</div>
+        <div class="gc-info">
+          <div class="gc-name">Would You Rather</div>
+          <div class="gc-desc">Pilih salah satu! Mana yang lebih kamu pilih? 🌸</div>
+        </div><span class="gc-arr">›</span>
+      </div>
+      <div class="game-card" onclick="openGame(3)" style="border-color:#d9b8ff;">
+        <div class="gc-icon" style="background:linear-gradient(135deg,#d9b8ff,#9c4dcc);">🎡</div>
+        <div class="gc-info">
+          <div class="gc-name">Lucky Spin</div>
+          <div class="gc-desc">Putar roda keberuntungan dan lihat hasilnya! ✨</div>
+        </div><span class="gc-arr">›</span>
+      </div>
+      <div class="game-card" onclick="openGame(4)" style="border-color:#b2ebf2;">
+        <div class="gc-icon" style="background:linear-gradient(135deg,#b2ebf2,#00acc1);">🔢</div>
+        <div class="gc-info">
+          <div class="gc-name">Tebak Angka</div>
+          <div class="gc-desc">Tebak angka 1–100 dalam 7 kesempatan. Bisa kah? 🤯</div>
+        </div><span class="gc-arr">›</span>
+      </div>
+      <div class="game-card" onclick="openGame(5)" style="border-color:#ff6db8;">
+        <div class="gc-icon" style="background:linear-gradient(135deg,#ff6db8,#e8006e);">🌸</div>
+        <div class="gc-info">
+          <div class="gc-name">Kuis Roselle</div>
+          <div class="gc-desc">Seberapa tau kamu tentang Roselle Team? Jawab 8 soal!</div>
+        </div><span class="gc-arr">›</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME 1: Tebak Emoji -->
+  <div id="game1" style="display:none;flex-direction:column;height:100%;">
+    <div class="go-header">
+      <button class="go-back" onclick="backToSelect()">←</button>
+      <div class="go-title">Tebak Emoji 🤔</div>
+      <span class="go-emoji">✨</span>
+    </div>
+    <div class="game-screen">
+      <div class="te-score" id="teScore">Skor: 0 / 8</div>
+      <div class="te-question" id="teQuestion"></div>
+      <div class="te-hint" id="teHint"></div>
+      <div class="te-options" id="teOptions"></div>
+      <div class="te-feedback" id="teFeedback"></div>
+      <button class="te-next" id="teNext" onclick="teNextQ()">Soal Berikutnya →</button>
+    </div>
+  </div>
+
+  <!-- GAME 2: Would You Rather -->
+  <div id="game2" style="display:none;flex-direction:column;height:100%;">
+    <div class="go-header">
+      <button class="go-back" onclick="backToSelect()">←</button>
+      <div class="go-title">Would You Rather 💭</div>
+      <span class="go-emoji">🌸</span>
+    </div>
+    <div class="game-screen">
+      <div style="font-size:0.72rem;color:var(--muted);font-weight:700;letter-spacing:1.5px;margin-bottom:8px;" id="ppCounter">Pertanyaan 1 / 8</div>
+      <div class="pp-q" id="ppQ"></div>
+      <div class="pp-or">── ATAU ──</div>
+      <div class="pp-opts" id="ppOpts"></div>
+      <div class="pp-result" id="ppResult">
+        <div class="pp-result-big" id="ppResultEmoji"></div>
+        <div id="ppResultText"></div>
+        <button class="pp-next-btn" onclick="ppNextQ()" style="margin-top:12px;">Pertanyaan Berikutnya →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME 3: Lucky Spin -->
+  <div id="game3" style="display:none;flex-direction:column;height:100%;">
+    <div class="go-header">
+      <button class="go-back" onclick="backToSelect()">←</button>
+      <div class="go-title">Lucky Spin 🎡</div>
+      <span class="go-emoji">✨</span>
+    </div>
+    <div class="game-screen">
+      <div style="font-size:0.8rem;color:var(--muted);font-weight:700;margin-bottom:4px;">Putar roda dan lihat nasibmu~</div>
+      <div class="spin-wheel-wrap">
+        <div class="spin-pointer">▼</div>
+        <canvas id="spinCanvas" class="spin-canvas" width="270" height="270"></canvas>
+      </div>
+      <button class="spin-btn" id="spinBtn" onclick="doSpin()">🎡 PUTAR!</button>
+      <div class="spin-result" id="spinResult"></div>
+    </div>
+  </div>
+
+  <!-- GAME 4: Tebak Angka -->
+  <div id="game4" style="display:none;flex-direction:column;height:100%;">
+    <div class="go-header">
+      <button class="go-back" onclick="backToSelect()">←</button>
+      <div class="go-title">Tebak Angka 🔢</div>
+      <span class="go-emoji">🤯</span>
+    </div>
+    <div class="game-screen">
+      <div style="font-size:0.8rem;color:var(--muted);font-weight:700;margin-bottom:4px;">Tebak angka antara 1 – 100</div>
+      <div class="ta-display" id="taDisplay">?</div>
+      <div class="ta-hint-text" id="taHint">Masukkan tebakan pertamamu!</div>
+      <div class="ta-keypad">
+        <button class="ta-key" onclick="taKey(1)">1</button>
+        <button class="ta-key" onclick="taKey(2)">2</button>
+        <button class="ta-key" onclick="taKey(3)">3</button>
+        <button class="ta-key" onclick="taKey(4)">4</button>
+        <button class="ta-key" onclick="taKey(5)">5</button>
+        <button class="ta-key" onclick="taKey(6)">6</button>
+        <button class="ta-key" onclick="taKey(7)">7</button>
+        <button class="ta-key" onclick="taKey(8)">8</button>
+        <button class="ta-key" onclick="taKey(9)">9</button>
+        <button class="ta-key del" onclick="taKey('del')">⌫</button>
+        <button class="ta-key" onclick="taKey(0)">0</button>
+        <button class="ta-key ok" onclick="taKey('ok')">OK</button>
+      </div>
+      <div class="ta-attempts" id="taAttempts">Kesempatan tersisa: 7</div>
+      <div class="ta-won" id="taWon">🎉 Yeay! Kamu berhasil!</div>
+      <div class="ta-lost" id="taLost"></div>
+      <button class="ta-restart" id="taRestart" onclick="taRestart()">Main Lagi 🔄</button>
+    </div>
+  </div>
+
+  <!-- GAME 5: Kuis Roselle -->
+  <div id="game5" style="display:none;flex-direction:column;height:100%;">
+    <div class="go-header">
+      <button class="go-back" onclick="backToSelect()">←</button>
+      <div class="go-title">Kuis Roselle 🌸</div>
+      <span class="go-emoji">💖</span>
+    </div>
+    <div class="game-screen">
+      <div class="kq-progress"><div class="kq-bar" id="kqBar" style="width:0%"></div></div>
+      <div class="kq-score" id="kqScore">Skor: 0 / 8</div>
+      <div class="kq-q" id="kqQ"></div>
+      <div class="kq-opts" id="kqOpts"></div>
+      <div class="kq-feedback" id="kqFeedback"></div>
+      <button class="kq-next" id="kqNext" onclick="kqNextQ()">Soal Berikutnya →</button>
+      <div class="kq-final" id="kqFinal"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-wrap">
+    <span class="footer-emoji">🌸🌷🪷🌺🌸</span>
+    <div style="font-size:0.75rem;letter-spacing:4px;color:#ff6db8;margin-bottom:8px;">🌸 · 🌷 · 💗 · 🌷 · 🌸</div>
+    <div class="footer-text">Thank you for joining Roselle Team~! ♡</div>
+    <div class="footer-deco">──୨ৎ── ⋆𐙚̊ ──୨ৎ──</div>
+    <div style="font-size:0.72rem;margin-top:10px;color:#ff6db8aa;letter-spacing:3px;">🌹 · 🌷 · 🌸 · 🌷 · 🌹</div>
+  </div>
+</footer>
+
+<script>
+/* ══ FALLING EMOJI RAIN ══ */
+const wrap = document.getElementById('rainWrap');
+const items = ['🌸','🌷','💗','🌺','🪷','💕','⭐','✦','🩷','🫧','💮','✿','🌹','💖','🌼','💐','🩷','🌸','🌷','💗','🌺','🪷'];
+for (let i = 0; i < 60; i++) {
+  const el = document.createElement('div');
+  el.className = 'drop';
+  el.textContent = items[i % items.length];
+  el.style.left = (Math.random() * 100) + '%';
+  el.style.animationDuration = (6 + Math.random() * 13) + 's';
+  el.style.animationDelay = (Math.random() * 22) + 's';
+  el.style.fontSize = (0.58 + Math.random() * 1.1) + 'rem';
+  wrap.appendChild(el);
+}
+
+/* ══ SAKURA CSS PETALS ══ */
+const sakuraWrap = document.getElementById('sakuraWrap');
+const petalColors = [
+  ['#ffcce8','#ff8fc0'],['#ffd6ed','#ff6db8'],['#ffc2de','#ff5aaa'],
+  ['#ffe0f0','#ffaad9'],['#ffb3d9','#ff4da6'],['#f9c5e0','#e8006e']
+];
+for (let i = 0; i < 32; i++) {
+  const p = document.createElement('div');
+  p.className = 'spetal';
+  const size = 6 + Math.random() * 10;
+  const [c1,c2] = petalColors[i % petalColors.length];
+  p.style.cssText = `
+    width:${size}px; height:${size*0.68}px;
+    left:${Math.random()*100}%;
+    animation-duration:${9+Math.random()*14}s;
+    animation-delay:${Math.random()*24}s;
+    background:radial-gradient(ellipse at 40% 35%,${c1},${c2}aa);
+    transform:rotate(${Math.random()*360}deg);
+  `;
+  sakuraWrap.appendChild(p);
+}
+
+
+/* === MOOD CHECK === */
+function pickMood(btn, emoji, label, msg) {
+  document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('moodEmoji').textContent = emoji;
+  document.getElementById('moodText').textContent = msg;
+  const r = document.getElementById('moodResult');
+  r.classList.remove('show');
+  void r.offsetWidth;
+  r.classList.add('show');
+}
+
+
+/* === MINI GAMES === */
+function openGameHub(){document.getElementById('gameOverlay').classList.add('active');showScreen('screenSelect');document.body.style.overflow='hidden';}
+function closeGameHub(){document.getElementById('gameOverlay').classList.remove('active');document.body.style.overflow='';}
+function showScreen(id){['screenSelect','game1','game2','game3','game4','game5'].forEach(s=>{const e=document.getElementById(s);if(e)e.style.display='none';});const t=document.getElementById(id);if(t)t.style.display='flex';}
+function backToSelect(){showScreen('screenSelect');}
+function openGame(n){showScreen('game'+n);if(n===1)teInit();if(n===2)ppInit();if(n===3)spinInit();if(n===4)taInit();if(n===5)kqInit();}
+
+/* GAME 1 - Tebak Emoji */
+const teD=[
+  {e:'🌸💀🌊',h:'3 kata',a:'Bunga Mati Tenggelam',o:['Bunga Mati Tenggelam','Alam Indah Sekali','Cantik Tapi Seram','Pantai Berbunga']},
+  {e:'🐸☕',h:'2 kata populer internet',a:'But First Coffee',o:['Kodok Minum Kopi','But First Coffee','Frog Tea Time','Katak Hijau Segar']},
+  {e:'👀🔪😴',h:'3 kata',a:'Awas Tidur Dibunuh',o:['Lihat Pisau Tidur','Awas Tidur Dibunuh','Mata Tajam Mengantuk','Jaga Keamanan']},
+  {e:'🦋🫀',h:'perasaan kamu',a:'Deg-degan / Nervous',o:['Kupu-kupu di Hati','Deg-degan / Nervous','Cinta Alam Bebas','Hati Penuh Warna']},
+  {e:'🌈🌧️😭',h:'perasaan campur aduk',a:'Senang Sekaligus Sedih',o:['Hujan Pelangi Indah','Awan Warna-warni','Senang Sekaligus Sedih','Nangis Lihat Pelangi']},
+  {e:'🍵📖🌿',h:'aktivitas santai',a:'Baca Buku Sambil Minum Teh',o:['Masak Teh Hijau','Baca Buku Sambil Minum Teh','Teh di Kebun','Santai di Alam']},
+  {e:'🌙⭐💫',h:'suasana malam',a:'Malam Berbintang Indah',o:['Malam Berbintang Indah','Langit Gelap','Bintang Jatuh','Cahaya Fajar']},
+  {e:'🐣💞✨',h:'sesuatu yang baru & lucu',a:'Kelahiran yang Menggemaskan',o:['Telur Berkilau','Kelahiran yang Menggemaskan','Anak Ayam Ajaib','Momen Manis']},
+];
+let teI=0,teS=0,teA=false;
+function teInit(){teI=0;teS=0;teA=false;teRender();}
+function teRender(){
+  if(teI>=teD.length){
+    document.getElementById('teQuestion').textContent='🎉';
+    document.getElementById('teHint').textContent='Selesai!';
+    document.getElementById('teScore').textContent='Skor Akhir: '+teS+' / 8';
+    document.getElementById('teOptions').innerHTML='<div style="text-align:center;grid-column:1/-1;font-size:0.9rem;font-weight:800;color:var(--sub);padding:10px;">'+(teS>=6?'🌸 Luar Biasa!':'💪 Coba Lagi!')+'</div>';
+    document.getElementById('teFeedback').textContent='';
+    document.getElementById('teNext').classList.remove('show');
+    return;
+  }
+  const q=teD[teI];teA=false;
+  document.getElementById('teScore').textContent='Skor: '+teS+' / 8';
+  document.getElementById('teQuestion').textContent=q.e;
+  document.getElementById('teHint').textContent='💡 '+q.h;
+  document.getElementById('teFeedback').textContent='';
+  document.getElementById('teNext').classList.remove('show');
+  const el=document.getElementById('teOptions');el.innerHTML='';
+  q.o.forEach(opt=>{const b=document.createElement('button');b.className='te-opt';b.textContent=opt;b.onclick=()=>teAns(b,opt,q.a);el.appendChild(b);});
+}
+function teAns(btn,chosen,correct){
+  if(teA)return;teA=true;
+  document.querySelectorAll('.te-opt').forEach(b=>{b.onclick=null;if(b.textContent===correct)b.classList.add('reveal');});
+  if(chosen===correct){btn.classList.add('correct');document.getElementById('teFeedback').textContent='🎉 Benar!';teS++;}
+  else{btn.classList.add('wrong');document.getElementById('teFeedback').textContent='😢 Salah!';}
+  document.getElementById('teNext').classList.add('show');
+}
+function teNextQ(){teI++;teRender();}
+
+/* GAME 2 - Would You Rather */
+const ppD=[
+  {q:'Tinggal di dunia penuh bunga tapi ga ada wifi',a:'🌸',rb:'📱 Punya wifi super cepat tapi di tempat sepi total',ra:'Kamu tipe alam bebas ya~ 🌿',rbb:'Generasi digital banget! WiFi > segalanya 😆'},
+  {q:'Tidur 12 jam tapi ga bisa keluar rumah',a:'😴',rb:'🌍 Keliling dunia tapi hanya tidur 4 jam',ra:'Homebody sejati! Tidur adalah segalanya 💤',rbb:'Petualang tulen! ✈️'},
+  {q:'Nyanyi di depan 1000 orang tanpa latihan',a:'🎤',rb:'👻 Diliatin hantu setiap malam',ra:'Pemberani! Mending malu dari pada takut 🎵',rbb:'Serem sih, tapi bisa tidur... mungkin 😂'},
+  {q:'Makan kue favorit tiap hari selamanya',a:'🍰',rb:'🌮 Coba makanan baru dari seluruh dunia tapi sekali',ra:'Setia dan konsisten! 🎂',rbb:'Petualang rasa! Hidup penuh variasi 🌍'},
+  {q:'Punya 10 kucing manja kemana-mana',a:'🐱',rb:'🐶 Punya 1 anjing setia yang jaga kamu',ra:'Cat lover sejati! Banyak kucing = banyak cinta 🐾',rbb:'Quality over quantity! 🐕'},
+  {q:'Bisa terbang tapi kelihatan semua orang',a:'⚡',rb:'🔮 Bisa invisible tapi ga bisa terbang',ra:'Berani tampil! Udara bebas asyik~ ✈️',rbb:'Low profile tapi powerful 😂'},
+  {q:'Langsung tau semua ilmu tapi lupa caranya dapat',a:'📚',rb:'🎓 Belajar keras 10 tahun jadi master satu bidang',ra:'Otak ensiklopedia berjalan! 📖',rbb:'Pekerja keras sejati 💪'},
+  {q:'Hidup di pantai selamanya',a:'🌅',rb:'❄️ Hidup di gunung bersalju selamanya',ra:'Beach vibes! Sunset tiap hari 🌊',rbb:'Cozy mountain life! ☕'},
+];
+let ppI=0;
+function ppInit(){ppI=0;ppRender();}
+function ppRender(){
+  if(ppI>=ppD.length){document.getElementById('ppQ').textContent='✨ Selesai semua pertanyaan!';document.getElementById('ppCounter').textContent='Selesai!';document.getElementById('ppOpts').innerHTML='<div style="text-align:center;font-size:1.5rem;margin-top:10px;">🎉</div>';document.getElementById('ppResult').classList.remove('show');return;}
+  const q=ppD[ppI];
+  document.getElementById('ppCounter').textContent='Pertanyaan '+(ppI+1)+' / 8';
+  document.getElementById('ppQ').textContent='Kamu lebih milih mana?';
+  document.getElementById('ppResult').classList.remove('show');
+  const el=document.getElementById('ppOpts');el.innerHTML='';
+  [[q.a+' '+q.q,q.ra,'💗'],[q.rb,q.rbb,'💙']].forEach(([txt,res,emo])=>{
+    const b=document.createElement('button');b.className='pp-opt';
+    b.innerHTML='<span class="pp-emoji">'+emo+'</span>'+txt;
+    b.onclick=()=>{document.getElementById('ppResultEmoji').textContent=emo+emo+emo;document.getElementById('ppResultText').textContent=res;document.getElementById('ppResult').classList.add('show');};
+    el.appendChild(b);
+  });
+}
+function ppNextQ(){ppI++;ppRender();}
+
+/* GAME 3 - Lucky Spin */
+const spinSeg=[
+  {l:'🌸 Super Cantik!',c:'#ff6db8'},{l:'⭐ Bintang Roselle',c:'#ffb300'},
+  {l:'😴 Istirahat Dulu',c:'#7c6fff'},{l:'💖 Penuh Kasih',c:'#e8006e'},
+  {l:'🍀 Lagi Beruntung!',c:'#26a69a'},{l:'🎁 Dapet Kejutan!',c:'#f57c00'},
+  {l:'🌈 Hari Pelangi!',c:'#9c4dcc'},{l:'🦋 Jiwa Bebas!',c:'#ff79b8'},
+];
+let spinAng=0,spinning=false,spinReady=false;
+function spinInit(){if(!spinReady){drawWheel(0);spinReady=true;}}
+function drawWheel(rot){
+  const cv=document.getElementById('spinCanvas');if(!cv)return;
+  const ctx=cv.getContext('2d'),cx=135,cy=135,r=128,seg=(2*Math.PI)/spinSeg.length;
+  ctx.clearRect(0,0,270,270);
+  spinSeg.forEach((s,i)=>{
+    const st=rot+i*seg,en=st+seg;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,st,en);ctx.closePath();
+    ctx.fillStyle=s.c;ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=2.5;ctx.stroke();
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(st+seg/2);ctx.textAlign='right';
+    ctx.fillStyle='#fff';ctx.font='bold 10.5px Nunito,sans-serif';ctx.shadowColor='#00000044';ctx.shadowBlur=3;
+    const w=s.l.split(' '),f=w[0],rest=w.slice(1).join(' ');
+    ctx.fillText(f,r-8,-5);if(rest)ctx.fillText(rest,r-8,8);
+    ctx.restore();
+  });
+  ctx.beginPath();ctx.arc(cx,cy,22,0,2*Math.PI);ctx.fillStyle='#fff';ctx.fill();ctx.strokeStyle='#ffaad9';ctx.lineWidth=3;ctx.stroke();
+  ctx.fillStyle='#e8006e';ctx.font='bold 12px Nunito,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('RST',cx,cy);
+}
+function doSpin(){
+  if(spinning)return;spinning=true;
+  const btn=document.getElementById('spinBtn');btn.disabled=true;
+  document.getElementById('spinResult').textContent='';
+  const extra=5*2*Math.PI+Math.random()*2*Math.PI,target=spinAng+extra,dur=4000,start=performance.now(),from=spinAng;
+  function anim(now){
+    const t=Math.min((now-start)/dur,1),ease=1-Math.pow(1-t,4),cur=from+(target-from)*ease;
+    drawWheel(cur);
+    if(t<1){requestAnimationFrame(anim);}
+    else{
+      spinAng=target%(2*Math.PI);drawWheel(spinAng);spinning=false;btn.disabled=false;
+      const seg=(2*Math.PI)/spinSeg.length,norm=((2*Math.PI-spinAng)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);
+      const idx=Math.floor(norm/seg)%spinSeg.length,res=spinSeg[idx];
+      document.getElementById('spinResult').innerHTML='<div style="font-size:1.5rem;margin-bottom:6px;">'+res.l.split(' ')[0]+'</div><div style="font-size:0.9rem;font-weight:900;color:'+res.c+';">'+res.l+'</div>';
+    }
+  }
+  requestAnimationFrame(anim);
+}
+
+/* GAME 4 - Tebak Angka */
+let taSecret,taLeft,taInput='';
+function taInit(){taSecret=Math.floor(Math.random()*100)+1;taLeft=7;taInput='';document.getElementById('taDisplay').textContent='?';document.getElementById('taHint').textContent='Masukkan tebakan pertamamu!';document.getElementById('taAttempts').textContent='Kesempatan tersisa: 7';document.getElementById('taWon').style.display='none';document.getElementById('taLost').style.display='none';document.getElementById('taRestart').style.display='none';document.querySelectorAll('.ta-key').forEach(k=>k.disabled=false);}
+function taKey(v){
+  if(taLeft<=0)return;
+  if(v==='del'){taInput=taInput.slice(0,-1);}
+  else if(v==='ok'){
+    const g=parseInt(taInput);
+    if(!taInput||isNaN(g)||g<1||g>100){document.getElementById('taHint').textContent='⚠️ Masukkan angka 1–100!';return;}
+    taLeft--;document.getElementById('taAttempts').textContent='Kesempatan tersisa: '+taLeft;
+    if(g===taSecret){document.getElementById('taDisplay').textContent=taSecret;document.getElementById('taWon').textContent='🎉 Yeay! '+taSecret+' adalah jawabannya!';document.getElementById('taWon').style.display='block';document.getElementById('taRestart').style.display='block';document.getElementById('taHint').textContent='';document.querySelectorAll('.ta-key').forEach(k=>k.disabled=true);}
+    else if(taLeft===0){document.getElementById('taDisplay').textContent='💔';document.getElementById('taLost').textContent='😢 Habis! Jawabannya: '+taSecret;document.getElementById('taLost').style.display='block';document.getElementById('taRestart').style.display='block';document.getElementById('taHint').textContent='';document.querySelectorAll('.ta-key').forEach(k=>k.disabled=true);}
+    else{const d=Math.abs(g-taSecret);let h=g<taSecret?'📈 Terlalu kecil!':'📉 Terlalu besar!';if(d<=5)h+=' (Sangat dekat! 🔥)';else if(d<=15)h+=' (Agak dekat~ 😊)';document.getElementById('taHint').textContent=h;document.getElementById('taDisplay').textContent=g;}
+    taInput='';return;
+  }else{if(taInput.length>=3)return;taInput+=v;}
+  document.getElementById('taDisplay').textContent=taInput||'?';
+}
+function taRestart(){taInit();}
+
+/* GAME 5 - Kuis Roselle */
+const kqD=[
+  {q:'Siapa Owner Roselle Team?',a:'Ciee',o:['Aveline','Ciee','Roma','Charliee']},
+  {q:'Siapa Co-Owner Roselle Team?',a:'Aveline',o:['Gizelle','Nalea','Aveline','Miselle']},
+  {q:'Akun TikTok resmi Roselle Team?',a:'@roses.inyourhearts',o:['@roselleteam','@roses.inyourhearts','@roselleofficial','@feeroses']},
+  {q:'Jam buka grup dimulai pukul berapa?',a:'06.00',o:['07.00','08.00','06.00','05.30']},
+  {q:'Jam tutup grup setiap hari pukul?',a:'21.30',o:['22.00','21.30','20.00','23.00']},
+  {q:'Sebutan untuk anggota Roselle Team?',a:'Feeroses',o:['Roses','Feeroses','Rosies','Rosella']},
+  {q:'Security 01 Roselle Team adalah?',a:'Roma',o:['Roma','Nalea','Reihan','Charliee']},
+  {q:'Zona waktu yang digunakan Roselle Team?',a:'WIB',o:['WITA','WIT','WIB','GMT+8']},
+];
+let kqI=0,kqS=0,kqA=false;
+function kqInit(){kqI=0;kqS=0;kqA=false;document.getElementById('kqFinal').classList.remove('show');document.getElementById('kqFinal').style.display='none';kqRender();}
+function kqRender(){
+  if(kqI>=kqD.length){
+    document.getElementById('kqQ').textContent='';document.getElementById('kqOpts').innerHTML='';document.getElementById('kqFeedback').textContent='';document.getElementById('kqNext').classList.remove('show');
+    const pct=Math.round((kqS/kqD.length)*100),medal=pct===100?'🏆':pct>=75?'🥇':pct>=50?'🥈':'🥉';
+    const msg=pct===100?'Sempurna! Kamu tau segalanya tentang Roselle Team!':pct>=75?'Keren! Kamu cukup kenal Roselle Team~':pct>=50?'Lumayan! Masih ada yang bisa dipelajari 😊':'Yuk lebih kenal Roselle Team! 💪';
+    const fin=document.getElementById('kqFinal');
+    fin.innerHTML=medal+'<br><div style="font-size:1rem;margin-top:8px;">'+msg+'</div><div style="font-size:0.85rem;margin-top:6px;color:var(--sub);">Skor: '+kqS+' / 8 ('+pct+'%)</div><button class="kq-next show" onclick="kqInit()" style="margin-top:14px;display:block;">Main Lagi 🔄</button>';
+    fin.style.display='block';fin.classList.add('show');return;
+  }
+  const q=kqD[kqI];kqA=false;
+  document.getElementById('kqBar').style.width=(kqI/kqD.length*100)+'%';
+  document.getElementById('kqScore').textContent='Skor: '+kqS+' / 8';
+  document.getElementById('kqQ').textContent='❓ '+q.q;
+  document.getElementById('kqFeedback').textContent='';
+  document.getElementById('kqNext').classList.remove('show');
+  const el=document.getElementById('kqOpts');el.innerHTML='';
+  [...q.o].sort(()=>Math.random()-0.5).forEach(opt=>{const b=document.createElement('button');b.className='kq-opt';b.textContent=opt;b.onclick=()=>kqAns(b,opt,q.a);el.appendChild(b);});
+}
+function kqAns(btn,chosen,correct){
+  if(kqA)return;kqA=true;
+  document.querySelectorAll('.kq-opt').forEach(b=>{b.onclick=null;if(b.textContent===correct)b.classList.add('reveal');});
+  if(chosen===correct){btn.classList.add('correct');document.getElementById('kqFeedback').textContent='✅ Benar!';kqS++;document.getElementById('kqScore').textContent='Skor: '+kqS+' / 8';}
+  else{btn.classList.add('wrong');document.getElementById('kqFeedback').textContent='❌ Salah! Jawaban: '+correct;}
+  document.getElementById('kqNext').classList.add('show');
+}
+function kqNextQ(){kqI++;kqRender();}
+
+/* === KENANGAN RST === */
+let allMemories = [];
+let lbCurrentIdx = 0;
+
+/* === GALLERY OVERLAY === */
+let galLoaded = false;
+
+async function openGalleryOverlay() {
+  document.getElementById('galOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  if (galLoaded) return;
+  try {
+    const res = await fetch('./rst-memories.json');
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    allMemories = data;
+    galLoaded = true;
+    document.getElementById('galCount').textContent = data.length + ' foto';
+    if (!data.length) { document.getElementById('galGrid').innerHTML = '<div class="gal-loading">🌸 Belum ada kenangan~</div>'; return; }
+    document.getElementById('galGrid').innerHTML = data.map((m,i) =>
+      `<div class="gal-item" onclick="openLightbox(${i})">
+        <img src="${m.link}" alt="Kenangan" loading="lazy" onerror="this.parentElement.style.display='none'">
+
+        <div class="gal-item-overlay">🔍</div>
+      </div>`
+    ).join('');
+  } catch(e) {
+    document.getElementById('galGrid').innerHTML = '<div class="gal-loading">⚠️ rst-memories.json tidak ditemukan</div>';
+  }
+}
+
+function closeGalleryOverlay() {
+  document.getElementById('galOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ══════════════════════════════════════════
+   🌸 PAPAN PESAN — AUTH SYSTEM
+══════════════════════════════════════════ */
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwOPrFsVZRdkMDfY_4KTFAIzHa6iIgY1i5y0ubEl5pMjVAjJCrQqmZOhNMpCTcQssKaKA/exec';
+let pbMessages = [];
+let pbLoaded = false;
+let pbLiked    = new Set(JSON.parse(localStorage.getItem('pb_liked')    || '[]'));
+let pbDisliked = new Set(JSON.parse(localStorage.getItem('pb_disliked') || '[]'));
+let pbReacted  = new Set(JSON.parse(localStorage.getItem('pb_reacted')  || '[]'));
+
+/* ── Auth state (simpan di localStorage) ── */
+let currentUser = JSON.parse(localStorage.getItem('rst_user') || 'null');
+// { username, token }  — token = username+timestamp hash sederhana
+
+/* ── Helpers ── */
+function pbNow() {
+  const n = new Date();
+  return n.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'})
+       + ' ' + n.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+}
+
+/* ══ AUTH MODAL ══ */
+function openAuthModal() {
+  document.getElementById('authOverlay').classList.add('show');
+  document.getElementById('authErr').textContent = '';
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginPass').value = '';
+  switchAuthTab('login');
+}
+function closeAuthModal() {
+  document.getElementById('authOverlay').classList.remove('show');
+}
+document.getElementById('authOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('authOverlay')) closeAuthModal();
+});
+function switchAuthTab(tab) {
+  document.getElementById('authErr').textContent = '';
+  document.getElementById('authFormLogin').style.display    = tab==='login'    ? '' : 'none';
+  document.getElementById('authFormRegister').style.display = tab==='register' ? '' : 'none';
+  document.getElementById('tabLogin').classList.toggle('active',    tab==='login');
+  document.getElementById('tabRegister').classList.toggle('active', tab==='register');
+}
+
+/* Kirim ke GAS via GET dengan JSONP-workaround (no-cors fetch baca response via redirect trick) */
+async function gasRequest(params) {
+  // Kita pakai fetch GET, hasilnya bisa dibaca karena GAS mengembalikan JSON
+  const url = GAS_URL + '?' + new URLSearchParams(params).toString();
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Network error');
+  return await res.json();
+}
+
+async function doLogin() {
+  const username = document.getElementById('loginUser').value.trim();
+  const password = document.getElementById('loginPass').value;
+  const errEl = document.getElementById('authErr');
+  if (!username || !password) { errEl.textContent = '⚠️ Isi username & password ya!'; return; }
+  const btn = document.getElementById('loginBtn');
+  btn.disabled = true; btn.textContent = '⏳ Memeriksa...';
+  errEl.textContent = '';
+  try {
+    const res = await gasRequest({ action: 'login', username, password });
+    if (res.ok) {
+      currentUser = { username: res.username };
+      localStorage.setItem('rst_user', JSON.stringify(currentUser));
+      closeAuthModal();
+      renderAuthBar();
+      // auto-isi nama
+      document.getElementById('pbNama').value = currentUser.username;
+      document.getElementById('pbNama').readOnly = true;
+      showPbToast('🌸 Halo ' + currentUser.username + '!');
+    } else {
+      errEl.textContent = '❌ ' + (res.msg || 'Username/password salah!');
+    }
+  } catch(e) {
+    errEl.textContent = '❌ Gagal terhubung ke server.';
+  } finally {
+    btn.disabled = false; btn.textContent = '🌸 Masuk';
+  }
+}
+
+async function doRegister() {
+  const username = document.getElementById('regUser').value.trim();
+  const password = document.getElementById('regPass').value;
+  const pass2    = document.getElementById('regPass2').value;
+  const errEl = document.getElementById('authErr');
+  if (!username || !password) { errEl.textContent = '⚠️ Isi semua kolom ya!'; return; }
+  if (password !== pass2) { errEl.textContent = '❌ Password tidak cocok!'; return; }
+  if (username.length < 3) { errEl.textContent = '⚠️ Username minimal 3 karakter!'; return; }
+  if (password.length < 4) { errEl.textContent = '⚠️ Password minimal 4 karakter!'; return; }
+  const btn = document.getElementById('registerBtn');
+  btn.disabled = true; btn.textContent = '⏳ Mendaftar...';
+  errEl.textContent = '';
+  try {
+    const res = await gasRequest({ action: 'register', username, password });
+    if (res.ok) {
+      currentUser = { username: res.username };
+      localStorage.setItem('rst_user', JSON.stringify(currentUser));
+      closeAuthModal();
+      renderAuthBar();
+      document.getElementById('pbNama').value = currentUser.username;
+      document.getElementById('pbNama').readOnly = true;
+      showPbToast('✨ Akun berhasil dibuat! Halo ' + currentUser.username + '~');
+    } else {
+      errEl.textContent = '❌ ' + (res.msg || 'Gagal daftar.');
+    }
+  } catch(e) {
+    errEl.textContent = '❌ Gagal terhubung ke server.';
+  } finally {
+    btn.disabled = false; btn.textContent = '✨ Daftar Sekarang';
+  }
+}
+
+function doLogout() {
+  currentUser = null;
+  localStorage.removeItem('rst_user');
+  document.getElementById('pbNama').value = '';
+  document.getElementById('pbNama').readOnly = false;
+  renderAuthBar();
+  pbLoaded = false;
+  renderPesan();
+  showPbToast('👋 Sudah logout~');
+}
+
+function renderAuthBar() {
+  const el = document.getElementById('pbAuthSection');
+  if (currentUser) {
+    const initial = currentUser.username.charAt(0).toUpperCase();
+    el.innerHTML = `
+      <div class="pb-auth-bar">
+        <div class="pb-auth-avatar">${initial}</div>
+        <div class="pb-auth-info">
+          <div class="pb-auth-name">🌸 ${currentUser.username}</div>
+          <div class="pb-auth-status">Kamu sudah login~ ✨</div>
+        </div>
+        <button class="pb-auth-logout" onclick="doLogout()">Logout</button>
+      </div>`;
+    document.getElementById('pbNama').value = currentUser.username;
+    document.getElementById('pbNama').readOnly = true;
+  } else {
+    el.innerHTML = `
+      <div class="pb-login-prompt" onclick="openAuthModal()">
+        <span class="pb-login-prompt-icon">🔑</span>
+        <div class="pb-login-prompt-text">
+          <div class="pb-login-prompt-title">Login / Daftar Akun</div>
+          <div class="pb-login-prompt-sub">Login biar bisa hapus & edit pesanmu~ ✨</div>
+        </div>
+        <span style="font-size:1.1rem;color:var(--pk2);">›</span>
+      </div>`;
+    document.getElementById('pbNama').readOnly = false;
+  }
+}
+
+/* ══ OVERLAY OPEN/CLOSE ══ */
+async function openPesanOverlay() {
+  document.getElementById('pbOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  renderAuthBar();
+  if (!pbLoaded) await loadPesan();
+}
+function closePesanOverlay() {
+  document.getElementById('pbOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function pbCharCount() {
+  document.getElementById('pbChar').textContent = document.getElementById('pbTeks').value.length;
+}
+function showPbToast(msg) {
+  const t = document.getElementById('pbToast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+/* ══ LOAD PESAN ══ */
+async function loadPesan() {
+  document.getElementById('pbList').innerHTML = '<div class="pb-loading">🌸 Memuat pesan~</div>';
+  try {
+    const res = await fetch(GAS_URL);
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    pbMessages = Array.isArray(data) ? data : [];
+    pbLoaded = true;
+    renderPesan();
+  } catch(e) {
+    document.getElementById('pbList').innerHTML = '<div class="pb-loading">⚠️ Gagal memuat pesan.</div>';
+  }
+}
+
+function pbFilterSearch() {
+  const q = document.getElementById('pbSearch').value.trim().toLowerCase();
+  renderPesan(q);
+}
+
+/* ══ RENDER PESAN ══ */
+function renderPesan(filter = '') {
+  const topLevel = pbMessages.filter(p => !p.replyTo || p.replyTo === 0);
+  document.getElementById('pbCount').textContent = topLevel.length + ' pesan';
+  const filtered = filter
+    ? topLevel.filter(p => (p.nama||'').toLowerCase().includes(filter) || (p.teks||'').toLowerCase().includes(filter))
+    : topLevel;
+  if (!filtered.length) {
+    document.getElementById('pbList').innerHTML = filter
+      ? '<div class="pb-loading">🔍 Pesan tidak ditemukan~</div>'
+      : '<div class="pb-loading">🌸 Belum ada pesan~ Jadilah yang pertama!</div>';
+    return;
+  }
+  document.getElementById('pbList').innerHTML = [...filtered].reverse().map(p => {
+    const likedClass     = pbLiked.has(p.id)    ? 'pb-liked'    : '';
+    const dislikedClass  = pbDisliked.has(p.id) ? 'pb-disliked' : '';
+    const alreadyReacted = pbReacted.has('react_' + p.id);
+    const heartClass     = alreadyReacted && localStorage.getItem('pb_react_type_'+p.id)==='heart' ? 'pb-reacted pb-heart' : '';
+    const fireClass      = alreadyReacted && localStorage.getItem('pb_react_type_'+p.id)==='fire'  ? 'pb-reacted pb-fire'  : '';
+    const laughClass     = alreadyReacted && localStorage.getItem('pb_react_type_'+p.id)==='laugh' ? 'pb-reacted pb-laugh' : '';
+    const reactDisabled  = alreadyReacted ? 'style="opacity:0.5;cursor:default;"' : '';
+    // Tombol owner (hapus/edit) — hanya tampil jika username cocok
+    const isOwner = currentUser && currentUser.username === p.nama;
+    const ownerBtns = isOwner ? `
+      <div class="pb-card-owner-actions">
+        <button class="pb-edit-btn" onclick="startEditPesan(${p.id})">✏️ Edit</button>
+        <button class="pb-delete-btn" onclick="deletePesan(${p.id})">🗑️ Hapus</button>
+      </div>` : '';
+    const replies = pbMessages.filter(r => r.replyTo === p.id);
+    const repliesHtml = replies.length ? `<div class="pb-replies-wrap">${replies.map(r => {
+      const isReplyOwner = currentUser && currentUser.username === r.nama;
+      return `<div class="pb-reply-card">
+        <div class="pb-reply-name">↩️ ${r.nama||'Anonim'}</div>
+        <div class="pb-reply-text">${String(r.teks||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+        <div class="pb-reply-time">🕐 ${r.waktu||''}</div>
+        ${isReplyOwner ? `<div class="pb-card-owner-actions"><button class="pb-delete-btn" onclick="deletePesan(${r.id})">🗑️ Hapus</button></div>` : ''}
+      </div>`;
+    }).join('')}</div>` : '';
+    return `<div class="pb-card" id="pbcard-${p.id}">
+      <div class="pb-card-name">${p.nama||'Anonim'}</div>
+      <div class="pb-card-text" id="pbteks-${p.id}">${String(p.teks||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+      <div id="pbedit-${p.id}"></div>
+      <div class="pb-card-time">🕐 ${p.waktu||''}</div>
+      ${ownerBtns}
+      <div class="pb-card-actions">
+        <button class="pb-action-btn pb-like-btn ${likedClass}" onclick="doLike(${p.id},this)">👍 <span class="pb-like-count">${p.likes||0}</span></button>
+        <button class="pb-action-btn pb-dislike-btn ${dislikedClass}" onclick="doDislike(${p.id},this)">👎 <span class="pb-dislike-count">${p.dislikes||0}</span></button>
+        <button class="pb-reply-btn" onclick="toggleReplyForm(${p.id})">↩️ Balas</button>
+      </div>
+      <div class="pb-reactions">
+        <button class="pb-react-btn pb-heart ${heartClass}" ${reactDisabled} onclick="doReact(${p.id},'heart',this)">❤️ <span>${p.heart||0}</span></button>
+        <button class="pb-react-btn pb-fire  ${fireClass}"  ${reactDisabled} onclick="doReact(${p.id},'fire',this)">🔥 <span>${p.fire||0}</span></button>
+        <button class="pb-react-btn pb-laugh ${laughClass}" ${reactDisabled} onclick="doReact(${p.id},'laugh',this)">😂 <span>${p.laugh||0}</span></button>
+      </div>
+      <div class="pb-reply-form" id="replyform-${p.id}">
+        <input class="pb-reply-input" id="replyname-${p.id}" placeholder="Nama kamu~" maxlength="30"
+          value="${currentUser ? currentUser.username : ''}"
+          ${currentUser ? 'readonly' : ''}>
+        <textarea class="pb-reply-textarea" id="replyteks-${p.id}" placeholder="Tulis balasan..." maxlength="150"></textarea>
+        <div class="pb-reply-actions">
+          <button class="pb-reply-submit" onclick="submitReply(${p.id})">💌 Kirim</button>
+          <button class="pb-reply-cancel"  onclick="toggleReplyForm(${p.id})">Batal</button>
+        </div>
+      </div>
+      ${repliesHtml}
+    </div>`;
+  }).join('');
+}
+
+/* ══ EDIT PESAN ══ */
+function startEditPesan(id) {
+  const msg = pbMessages.find(p => p.id === id);
+  if (!msg) return;
+  const editWrap = document.getElementById('pbedit-' + id);
+  const textEl   = document.getElementById('pbteks-' + id);
+  if (editWrap.innerHTML) { // toggle off
+    editWrap.innerHTML = '';
+    textEl.style.display = '';
+    return;
+  }
+  textEl.style.display = 'none';
+  editWrap.innerHTML = `
+    <textarea class="pb-edit-area" id="editarea-${id}" rows="3" maxlength="150">${msg.teks||''}</textarea>
+    <div class="pb-edit-actions">
+      <button class="pb-edit-save" onclick="saveEditPesan(${id})">💾 Simpan</button>
+      <button class="pb-edit-cancel" onclick="cancelEditPesan(${id})">Batal</button>
+    </div>`;
+  document.getElementById('editarea-' + id).focus();
+}
+function cancelEditPesan(id) {
+  document.getElementById('pbedit-' + id).innerHTML = '';
+  document.getElementById('pbteks-' + id).style.display = '';
+}
+async function saveEditPesan(id) {
+  const newTeks = document.getElementById('editarea-' + id).value.trim();
+  if (!newTeks) { showPbToast('⚠️ Pesan tidak boleh kosong!'); return; }
+  if (!currentUser) return;
+  const btn = document.querySelector(`#pbedit-${id} .pb-edit-save`);
+  btn.disabled = true; btn.textContent = '⏳';
+  try {
+    await fetch(GAS_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'edit', row: id, teks: newTeks, username: currentUser.username })
+    });
+    // Update local
+    const idx = pbMessages.findIndex(p => p.id === id);
+    if (idx !== -1) pbMessages[idx].teks = newTeks;
+    renderPesan(document.getElementById('pbSearch').value.trim().toLowerCase());
+    showPbToast('✅ Pesan berhasil diedit!');
+  } catch(e) {
+    showPbToast('❌ Gagal edit pesan.');
+    btn.disabled = false; btn.textContent = '💾 Simpan';
+  }
+}
+
+/* ══ DELETE PESAN ══ */
+async function deletePesan(id) {
+  if (!currentUser) return;
+  if (!confirm('Hapus pesan ini?')) return;
+  try {
+    await fetch(GAS_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'delete', row: id, username: currentUser.username })
+    });
+    pbMessages = pbMessages.filter(p => p.id !== id);
+    renderPesan(document.getElementById('pbSearch').value.trim().toLowerCase());
+    showPbToast('🗑️ Pesan dihapus~');
+  } catch(e) {
+    showPbToast('❌ Gagal hapus pesan.');
+  }
+}
+
+/* ══ LIKE / DISLIKE / REACT ══ */
+async function doLike(id, btn) {
+  if (pbLiked.has(id)) return;
+  pbLiked.add(id);
+  if (pbDisliked.has(id)) { pbDisliked.delete(id); localStorage.setItem('pb_disliked', JSON.stringify([...pbDisliked])); }
+  localStorage.setItem('pb_liked', JSON.stringify([...pbLiked]));
+  btn.querySelector('.pb-like-count').textContent = parseInt(btn.querySelector('.pb-like-count').textContent) + 1;
+  btn.classList.add('pb-liked');
+  fetch(GAS_URL + '?action=like&row=' + id, {mode:'no-cors'});
+}
+async function doDislike(id, btn) {
+  if (pbDisliked.has(id)) return;
+  pbDisliked.add(id);
+  if (pbLiked.has(id)) { pbLiked.delete(id); localStorage.setItem('pb_liked', JSON.stringify([...pbLiked])); }
+  localStorage.setItem('pb_disliked', JSON.stringify([...pbDisliked]));
+  btn.querySelector('.pb-dislike-count').textContent = parseInt(btn.querySelector('.pb-dislike-count').textContent) + 1;
+  btn.classList.add('pb-disliked');
+  fetch(GAS_URL + '?action=dislike&row=' + id, {mode:'no-cors'});
+}
+async function doReact(id, type, btn) {
+  if (pbReacted.has('react_' + id)) return;
+  pbReacted.add('react_' + id);
+  localStorage.setItem('pb_reacted', JSON.stringify([...pbReacted]));
+  localStorage.setItem('pb_react_type_' + id, type);
+  btn.querySelector('span').textContent = parseInt(btn.querySelector('span').textContent) + 1;
+  btn.classList.add('pb-reacted', 'pb-' + type);
+  const card = document.getElementById('pbcard-' + id);
+  if (card) card.querySelectorAll('.pb-react-btn').forEach(b => b.onclick = null);
+  fetch(GAS_URL + '?action=' + type + '&row=' + id, {mode:'no-cors'});
+}
+
+/* ══ REPLY ══ */
+function toggleReplyForm(id) {
+  const form = document.getElementById('replyform-' + id);
+  form.classList.toggle('show');
+  if (form.classList.contains('show')) {
+    const nameInput = document.getElementById('replyname-' + id);
+    if (currentUser) { nameInput.value = currentUser.username; nameInput.readOnly = true; }
+    nameInput.focus();
+  }
+}
+async function submitReply(id) {
+  const nama = document.getElementById('replyname-' + id).value.trim() || 'Anonim 🌸';
+  const teks = document.getElementById('replyteks-' + id).value.trim();
+  if (!teks) { showPbToast('⚠️ Tulis balasan dulu ya!'); return; }
+  const btn = document.querySelector('#replyform-' + id + ' .pb-reply-submit');
+  btn.disabled = true; btn.textContent = '⏳';
+  try {
+    await fetch(GAS_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({nama, teks, waktu: pbNow(), replyTo: id})
+    });
+    pbLoaded = false;
+    await loadPesan();
+    showPbToast('🌸 Balasan terkirim!');
+  } catch(e) {
+    showPbToast('❌ Gagal kirim!');
+  } finally {
+    btn.disabled = false; btn.textContent = '💌 Kirim';
+  }
+}
+
+/* ══ KIRIM PESAN ══ */
+async function kirimPesan() {
+  const nama = document.getElementById('pbNama').value.trim() || 'Anonim 🌸';
+  const teks = document.getElementById('pbTeks').value.trim();
+  if (!teks) { showPbToast('⚠️ Tulis pesan dulu ya!'); return; }
+  const btn = document.getElementById('pbSubmit');
+  btn.disabled = true; btn.textContent = '⏳ Mengirim...';
+  try {
+    await fetch(GAS_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({nama, teks, waktu: pbNow()})
+    });
+    document.getElementById('pbTeks').value = '';
+    document.getElementById('pbChar').textContent = '0';
+    if (!currentUser) document.getElementById('pbNama').value = '';
+    pbLoaded = false;
+    await loadPesan();
+    showPbToast('🌸 Pesan terkirim! Makasih ya~');
+    document.getElementById('pbBody').scrollTo({top:0,behavior:'smooth'});
+  } catch(e) {
+    showPbToast('❌ Gagal kirim, coba lagi!');
+  } finally {
+    btn.disabled = false; btn.textContent = '💌 Kirim Pesan';
+  }
+}
+
+
+async function loadKenangan() {
+  // tidak auto-load, pakai gallery overlay
+}
+
+function openLightbox(idx) {
+  lbCurrentIdx = (typeof idx === 'number') ? idx : 0;
+  _renderLightbox();
+}
+
+function _renderLightbox() {
+  const idx = lbCurrentIdx;
+  const m = allMemories[idx];
+  const src = m ? m.link : '';
+
+  const total = allMemories.length;
+
+  const old = document.getElementById('lbEl');
+  if (old) old.remove();
+
+  const lb = document.createElement('div');
+  lb.className = 'mem-lightbox';
+  lb.id = 'lbEl';
+  const hasnav = total > 1;
+
+  lb.innerHTML = `
+    <button class="mem-lightbox-download" onclick="downloadImg('${src.replace(/'/g,"\\'")}',event)" title="Download foto">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </button>
+    <button class="mem-lightbox-close" onclick="document.getElementById('lbEl').remove()">✕</button>
+    ${hasnav ? `<div class="mem-lb-counter">${idx+1} / ${total}</div>` : ''}
+    <div class="mem-lightbox-imgwrap" id="lbImgWrap">
+      <img src="${src}" alt="Kenangan RST" id="lbImg" draggable="false">
+    </div>
+
+    <div class="mem-lb-zoom-hint">🤏 Pinch zoom · Double-tap · ${hasnav?'Swipe navigasi':''}</div>
+    ${hasnav ? `
+      <button class="mem-lb-nav mem-lb-prev" onclick="lbNav(-1)">‹</button>
+      <button class="mem-lb-nav mem-lb-next" onclick="lbNav(1)">›</button>
+    ` : ''}
+  `;
+
+  lb.addEventListener('click', e => { if (e.target === lb) lb.remove(); });
+  document.body.appendChild(lb);
+
+  const img = document.getElementById('lbImg');
+  if (img) initLightboxZoom(img, lb);
+}
+
+function lbNav(dir) {
+  const total = allMemories.length;
+  if (!total) return;
+  lbCurrentIdx = (lbCurrentIdx + dir + total) % total;
+  _renderLightbox();
+}
+
+async function downloadImg(src, e) {
+  if (e) e.stopPropagation();
+  try {
+    const r = await fetch(src);
+    const b = await r.blob();
+    const u = URL.createObjectURL(b);
+    const a = document.createElement('a');
+    a.href = u; a.download = 'kenangan-rst-' + Date.now() + '.jpg';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(u), 5000);
+  } catch { window.open(src, '_blank'); }
+}
+
+function initLightboxZoom(img, lb) {
+  let scale = 1, panX = 0, panY = 0;
+  let startScale = 1, startDist = 0;
+  let pinching = false, panning = false;
+  let startPanX = 0, startPanY = 0, startTX = 0, startTY = 0;
+  let lastTap = 0, swipeStartX = 0;
+
+  img.style.transformOrigin = 'center center';
+  img.style.transition = 'transform 0.12s ease';
+
+  function applyT(anim) {
+    img.style.transition = anim ? 'transform 0.18s cubic-bezier(.34,1.3,.64,1)' : 'none';
+    img.style.transform = `translate(${panX}px,${panY}px) scale(${scale})`;
+  }
+
+  function clamp() {
+    scale = Math.max(1, Math.min(4.5, scale));
+    if (scale <= 1.04) { panX = 0; panY = 0; scale = 1; return; }
+    const mX = img.clientWidth  * scale * 0.38;
+    const mY = img.clientHeight * scale * 0.38;
+    panX = Math.max(-mX, Math.min(mX, panX));
+    panY = Math.max(-mY, Math.min(mY, panY));
+  }
+
+  // Double-tap toggle zoom
+  img.addEventListener('click', () => {
+    const now = Date.now();
+    if (now - lastTap < 280) {
+      scale = scale > 1.5 ? 1 : 2.8;
+      panX = 0; panY = 0; applyT(true);
+    }
+    lastTap = now;
+  });
+
+  img.addEventListener('touchstart', e => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      pinching = true; panning = false;
+      startDist = Math.hypot(e.touches[1].clientX-e.touches[0].clientX, e.touches[1].clientY-e.touches[0].clientY);
+      startScale = scale;
+    } else if (e.touches.length === 1) {
+      swipeStartX = e.touches[0].clientX;
+      if (scale > 1.05) {
+        panning = true; pinching = false;
+        startTX = e.touches[0].clientX; startTY = e.touches[0].clientY;
+        startPanX = panX; startPanY = panY;
+        applyT(false);
+      }
+    }
+  }, {passive:false});
+
+  img.addEventListener('touchmove', e => {
+    if (pinching && e.touches.length >= 2) {
+      e.preventDefault();
+      const d = Math.hypot(e.touches[1].clientX-e.touches[0].clientX, e.touches[1].clientY-e.touches[0].clientY);
+      scale = startScale * (d / startDist);
+      clamp(); applyT(false);
+    } else if (panning && e.touches.length === 1) {
+      e.preventDefault();
+      panX = startPanX + (e.touches[0].clientX - startTX);
+      panY = startPanY + (e.touches[0].clientY - startTY);
+      clamp(); applyT(false);
+    }
+  }, {passive:false});
+
+  img.addEventListener('touchend', e => {
+    const wasPinching = pinching;
+    pinching = false; panning = false;
+    if (!wasPinching && scale <= 1.05 && e.changedTouches.length === 1 && allMemories.length > 1) {
+      const dx = e.changedTouches[0].clientX - swipeStartX;
+      if (Math.abs(dx) > 65) { lbNav(dx < 0 ? 1 : -1); return; }
+    }
+    if (scale < 1.1) { scale = 1; panX = 0; panY = 0; }
+    clamp(); applyT(true);
+  });
+
+  // Mouse wheel zoom (desktop)
+  lb.addEventListener('wheel', e => {
+    e.preventDefault();
+    scale = Math.max(1, Math.min(4.5, scale * (e.deltaY > 0 ? 0.88 : 1.13)));
+    clamp(); applyT(false);
+  }, {passive:false});
+
+  // Keyboard navigation
+  const onKey = e => {
+    if (e.key === 'Escape') { document.getElementById('lbEl')?.remove(); document.removeEventListener('keydown',onKey); }
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft')  lbNav(-1);
+  };
+  document.addEventListener('keydown', onKey);
+}
+
+loadKenangan()
+
+</script>
+</body>
+</html>
