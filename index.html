@@ -649,9 +649,13 @@ main {
   cursor:pointer; position:relative; overflow:hidden;
   -webkit-tap-highlight-color:transparent;
   transition:transform 0.15s, box-shadow 0.15s;
-  opacity:1; transform:none;
+  animation:cardEntry 0.5s cubic-bezier(.34,1.5,.64,1) both;
 }
-
+.game-card:nth-child(3){ animation-delay:.05s }
+.game-card:nth-child(4){ animation-delay:.10s }
+.game-card:nth-child(5){ animation-delay:.15s }
+.game-card:nth-child(6){ animation-delay:.20s }
+.game-card:nth-child(7){ animation-delay:.25s }
 .game-card:active { transform:scale(0.97); }
 .game-card::before { content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(135deg,#ffffff55,transparent); pointer-events:none; }
 
@@ -813,124 +817,89 @@ main {
 }
 .mood-result-big { font-size:2rem; margin-bottom:4px; }
 
-/* ══════ PAPAN PESAN ══════ */
-.pesan-list {
-  display:flex; flex-direction:column; gap:8px; margin-bottom:10px;
-  max-height:220px; overflow-y:auto;
-}
-.pesan-item {
-  background:linear-gradient(135deg,#fff8fc,#fff0f9);
-  border:1.5px solid #ffd6ed; border-radius:16px;
-  padding:10px 13px; font-size:0.83rem; font-weight:700; color:var(--txt);
-  line-height:1.5; position:relative; animation:moodPop 0.3s ease;
-}
-.pesan-item .pi-name { font-size:0.65rem; color:var(--muted); font-weight:800; letter-spacing:1px; margin-bottom:3px; }
-.pesan-empty { text-align:center; color:var(--muted); font-size:0.8rem; font-weight:700; padding:16px 0; }
-.pesan-input-wrap { display:flex; flex-direction:column; gap:8px; }
-.pesan-name-input, .pesan-text-input {
-  width:100%; padding:11px 14px; border-radius:16px;
-  border:2px solid #ffd6ed; background:#fff;
-  font-family:'Nunito',sans-serif; font-size:0.85rem; font-weight:700;
-  color:var(--txt); outline:none; transition:border-color 0.18s;
-}
-.pesan-name-input:focus, .pesan-text-input:focus { border-color:var(--pk3); }
-.pesan-text-input { resize:none; height:70px; }
-.pesan-submit {
-  padding:12px; border-radius:16px;
-  background:linear-gradient(135deg,#ff6db8,#e8006e); border:none;
-  color:#fff; font-family:'Nunito',sans-serif; font-size:0.88rem; font-weight:900;
-  cursor:pointer; box-shadow:0 5px 18px #e8006e33;
-  -webkit-tap-highlight-color:transparent; transition:transform 0.15s;
-}
-.pesan-submit:active { transform:scale(0.97); }
 
-
-/* ══════ GAME 6 - HANGMAN / TEBAK KATA ══════ */
-.hg-word-display {
-  display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
-  margin:18px 0 10px;
+/* ══════ KENANGAN RST ══════ */
+.mem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
-.hg-letter {
-  width:34px; height:40px; border-bottom:3px solid var(--pk3);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.3rem; font-weight:900; color:var(--txt);
-  transition:all 0.3s;
+.mem-item {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #fff0f9, #ffd6ed55);
+  border: 2px solid #ffd6ed;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s;
+  animation: cardEntry 0.4s cubic-bezier(.34,1.5,.64,1) both;
 }
-.hg-letter.revealed { color:var(--pk4); animation:moodPop 0.3s ease; }
-.hg-hint-text { font-size:0.78rem; color:var(--muted); font-weight:700; text-align:center; margin-bottom:10px; }
-.hg-lives {
-  display:flex; justify-content:center; gap:5px;
-  font-size:1.4rem; margin-bottom:14px;
+.mem-item:active { transform: scale(0.96); }
+.mem-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
 }
-.hg-life.lost { filter:grayscale(1); opacity:0.3; }
-.hg-keyboard {
-  display:flex; flex-wrap:wrap; gap:6px; justify-content:center;
-  max-width:340px; width:100%;
+.mem-item:hover img { transform: scale(1.05); }
+.mem-item-date {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 18px 8px 7px;
+  background: linear-gradient(0deg, #e8006ecc, transparent);
+  font-size: 0.62rem; font-weight: 800;
+  color: #fff; text-align: center;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 4px #00000055;
 }
-.hg-key {
-  width:34px; height:34px; border-radius:10px; border:2px solid #ffd6ed;
-  background:#fff; font-size:0.82rem; font-weight:900; color:var(--txt);
-  cursor:pointer; transition:all 0.15s; -webkit-tap-highlight-color:transparent;
-  display:flex; align-items:center; justify-content:center;
+.mem-loading {
+  grid-column: 1 / -1;
+  text-align: center; padding: 24px;
+  color: var(--muted); font-size: 0.82rem; font-weight: 700;
 }
-.hg-key:active { transform:scale(0.92); }
-.hg-key.hit  { background:linear-gradient(135deg,#e8f5e9,#c8e6c9); border-color:#4caf50; color:#2e7d32; cursor:default; }
-.hg-key.miss { background:#ffeaea; border-color:#f44336; color:#c62828; cursor:default; }
-.hg-key:disabled { opacity:0.5; cursor:default; }
-.hg-status { font-size:1.1rem; font-weight:900; text-align:center; min-height:1.6rem; margin:10px 0 4px; }
-.hg-restart {
-  margin-top:12px; padding:12px 30px; border-radius:50px;
-  background:linear-gradient(135deg,#ff6db8,#e8006e); border:none;
-  color:#fff; font-family:'Nunito',sans-serif; font-size:0.9rem; font-weight:900;
-  cursor:pointer; box-shadow:0 6px 20px #e8006e33; display:none;
-  -webkit-tap-highlight-color:transparent;
+.mem-loading-dots {
+  display: flex; justify-content: center; gap: 6px; margin-bottom: 8px;
 }
-.hg-word-count { font-size:0.72rem; color:var(--muted); font-weight:700; letter-spacing:1px; margin-bottom:4px; text-align:center; }
-
-/* ══════ CONFETTI LAYER ══════ */
-#confettiCanvas {
-  position:fixed; inset:0; z-index:99999; pointer-events:none;
-  display:none;
+.mem-loading-dots span {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--pk3);
+  animation: boing 1s ease-in-out infinite;
 }
-
-/* ══════ VISITOR COUNTER ══════ */
-.visitor-strip {
-  background:linear-gradient(135deg,#fff0f9,#ffd6ed44);
-  border:1.5px solid #ffd6ed; border-radius:18px;
-  padding:10px 16px; display:flex; align-items:center;
-  justify-content:center; gap:10px; margin-bottom:10px;
-  font-size:0.78rem; font-weight:800; color:var(--sub);
+.mem-loading-dots span:nth-child(2){ animation-delay:.2s; }
+.mem-loading-dots span:nth-child(3){ animation-delay:.4s; }
+.mem-empty {
+  text-align: center; padding: 20px;
+  color: var(--muted); font-size: 0.82rem; font-weight: 700;
 }
-.visitor-count { font-size:1.2rem; font-weight:900; color:var(--pk4); }
-
-/* ══════ TYPING MARQUEE ══════ */
-.marquee-wrap {
-  overflow:hidden; white-space:nowrap;
-  padding:8px 0; position:relative; z-index:2;
-  border-top:1.5px solid #ffd6ed55; border-bottom:1.5px solid #ffd6ed55;
-  background:#fff8fc; margin-bottom:0;
+/* Lightbox */
+.mem-lightbox {
+  position: fixed; inset: 0; z-index: 99999;
+  background: #000000cc;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: moodPop 0.2s ease;
 }
-.marquee-inner {
-  display:inline-block;
-  animation:marqueeScroll 22s linear infinite;
-  font-size:0.72rem; font-weight:800; color:var(--muted); letter-spacing:2px;
+.mem-lightbox img {
+  max-width: 100%; max-height: 90vh;
+  border-radius: 18px;
+  box-shadow: 0 8px 40px #00000088;
 }
-@keyframes marqueeScroll {
-  0%   { transform:translateX(100vw); }
-  100% { transform:translateX(-100%); }
+.mem-lightbox-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: #ffffff22; border: none;
+  color: #fff; font-size: 1.3rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
 }
-
-/* ══════ TOAST NOTIF ══════ */
-.toast {
-  position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(30px);
-  background:linear-gradient(135deg,#ff3d9a,#e8006e);
-  color:#fff; padding:10px 22px; border-radius:50px;
-  font-size:0.82rem; font-weight:900; z-index:99998;
-  opacity:0; transition:all 0.4s cubic-bezier(.34,1.5,.64,1);
-  white-space:nowrap; pointer-events:none;
-  box-shadow:0 6px 22px #e8006e44;
+.mem-lightbox-date {
+  position: absolute; bottom: 24px;
+  left: 50%; transform: translateX(-50%);
+  background: #000000aa; color: #fff;
+  padding: 6px 18px; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 800;
+  white-space: nowrap;
 }
-.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
 </style>
 </head>
@@ -968,10 +937,6 @@ main {
   </svg>
 </header>
 
-<!-- marquee -->
-<div class="marquee-wrap">
-  <span class="marquee-inner">🌸 Selamat Datang di Roselle Team 🌷 &nbsp;&nbsp;&nbsp; 💗 We love our Feeroses 💗 &nbsp;&nbsp;&nbsp; ✨ Stay kawaii, stay kind~ ✨ &nbsp;&nbsp;&nbsp; 🌸 Roselle Team — Always In Your Heart 🌷 &nbsp;&nbsp;&nbsp; 💕 Together We Bloom 🌺 &nbsp;&nbsp;&nbsp; 🎀 Roselle Team Official 🎀 &nbsp;&nbsp;&nbsp;</span>
-</div>
 <!-- sticker row -->
 <div class="sticker-row">
   <span class="sticker">🌸 Kawaii</span>
@@ -981,13 +946,6 @@ main {
 
 <!-- ══════ MAIN ══════ -->
 <main>
-
-  <!-- VISITOR COUNTER -->
-  <div class="visitor-strip" id="visitorStrip">
-    <span>🌸</span>
-    <span>Feeroses yang berkunjung: <span class="visitor-count" id="visitorCount">...</span></span>
-    <span>🌸</span>
-  </div>
 
   <!-- WELCOME -->
   <div class="card welcome-card">
@@ -1220,12 +1178,12 @@ main {
   <div class="dotdiv"><span></span><span></span><span></span><span></span><span></span></div>
 
   <!-- MINI GAMES CARD -->
-  <div class="card">
+  <div class="card" style="opacity:1;animation-delay:.68s;">
     <div class="card-banner">
       <div class="card-banner-icon cb-gold">🎮</div>
       <div class="card-banner-text">
         <div class="card-banner-title">Mini Games Roselle</div>
-        <div class="card-banner-sub">6 game seru buat kamu! 🎉</div>
+        <div class="card-banner-sub">5 game seru buat kamu! 🎉</div>
       </div>
     </div>
     <div class="card-body">
@@ -1233,7 +1191,7 @@ main {
         <span class="ghb-icon">🕹️</span>
         <div class="ghb-text">
           Main Sekarang!
-          <span class="ghb-sub">6 GAME • TAP UNTUK MASUK</span>
+          <span class="ghb-sub">5 GAME • TAP UNTUK MASUK</span>
         </div>
         <span style="font-size:1.2rem;opacity:0.8;">›</span>
       </button>
@@ -1287,31 +1245,31 @@ main {
 
   <div class="dotdiv"><span></span><span></span><span></span><span></span><span></span></div>
 
-  <!-- PAPAN PESAN -->
+  <!-- KENANGAN RST -->
   <div class="card">
     <div class="card-banner">
-      <div class="card-banner-icon cb-rose">💌</div>
+      <div class="card-banner-icon cb-lav">📸</div>
       <div class="card-banner-text">
-        <div class="card-banner-title">Papan Pesan Roses</div>
-        <div class="card-banner-sub">tinggalkan kesan & pesanmu~ ✨</div>
+        <div class="card-banner-title">Kenangan RST ✨</div>
+        <div class="card-banner-sub">memories bersama feeroses~ 🌸</div>
       </div>
     </div>
     <div class="card-body">
-      <div class="pesan-list" id="pesanList">
-        <div class="pesan-empty">Belum ada pesan~ Jadilah yang pertama! 🌸</div>
+      <div class="mem-grid" id="memGrid">
+        <div class="mem-loading" id="memLoading">
+          <div class="mem-loading-dots"><span></span><span></span><span></span></div>
+          <div>Memuat kenangan~</div>
+        </div>
       </div>
-      <div class="pesan-input-wrap">
-        <input class="pesan-name-input" id="pesanName" placeholder="Nama kamu (contoh: Bunga 🌷)" maxlength="30">
-        <textarea class="pesan-text-input" id="pesanText" placeholder="Tulis pesan, kesan, atau ucapan buat Roselle Team~" maxlength="120"></textarea>
-        <button class="pesan-submit" onclick="kirimPesan()">💌 Kirim Pesan</button>
+      <div class="mem-empty" id="memEmpty" style="display:none;">
+        🌸 Belum ada kenangan tersimpan~
       </div>
     </div>
   </div>
 
 
-</main>
 
-<!-- ══════════ GAME OVERLAY ══════════ -->
+</main>
 <div class="game-overlay" id="gameOverlay">
 
   <!-- SELECT SCREEN -->
@@ -1323,7 +1281,7 @@ main {
     </div>
     <div class="game-select">
       <div class="game-select-title">Pilih Game~! ♡</div>
-      <div class="game-select-sub">✦ 6 game tersedia ✦</div>
+      <div class="game-select-sub">✦ 5 game tersedia ✦</div>
       <div class="game-card" onclick="openGame(1)" style="border-color:#ffe082;">
         <div class="gc-icon" style="background:linear-gradient(135deg,#ffe082,#ffb300);">🤔</div>
         <div class="gc-info">
@@ -1357,13 +1315,6 @@ main {
         <div class="gc-info">
           <div class="gc-name">Kuis Roselle</div>
           <div class="gc-desc">Seberapa tau kamu tentang Roselle Team? Jawab 8 soal!</div>
-        </div><span class="gc-arr">›</span>
-      </div>
-      <div class="game-card" onclick="openGame(6)" style="border-color:#b2dfdb;">
-        <div class="gc-icon" style="background:linear-gradient(135deg,#80cbc4,#00897b);">🔤</div>
-        <div class="gc-info">
-          <div class="gc-name">Tebak Kata</div>
-          <div class="gc-desc">Tebak kata tersembunyi sebelum 6 nyawa habis! 🌸</div>
         </div><span class="gc-arr">›</span>
       </div>
     </div>
@@ -1474,32 +1425,7 @@ main {
     </div>
   </div>
 
-
-  <!-- GAME 6: Tebak Kata -->
-  <div id="game6" style="display:none;flex-direction:column;height:100%;">
-    <div class="go-header">
-      <button class="go-back" onclick="backToSelect()">←</button>
-      <div class="go-title">Tebak Kata 🔤</div>
-      <span class="go-emoji">🌸</span>
-    </div>
-    <div class="game-screen">
-      <div class="hg-word-count" id="hgWordCount">Kata 1 / 8</div>
-      <div class="hg-hint-text" id="hgHint"></div>
-      <div class="hg-word-display" id="hgWordDisplay"></div>
-      <div class="hg-lives" id="hgLives"></div>
-      <div class="hg-status" id="hgStatus"></div>
-      <div class="hg-keyboard" id="hgKeyboard"></div>
-      <button class="hg-restart" id="hgRestart" onclick="hangNext()">Kata Berikutnya →</button>
-    </div>
-  </div>
-
 </div>
-
-<!-- TOAST -->
-<div class="toast" id="toastMsg"></div>
-
-<!-- CONFETTI -->
-<canvas id="confettiCanvas"></canvas>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -1538,31 +1464,13 @@ function pickMood(btn, emoji, label, msg) {
   r.classList.add('show');
 }
 
-/* === PAPAN PESAN === */
-const pesanData = [];
-function kirimPesan() {
-  const name = document.getElementById('pesanName').value.trim() || 'Anonim 🌸';
-  const text = document.getElementById('pesanText').value.trim();
-  if (!text) { document.getElementById('pesanText').style.borderColor='#f44336'; setTimeout(()=>document.getElementById('pesanText').style.borderColor='',1200); return; }
-  pesanData.unshift({ name, text, time: new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}) });
-  document.getElementById('pesanName').value = '';
-  document.getElementById('pesanText').value = '';
-  renderPesan();
-}
-function renderPesan() {
-  const el = document.getElementById('pesanList');
-  if (pesanData.length === 0) { el.innerHTML = '<div class="pesan-empty">Belum ada pesan~ Jadilah yang pertama! 🌸</div>'; return; }
-  el.innerHTML = pesanData.slice(0,10).map(p =>
-    '<div class="pesan-item"><div class="pi-name">'+p.name+' · '+p.time+'</div>'+p.text+'</div>'
-  ).join('');
-}
 
 /* === MINI GAMES === */
 function openGameHub(){document.getElementById('gameOverlay').classList.add('active');showScreen('screenSelect');document.body.style.overflow='hidden';}
 function closeGameHub(){document.getElementById('gameOverlay').classList.remove('active');document.body.style.overflow='';}
-function showScreen(id){['screenSelect','game1','game2','game3','game4','game5','game6'].forEach(s=>{const e=document.getElementById(s);if(e)e.style.display='none';});const t=document.getElementById(id);if(t)t.style.display='flex';}
+function showScreen(id){['screenSelect','game1','game2','game3','game4','game5'].forEach(s=>{const e=document.getElementById(s);if(e)e.style.display='none';});const t=document.getElementById(id);if(t)t.style.display='flex';}
 function backToSelect(){showScreen('screenSelect');}
-function openGame(n){showScreen('game'+n);if(n===1)teInit();if(n===2)ppInit();if(n===3)spinInit();if(n===4)taInit();if(n===5)kqInit();if(n===6)hangInit();}
+function openGame(n){showScreen('game'+n);if(n===1)teInit();if(n===2)ppInit();if(n===3)spinInit();if(n===4)taInit();if(n===5)kqInit();}
 
 /* GAME 1 - Tebak Emoji */
 const teD=[
@@ -1738,182 +1646,41 @@ function kqAns(btn,chosen,correct){
 }
 function kqNextQ(){kqI++;kqRender();}
 
-
-/* ══════ VISITOR COUNTER (localStorage) ══════ */
-(function(){
+/* === KENANGAN RST === */
+async function loadKenangan() {
+  const grid = document.getElementById('memGrid')
+  const empty = document.getElementById('memEmpty')
   try {
-    let v = parseInt(localStorage.getItem('rst_visitors') || '0') + 1;
-    localStorage.setItem('rst_visitors', v);
-    document.getElementById('visitorCount').textContent = v.toLocaleString('id-ID');
+    const res = await fetch('./rst-memories.json')
+    if (!res.ok) throw new Error('Gagal fetch')
+    const data = await res.json()
+    document.getElementById('memLoading').style.display = 'none'
+    if (!data.length) { empty.style.display = 'block'; grid.innerHTML = ''; return }
+    empty.style.display = 'none'
+    grid.innerHTML = data.map((m, i) => `
+      <div class="mem-item" style="animation-delay:${i*0.07}s" onclick="openLightbox('${m.link.replace(/'/g,"\\'")}','${(m.tgl||'').replace(/'/g,"\\'")}')">
+        <img src="${m.link}" alt="Kenangan RST" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <div class="mem-item-date">📅 ${m.tgl || ''}</div>
+      </div>
+    `).join('')
   } catch(e) {
-    document.getElementById('visitorCount').textContent = '🌸';
-  }
-})();
-
-/* ══════ TOAST NOTIF ══════ */
-function showToast(msg, dur=2200) {
-  const t = document.getElementById('toastMsg');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), dur);
-}
-
-/* ══════ CONFETTI ══════ */
-const confettiCanvas = document.getElementById('confettiCanvas');
-const confettiCtx = confettiCanvas.getContext('2d');
-let confettiPieces = [], confettiActive = false, confettiRAF;
-
-function launchConfetti(dur=2800) {
-  confettiCanvas.width = window.innerWidth;
-  confettiCanvas.height = window.innerHeight;
-  confettiCanvas.style.display = 'block';
-  confettiPieces = [];
-  const colors = ['#ff6db8','#e8006e','#ffaad9','#ff3d9a','#d9b8ff','#ffb300','#4caf50','#fff'];
-  for (let i = 0; i < 120; i++) {
-    confettiPieces.push({
-      x: Math.random() * confettiCanvas.width,
-      y: Math.random() * -confettiCanvas.height,
-      w: 8 + Math.random() * 8,
-      h: 5 + Math.random() * 5,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      vx: (Math.random() - 0.5) * 3,
-      vy: 2 + Math.random() * 4,
-      rot: Math.random() * 360,
-      rotV: (Math.random() - 0.5) * 6,
-    });
-  }
-  confettiActive = true;
-  animateConfetti();
-  setTimeout(() => { confettiActive = false; setTimeout(() => { confettiCanvas.style.display='none'; confettiCtx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height); }, 800); }, dur);
-}
-
-function animateConfetti() {
-  confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-  confettiPieces.forEach(p => {
-    p.x += p.vx; p.y += p.vy; p.rot += p.rotV;
-    confettiCtx.save();
-    confettiCtx.translate(p.x, p.y);
-    confettiCtx.rotate(p.rot * Math.PI / 180);
-    confettiCtx.fillStyle = p.color;
-    confettiCtx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
-    confettiCtx.restore();
-  });
-  if (confettiActive || confettiPieces.some(p => p.y < confettiCanvas.height + 20)) {
-    requestAnimationFrame(animateConfetti);
+    document.getElementById('memLoading').innerHTML = '⚠️ File rst-memories.json tidak ditemukan.<br><small>Pastikan file ada di folder yang sama.</small>'
   }
 }
 
-/* ══════ GAME 6 - TEBAK KATA (Hangman) ══════ */
-const hangWords = [
-  {w:'ROSELLE',  h:'Nama tim kita~ 🌸'},
-  {w:'FEEROSES', h:'Sebutan untuk anggota RST 💗'},
-  {w:'AVELINE',  h:'Co-Owner Roselle Team 🌷'},
-  {w:'KAWAII',   h:'Artinya lucu dalam bahasa Jepang ✨'},
-  {w:'ROBLOX',   h:'Game favorit anggota RST 🎮'},
-  {w:'BUNGA',    h:'Sesuatu yang indah & harum 🌸'},
-  {w:'SALURAN',  h:'Tempat update info RST di WhatsApp 📢'},
-  {w:'BINTANG',  h:'Simbol keberuntungan & cahaya ⭐'},
-];
-
-let hangIdx=0, hangWord='', hangGuessed=[], hangWrong=0, hangMaxWrong=6, hangDone=false;
-
-function hangInit() {
-  hangIdx = 0;
-  hangNextWord();
+function openLightbox(src, tgl) {
+  const lb = document.createElement('div')
+  lb.className = 'mem-lightbox'
+  lb.innerHTML = `
+    <button class="mem-lightbox-close" onclick="this.parentElement.remove()">✕</button>
+    <img src="${src}" alt="Kenangan RST">
+    ${tgl ? `<div class="mem-lightbox-date">📅 ${tgl}</div>` : ''}
+  `
+  lb.onclick = e => { if (e.target === lb) lb.remove() }
+  document.body.appendChild(lb)
 }
 
-function hangNextWord() {
-  if (hangIdx >= hangWords.length) {
-    document.getElementById('hgWordCount').textContent = 'Selesai! 🎉';
-    document.getElementById('hgHint').textContent = 'Kamu sudah main semua kata!';
-    document.getElementById('hgWordDisplay').innerHTML = '<div style="font-size:2rem;text-align:center;padding:20px;">🏆</div>';
-    document.getElementById('hgLives').innerHTML = '';
-    document.getElementById('hgStatus').textContent = 'Luar biasa!';
-    document.getElementById('hgKeyboard').innerHTML = '';
-    document.getElementById('hgRestart').style.cssText = 'display:block;margin-top:12px;background:linear-gradient(135deg,#ff6db8,#e8006e);';
-    document.getElementById('hgRestart').textContent = 'Main Lagi 🔄';
-    document.getElementById('hgRestart').onclick = hangInit;
-    launchConfetti(3000);
-    return;
-  }
-  const item = hangWords[hangIdx];
-  hangWord = item.w;
-  hangGuessed = [];
-  hangWrong = 0;
-  hangDone = false;
-  document.getElementById('hgWordCount').textContent = 'Kata '+(hangIdx+1)+' / '+hangWords.length;
-  document.getElementById('hgHint').textContent = '💡 Petunjuk: ' + item.h;
-  document.getElementById('hgStatus').textContent = '';
-  document.getElementById('hgRestart').style.display = 'none';
-  document.getElementById('hgRestart').onclick = hangNext;
-  document.getElementById('hgRestart').textContent = 'Kata Berikutnya →';
-  hangRenderWord();
-  hangRenderLives();
-  hangRenderKeyboard();
-}
-
-function hangNext() { hangIdx++; hangNextWord(); }
-
-function hangRenderWord() {
-  const el = document.getElementById('hgWordDisplay');
-  el.innerHTML = hangWord.split('').map(c =>
-    '<div class="hg-letter'+(hangGuessed.includes(c)?' revealed':'')+'">'+
-    (hangGuessed.includes(c) ? c : '')+'</div>'
-  ).join('');
-}
-
-function hangRenderLives() {
-  const el = document.getElementById('hgLives');
-  let html = '';
-  for (let i=0;i<hangMaxWrong;i++) {
-    html += '<span class="hg-life'+(i < hangWrong ? ' lost' : '')+'">💖</span>';
-  }
-  el.innerHTML = html;
-}
-
-function hangRenderKeyboard() {
-  const el = document.getElementById('hgKeyboard');
-  el.innerHTML = '';
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(c => {
-    const btn = document.createElement('button');
-    btn.className = 'hg-key' + (hangGuessed.includes(c) ? (hangWord.includes(c) ? ' hit' : ' miss') : '');
-    btn.textContent = c;
-    btn.disabled = hangGuessed.includes(c) || hangDone;
-    btn.onclick = () => hangGuess(c);
-    el.appendChild(btn);
-  });
-}
-
-function hangGuess(c) {
-  if (hangDone || hangGuessed.includes(c)) return;
-  hangGuessed.push(c);
-  if (!hangWord.includes(c)) { hangWrong++; }
-  hangRenderWord();
-  hangRenderLives();
-  hangRenderKeyboard();
-  
-  const won = hangWord.split('').every(l => hangGuessed.includes(l));
-  const lost = hangWrong >= hangMaxWrong;
-  
-  if (won) {
-    hangDone = true;
-    document.getElementById('hgStatus').textContent = '🎉 Benar! Kata: ' + hangWord;
-    document.getElementById('hgStatus').style.color = '#2e7d32';
-    document.getElementById('hgRestart').style.display = 'block';
-    launchConfetti(2200);
-    showToast('🎉 Kamu berhasil menebak!');
-  } else if (lost) {
-    hangDone = true;
-    document.getElementById('hgStatus').textContent = '💔 Habis! Kata: ' + hangWord;
-    document.getElementById('hgStatus').style.color = '#c62828';
-    document.getElementById('hgRestart').style.display = 'block';
-    hangRenderWord(); // reveal all
-    document.getElementById('hgWordDisplay').querySelectorAll('.hg-letter').forEach((el,i) => {
-      el.textContent = hangWord[i]; el.classList.add('revealed');
-    });
-    showToast('😢 Kata: ' + hangWord);
-  }
-}
+loadKenangan()
 
 </script>
 </body>
