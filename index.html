@@ -2088,120 +2088,126 @@ async function kirimPesan() {
   }
 }
 
-/* === KENANGAN RST === */
-let allMemories = [];
-let lbCurrentIdx = 0;
+async function loadKenangan() {
+  // tidak auto-load, pakai gallery overlay
+}
 
-/* === GALLERY OVERLAY === */
-let galLoaded = false;
+function openLightbox(idx) {
+  lbCurrentIdx = (typeof idx === 'number') ? idx : 0;
+  _renderLightbox();
+}
 
-async function openGalleryOverlay() {
-  document.getElementById('galOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  if (galLoaded) return;
+function _renderLightbox() {
+  const idx = lbCurrentIdx;
+  const m = allMemories[idx];
+  const src = m ? m.link : '';
+  const tgl = m ? (m.tgl || '') : '';
+  const total = allMemories.length;
+
+  const old = document.getElementById('lbEl');
+  if (old) old.remove();
+
+  const lb = document.createElement('div');
+  lb.className = 'mem-lightbox';
+  lb.id = 'lbEl';
+  const hasnav = total > 1;
+
+  lb.innerHTML = `
+    <button class="mem-lightbox-download" onclick="downloadImg('${src.replace(/'/g,"\\'")}',event)" title="Download foto">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </button>
+    <button class="mem-lightbox-close" onclick="document.getElementById('lbEl').remove()">✕</button>
+    ${hasnav ? `<div class="mem-lb-counter">${idx+1} / ${total}</div>` : ''}
+    <div class="mem-lightbox-imgwrap" id="lbImgWrap">
+      <img src="${src}" alt="Kenangan RST" id="lbImg" draggable="false">
+    </div>
+    ${tgl ? `<div class="mem-lightbox-date">📅 ${tgl}</div>` : ''}
+    <div class="mem-lb-zoom-hint">🤏 Pinch zoom · Double-tap · ${hasnav?'Swipe navigasi':''}</div>
+    ${hasnav ? `
+      <button class="mem-lb-nav mem-lb-prev" onclick="lbNav(-1)">‹</button>
+      <button class="mem-lb-nav mem-lb-next" onclick="lbNav(1)">›</button>
+    ` : ''}
+  `;
+
+  lb.addEventListener('click', e => { if (e.target === lb) lb.remove(); });
+  document.body.appendChild(lb);
+
+  const img = document.getElementById('lbImg');
+  if (img) initLightboxZoom(img, lb);
+}
+
+function lbNav(dir) {
+  const total = allMemories.length;
+  if (!total) return;
+  lbCurrentIdx = (lbCurrentIdx + dir + total) % total;
+  _renderLightbox();
+}
+
+async function downloadImg(src, e) {
+  if (e) e.stopPropagation();
   try {
-    const res = await fetch('./rst-memories.json');
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    allMemories = data;
-    galLoaded = true;
-    document.getElementById('galCount').textContent = data.length + ' foto';
-    if (!data.length) { document.getElementById('galGrid').innerHTML = '<div class="gal-loading">🌸 Belum ada kenangan~</div>'; return; }
-    document.getElementById('galGrid').innerHTML = data.map((m,i) =>
-      `<div class="gal-item" onclick="openLightbox(${i})">
-        <img src="${m.link}" alt="Kenangan" loading="lazy" onerror="this.parentElement.style.display='none'">
-        ${m.tgl ? `<div class="gal-item-date">📅 ${m.tgl}</div>` : ''}
-        <div class="gal-item-overlay">🔍</div>
-      </div>`
-    ).join('');
-  } catch(e) {
-    document.getElementById('galGrid').innerHTML = '<div class="gal-loading">⚠️ rst-memories.json tidak ditemukan</div>';
+    const r = await fetch(src);
+    const b = await r.blob();
+    const u = URL.createObjectURL(b);
+    const a = document.createElement('a');
+    a.href = u; a.download = 'kenangan-rst-' + Date.now() + '.jpg';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(u), 5000);
+  } catch { window.open(src, '_blank'); }
+}
+
+function initLightboxZoom(img, lb) {
+  let scale = 1, panX = 0, panY = 0;
+  let startScale = 1, startDist = 0;
+  let pinching = false, panning = false;
+  let startPanX = 0, startPanY = 0, startTX = 0, startTY = 0;
+  let lastTap = 0, swipeStartX = 0;
+
+  img.style.transformOrigin = 'center center';
+  img.style.transition = 'transform 0.12s ease';
+
+  function applyT(anim) {
+    img.style.transition = anim ? 'transform 0.18s cubic-bezier(.34,1.3,.64,1)' : 'none';
+    img.style.transform = `translate(${panX}px,${panY}px) scale(${scale})`;
   }
-}
 
-function closeGalleryOverlay() {
-  document.getElementById('galOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-/* === PAPAN PESAN (JSONBin) === */
-const JBIN_URL = 'https://script.google.com/macros/s/AKfycbxKlYVvEBQf5l9mBlFGDul7xioEQWdYGS_lVzjDT09zvjRx4ZlhsdRtr3Bgx0su0zU0Gg/exec';
-const JBIN_KEY = '';
-let pbMessages = [];
-let pbLoaded = false;
-
-async function openPesanOverlay() {
-  document.getElementById('pbOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  if (!pbLoaded) await loadPesan();
-}
-
-function closePesanOverlay() {
-  document.getElementById('pbOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function pbCharCount() {
-  document.getElementById('pbChar').textContent = document.getElementById('pbTeks').value.length;
-}
-
-function showPbToast(msg) {
-  const t = document.getElementById('pbToast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
-}
-
-async function loadPesan() {
-  document.getElementById('pbList').innerHTML = '<div class="pb-loading">🌸 Memuat pesan~</div>';
-  try {
-    const res = await fetch(JBIN_URL);
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    pbMessages = Array.isArray(data) ? data : [];
-    pbLoaded = true;
-    renderPesan();
-  } catch(e) {
-    document.getElementById('pbList').innerHTML = '<div class="pb-loading">⚠️ Gagal memuat pesan.</div>';
+  function clamp() {
+    scale = Math.max(1, Math.min(4.5, scale));
+    if (scale <= 1.04) { panX = 0; panY = 0; scale = 1; return; }
+    const mX = img.clientWidth  * scale * 0.38;
+    const mY = img.clientHeight * scale * 0.38;
+    panX = Math.max(-mX, Math.min(mX, panX));
+    panY = Math.max(-mY, Math.min(mY, panY));
   }
-}
 
-function renderPesan() {
-  document.getElementById('pbCount').textContent = pbMessages.length + ' pesan';
-  if (!pbMessages.length) {
-    document.getElementById('pbList').innerHTML = '<div class="pb-loading">🌸 Belum ada pesan~ Jadilah yang pertama!</div>';
-    return;
-  }
-  document.getElementById('pbList').innerHTML = [...pbMessages].reverse().map(p =>
-    `<div class="pb-card">
-      <div class="pb-card-name">${p.nama || 'Anonim'}</div>
-      <div class="pb-card-text">${String(p.teks||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
-      <div class="pb-card-time">🕐 ${p.waktu||''}</div>
-    </div>`
-  ).join('');
-}
+  // Double-tap toggle zoom
+  img.addEventListener('click', () => {
+    const now = Date.now();
+    if (now - lastTap < 280) {
+      scale = scale > 1.5 ? 1 : 2.8;
+      panX = 0; panY = 0; applyT(true);
+    }
+    lastTap = now;
+  });
 
-async function kirimPesan() {
-  const nama = document.getElementById('pbNama').value.trim() || 'Anonim 🌸';
-  const teks = document.getElementById('pbTeks').value.trim();
-  if (!teks) { showPbToast('⚠️ Tulis pesan dulu ya!'); return; }
-  const btn = document.getElementById('pbSubmit');
-  btn.disabled = true; btn.textContent = '⏳ Mengirim...';
-  const now = new Date();
-  const waktu = now.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}) + ' ' +
-                now.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
-  const updated = [...pbMessages, {nama, teks, waktu}];
-  try {
-    // GAS perlu no-cors, jadi kita kirim dan anggap berhasil
-    await fetch(JBIN_URL, {
-      method:'POST',
-      mode:'no-cors',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({nama, teks, waktu})
-    });
-    const res = {ok: true};
-    pbMessages = updated;
-    document.getElementById('pbNama').value = '';
-    document.getElementById('pbTeks').value = '';
-    document.getElementById('pbChar').textContent = '0';
-    renderPesan();
-   
+  img.addEventListener('touchstart', e => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      pinching = true; panning = false;
+      startDist = Math.hypot(e.touches[1].clientX-e.touches[0].clientX, e.touches[1].clientY-e.touches[0].clientY);
+      startScale = scale;
+    } else if (e.touches.length === 1) {
+      swipeStartX = e.touches[0].clientX;
+      if (scale > 1.05) {
+        panning = true; pinching = false;
+        startTX = e.touches[0].clientX; startTY = e.touches[0].clientY;
+        startPanX = panX; startPanY = panY;
+        applyT(false);
+      }
+    }
+  }, {passive:false});
+
+  img.addEventListener('touchmove', e => {
+    if (pinching && e.touches.length >= 2) {
+      e.preventDefault();
+      const d = Math.hypot(e.touches[1].clientX-e.touches[0].clientX, e.touches[1].clientY-e
